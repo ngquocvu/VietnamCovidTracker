@@ -2,6 +2,7 @@ import axios from "axios";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import CasesChart from "../components/CasesChart";
+import Province from "../components/Province";
 import { CovidCasesProps } from "../utils/interfaces";
 
 export default function Home() {
@@ -53,20 +54,17 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800  justify-center min-h-screen py-2">
       <Head>
-        <title>Covid-19 Analyst </title>
+        <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
         <p className=" font-bold text-lg">Số liệu Covid-19 tại {province}</p>
-        <p className="text-sm text-red-600 font-bold">
+        <p className="text-sm text-red-600 font-bold ">
           {" "}
           Lây nhiễm từ ngày 27.4{" "}
         </p>
         <div className="py-3 px-7 border m-4  bg-white rounded-md shadow-sm">
-          <div className="pb-2 text-xs text-red-600 animate-pulse">
-            Trực tiếp
-          </div>
-          <div className="flex space-x-7 ">
+          <div className="flex space-x-7 pb-3">
             <div className="flex flex-col">
               <p className="pb-2 text-2xl font-bold text-red-600 duration-100 ease-in-out">
                 {allCovidCases.total.toLocaleString()}
@@ -80,13 +78,21 @@ export default function Home() {
               <p className="text-sm font-normal text-center">Hôm nay</p>
             </div>
           </div>
+          <div className="pb-1 text-xs text-red-600 animate-pulse font-bold">
+            Cập nhật:{" "}
+            {new Date().getDate() +
+              "/" +
+              (Number(new Date().getMonth()) + 1) +
+              "/" +
+              new Date().getFullYear()}
+          </div>
         </div>
 
         <div className="flex space-x-3 pb-5">
           <button
             className={
               province == "Việt Nam"
-                ? `rounded bg-white p-1 shadow-mg px-4 text-sm ring-2 ring-green-500 shadow-sm`
+                ? `rounded bg-white p-1 shadow-mg px-4 text-sm ring-2 ring-red-500 shadow-sm`
                 : `rounded bg-white p-1 shadow-mg px-4 text-sm shadow-sm`
             }
             onClick={() => setProvine("Việt Nam")}
@@ -96,7 +102,7 @@ export default function Home() {
           <button
             className={
               province == "TP.HCM"
-                ? `rounded  bg-white p-1 shadow-mg px-4 text-sm ring-2 ring-green-500 shadow-sm`
+                ? `rounded  bg-white p-1 shadow-mg px-4 text-sm ring-2 ring-red-500 shadow-sm`
                 : `rounded bg-white p-1 shadow-mg px-4 text-sm shadow-sm`
             }
             onClick={() => setProvine("TP.HCM")}
@@ -118,6 +124,8 @@ export default function Home() {
             <CasesChart covidCases={dailyCovidCases} />
           </div>
         </div>
+
+        <Province />
       </main>
 
       <footer className="flex items-center justify-center w-full h-24">
