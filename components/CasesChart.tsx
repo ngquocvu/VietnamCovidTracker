@@ -22,9 +22,6 @@ const CasesChart = ({ covidCases }: CasesChartProps) => {
     Ca: cases.y,
   }));
 
-  console.log("case charts:");
-  console.log(data);
-
   function nFormatter(num: number, digits: number) {
     var si = [
       { value: 1, symbol: "" },

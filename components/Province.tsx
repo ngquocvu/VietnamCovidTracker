@@ -32,8 +32,8 @@ const Province = () => {
   }, []);
 
   return (
-    <div className="w-full px-4 pt-5">
-      <div className="w-full max-w-md p-2 mx-auto bg-white rounded-2xl">
+    <div className="w-full px-2 pt-4">
+      <div className="w-full max-w-md p-2 mx-auto bg-white rounded-2xl shadow-md">
         <Disclosure defaultOpen={true}>
           {({ open }) => (
             <>
@@ -55,9 +55,9 @@ const Province = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {provinceCovidCases.cases.map((pro) => {
+                    {provinceCovidCases.cases.map((pro, index) => {
                       return (
-                        <tr>
+                        <tr key={index}>
                           <td className="text-left text-gray-800 py-0.5 w-1/3">
                             {pro.x}
                           </td>
