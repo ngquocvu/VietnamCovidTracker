@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Area,
+  Bar,
   CartesianGrid,
   ComposedChart,
   Legend,
@@ -9,13 +10,14 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CovidCasesProps } from "../utils/interfaces";
+import { CovidCasesProps, chartType } from "../utils/interfaces";
 
-type CasesChartProps = {
+export type CasesChartProps = {
   covidCases: CovidCasesProps;
+  type: chartType;
 };
 
-const CasesChart = ({ covidCases }: CasesChartProps) => {
+const CasesChart = ({ covidCases, type }: CasesChartProps) => {
   const data = covidCases.cases.map((cases, index) => ({
     date:
       cases.x.toString().slice(8, 10) + "/" + cases.x.toString().slice(5, 7),
@@ -32,8 +34,8 @@ const CasesChart = ({ covidCases }: CasesChartProps) => {
       { value: 1e15, symbol: "P" },
       { value: 1e18, symbol: "E" },
     ];
-    var rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    var i;
+    let rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+    let i: number;
     for (i = si.length - 1; i > 0; i--) {
       if (num >= si[i].value) {
         break;
@@ -56,7 +58,7 @@ const CasesChart = ({ covidCases }: CasesChartProps) => {
         <CartesianGrid vertical={false} />
         <defs>
           <linearGradient id="colorUv" x1="1" y1="0" x2="0" y2="0">
-            <stop offset="1%" stopColor="#fc4e4e" stopOpacity={0.8} />
+            <stop offset="1%" stopColor="#ff8a8a" stopOpacity={0.8} />
             <stop offset="100%" stopColor="#f3f3f3" stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -66,7 +68,7 @@ const CasesChart = ({ covidCases }: CasesChartProps) => {
           tickFormatter={(tick) => {
             return nFormatter(tick, 1);
           }}
-          domain={[0, "dataMax + 2000"]}
+          domain={[0, "auto"]}
           allowDataOverflow={true}
         />
         <Tooltip
@@ -81,23 +83,27 @@ const CasesChart = ({ covidCases }: CasesChartProps) => {
             new Intl.NumberFormat("en").format(value)
           }
         />
-        {/* <Legend
-          wrapperStyle={{
-            backgroundColor: "#f5f5f5",
-            border: "1px solid #d5d5d5",
-            borderRadius: 3,
-            lineHeight: "40px",
-          }}
-          formatter={(value: number) => "Số ca nhiễm"}
-        />{" "} */}
-        <Area
-          type="monotone"
-          dataKey="Ca"
-          stackId="1"
-          stroke="#fc4e4e"
-          fill="url(#colorUv)"
-          //   label={{ position: "right", formatter: labelFormatter }}
-        />
+        {type == "area" ? (
+          <Area
+            type="monotone"
+            dataKey="Ca"
+            stackId="4"
+            stroke="#fc4e4e"
+            fill="url(#colorUv)"
+            name="Ca nhiễm"
+            //   label={{ position: "right", formatter: labelFormatter }}
+          />
+        ) : (
+          <Bar
+            type="monotone"
+            dataKey="Ca"
+            stackId="2"
+            barSize={20}
+            stroke="#fc4e4e"
+            fill="url(#colorUv)"
+            name="Ca nhiễm"
+          />
+        )}
       </ComposedChart>
     </ResponsiveContainer>
   );

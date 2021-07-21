@@ -9,22 +9,24 @@ type CasesChartProps = {
 const SummaryTable = ({ covidCases, province }: CasesChartProps) => {
   return (
     <>
-      <p className=" font-bold text-lg">Số liệu Covid-19 tại {province}</p>
-      <p className="text-sm text-red-600 font-bold ">
+      <p className=" font-bold text-lg md:text-2xl mb-2">
+        Số liệu Covid-19 tại {province}
+      </p>
+      <p className=" text-md md:text-xl text-red-600 font-bold ">
         {" "}
         Lây nhiễm từ ngày 27.4{" "}
       </p>
-      <div className="py-3 px-7 border m-4  bg-white rounded-md shadow-sm">
+      <div className="py-2 px-9  m-4 md:m-7 h-36  flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
         <div className="flex space-x-7 pb-3">
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl font-bold text-red-600 duration-100 ease-in-out">
-              {covidCases?.total.toLocaleString()}
+            <p className="pb-2 text-2xl md:text-3xl font-bold text-red-600 duration-100 ease-in-out">
+              {covidCases.total.toLocaleString()}
             </p>
             <p className="font-normal text-sm text-center">Ca nhiễm</p>
           </div>
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl font-bold text-red-600">
-              {covidCases?.toDay.toLocaleString()}
+            <p className="pb-2 text-2xl md:text-3xl font-bold text-red-600">
+              {covidCases.toDay.toLocaleString()}
             </p>
             <p className="text-sm font-normal text-center">Hôm nay</p>
           </div>
