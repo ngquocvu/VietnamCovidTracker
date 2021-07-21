@@ -25,3 +25,5 @@ export type VaccineDataProps = {
     total: number;
   };
 };
+
+export type chartType = "bar" | "area";

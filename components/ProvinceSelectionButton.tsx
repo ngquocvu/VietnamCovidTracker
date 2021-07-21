@@ -10,7 +10,8 @@ const ProvinceSelectionButton = ({ province, setProvince }: ButtonProps) => {
       <button
         className={
           province == "Việt Nam"
-            ? `rounded bg-white p-1 shadow-md px-6 text-sm ring-2 ring-red-500 s`
+            ? `rounded bg-white p-1 shadow-md px-6
+            font-bold text-sm ring-2 ring-red-500 s`
             : `rounded bg-white p-1 shadow-md px-6 text-sm shadow-sm`
         }
         onClick={() => {
@@ -23,7 +24,7 @@ const ProvinceSelectionButton = ({ province, setProvince }: ButtonProps) => {
       <button
         className={
           province == "TP.HCM"
-            ? `rounded  bg-white p-1 shadow-md px-6 text-sm ring-2 ring-red-500 m`
+            ? `rounded  bg-white p-1 shadow-md px-6  font-bold text-sm ring-2 ring-red-500 m`
             : `rounded bg-white p-1 shadow-md px-6 text-sm `
         }
         onClick={() => {
