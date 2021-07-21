@@ -68,8 +68,9 @@ export default function Home({
         <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Image src={bannerPicture} alt="Picture of the author" height="0" />
+      <Image src={bannerPicture} alt="Covid-19" />
       <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
+        {" "}
         <SummaryTable covidCases={allCovidCases} province={province} />
         <div className="flex space-x-3 pb-5">
           <ProvinceSelectionButton

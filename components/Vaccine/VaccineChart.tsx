@@ -47,7 +47,7 @@ const VaccineChart = ({
         </defs>
         <XAxis dataKey="date" style={{ fontSize: "0.65em" }} />
         <YAxis
-          style={{ fontWeight: "bold", fontSize: "0.85em" }}
+          style={{ fontWeight: "bold", fontSize: "0.65em" }}
           tickFormatter={(tick) => {
             return nFormatter(tick, 1);
           }}
