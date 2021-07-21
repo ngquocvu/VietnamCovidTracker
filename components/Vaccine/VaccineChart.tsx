@@ -21,7 +21,6 @@ const VaccineChart = ({
   vaccineData = [{ date: "29/06", y: 2, z: 3 }],
   type,
 }: VaccineChartProps) => {
-  console.log(vaccineData);
   return (
     <ResponsiveContainer width={"100%"} aspect={1.4}>
       <ComposedChart
