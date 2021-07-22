@@ -1,3 +1,4 @@
+export type chartType = "bar" | "area";
 export type CovidCasesProps = {
   cases: [
     {
@@ -5,6 +6,7 @@ export type CovidCasesProps = {
       y: number;
     }
   ];
+  lastUpdated: number;
   toDay: number;
   total: number;
 };
@@ -25,5 +27,3 @@ export type VaccineDataProps = {
     total: number;
   };
 };
-
-export type chartType = "bar" | "area";

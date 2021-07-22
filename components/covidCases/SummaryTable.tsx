@@ -1,12 +1,33 @@
 import React from "react";
-import { CovidCasesProps } from "../utils/interfaces";
+import { timeConverter } from "../../utils/dataFormatter";
+import { CovidCasesProps } from "../../utils/interfaces";
 
 type CasesChartProps = {
   covidCases: CovidCasesProps;
   province: string;
+  lastUpdated: number;
 };
 
-const SummaryTable = ({ covidCases, province }: CasesChartProps) => {
+function getUpdatedTime(time: number) {
+  return timeConverter(time);
+}
+
+const SummaryTable = ({
+  covidCases = {
+    cases: [
+      {
+        x: "2021-04-29",
+        y: 0,
+      },
+    ],
+    toDay: 0,
+    total: 0,
+    lastUpdated: 0,
+  },
+  province,
+  lastUpdated = 0,
+}: CasesChartProps) => {
+  console.log(covidCases);
   return (
     <>
       <p className=" font-bold text-lg md:text-2xl mb-2">
@@ -32,12 +53,7 @@ const SummaryTable = ({ covidCases, province }: CasesChartProps) => {
           </div>
         </div>
         <div className="pb-1 text-xs text-red-600 animate-pulse font-bold">
-          Cập nhật:{" "}
-          {new Date().getDate() +
-            "/" +
-            (Number(new Date().getMonth()) + 1) +
-            "/" +
-            new Date().getFullYear()}
+          {getUpdatedTime(lastUpdated)}
         </div>
       </div>
     </>

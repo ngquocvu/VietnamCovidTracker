@@ -10,7 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { CovidCasesProps, chartType } from "../utils/interfaces";
+import { CovidCasesProps, chartType } from "../../utils/interfaces";
 
 export type CasesChartProps = {
   covidCases: CovidCasesProps;

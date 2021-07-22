@@ -35,13 +35,13 @@ const VaccineChart = ({
         <CartesianGrid vertical={false} />
         <defs>
           <linearGradient id="colorVaccine2" x1="1" y1="1" x2="0" y2="0">
-            <stop offset="15%" stopColor="#5f00f7" stopOpacity={0.8} />
+            <stop offset="5%" stopColor="#9351fd" stopOpacity={0.8} />
             <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
           </linearGradient>
         </defs>
         <defs>
           <linearGradient id="colorVaccine1" x1="1" y1="1" x2="0" y2="0">
-            <stop offset="15%" stopColor="#66f559" stopOpacity={0.8} />
+            <stop offset="15%" stopColor="#00d39e" stopOpacity={0.8} />
             <stop offset="100%" stopColor="#ffffff" stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -74,7 +74,7 @@ const VaccineChart = ({
             dataKey="y"
             name="Đã tiêm 1 mũi"
             activeDot={{ r: 8 }}
-            stroke="#62fc4e"
+            stroke="#a144f7"
             fill="url(#colorVaccine1)"
             dot={false}
           />
@@ -83,7 +83,7 @@ const VaccineChart = ({
             type="monotone"
             dataKey="y"
             name="Đã tiêm 1 mũi"
-            stroke="#62fc4e"
+            stroke="#35eeb0"
             fill="url(#colorVaccine1)"
           />
         )}
@@ -93,7 +93,7 @@ const VaccineChart = ({
             dataKey="z"
             name="Đã tiêm 2 mũi"
             activeDot={{ r: 8 }}
-            stroke="#5f00f7"
+            stroke="#5e35f1"
             fill="url(#colorVaccine2)"
             dot={false}
           />

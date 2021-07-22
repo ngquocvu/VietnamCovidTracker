@@ -4,20 +4,20 @@ import Image from "next/image";
 import Footer from "../components/Footer";
 import React, { useEffect, useState } from "react";
 import Province from "../components/Province";
-import CasesChart from "../components/CasesChart";
-import { CovidCasesProps, VaccineDataProps } from "../utils/interfaces";
-import SummaryTable from "../components/SummaryTable";
+import CasesChart from "../components/covidCases/CasesChart";
+import { CovidCasesProps } from "../utils/interfaces";
+import SummaryTable from "../components/covidCases/SummaryTable";
 import bannerPicture from "../public/covid-banner-new.jpg";
+import VaccineChart from "../components/Vaccine/VaccineChart";
+import VaccineTables from "../components/Vaccine/VaccineTables";
 import ProvinceSelectionButton from "../components/ProvinceSelectionButton";
 import {
   COVID_CASES_HCMC,
   COVID_CASES_PROVINCE,
   COVID_CASES_VIETNAM,
   COVID_VACCINE_VIETNAM,
+  TRIGGER_HOOKS,
 } from "../utils/constants";
-import VaccineChart from "../components/Vaccine/VaccineChart";
-import VaccineTables from "../components/Vaccine/VaccineTables";
-import VaccineCharts from "../components/Vaccine/VaccineTables";
 
 export default function Home({
   covidDataVN,
@@ -25,6 +25,7 @@ export default function Home({
   covidDataProvince,
   covidVaccineVN,
 }) {
+  const [lastUpdated, setLastUpdated] = useState<number>(0);
   const [province, setProvince] = useState<string>("Việt Nam");
   const [allCovidCases, setAllCovidCases] = useState<CovidCasesProps>({
     cases: [
@@ -35,6 +36,7 @@ export default function Home({
     ],
     toDay: 0,
     total: 0,
+    lastUpdated: 0,
   });
   const [dailyCovidCases, setDailyCovidCases] = useState<CovidCasesProps>({
     cases: [
@@ -45,16 +47,18 @@ export default function Home({
     ],
     toDay: 0,
     total: 0,
+    lastUpdated: 0,
   });
 
   const getCases = async (selectedProvince: string) => {
     if (selectedProvince == "TP.HCM") {
       setAllCovidCases(covidDataHCMC.data.all);
       setDailyCovidCases(covidDataHCMC.data.daily);
+      setLastUpdated(covidDataHCMC.data.lastUpdated);
     } else {
       setAllCovidCases(covidDataVN.data.vnSeason4);
-
       setDailyCovidCases(covidDataVN.data.vnSeason4Daily);
+      setLastUpdated(covidDataHCMC.data.lastUpdated);
     }
   };
 
@@ -62,16 +66,33 @@ export default function Home({
     getCases(province);
   }, [province]);
 
+  const isAPIUpdate = async () => {
+    let apiUpdateTime = await axios.get(COVID_CASES_HCMC);
+    apiUpdateTime = apiUpdateTime.data.data.lastUpdated;
+    if (covidDataHCMC.data.lastUpdated !== apiUpdateTime) {
+      const response = await axios.get(TRIGGER_HOOKS);
+      console.log("Triggered a hook at" + response.data.job.createdAt);
+    }
+  };
+
+  useEffect(() => {
+    isAPIUpdate();
+  }, []);
+
   return (
     <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800 justify-center min-h-screen">
       <Head>
         <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Image src={bannerPicture} alt="Covid-19" />
+      {/* <Image src={bannerPicture} alt="Covid-19" /> */}
       <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
         {" "}
-        <SummaryTable covidCases={allCovidCases} province={province} />
+        <SummaryTable
+          covidCases={allCovidCases}
+          province={province}
+          lastUpdated={lastUpdated}
+        />
         <div className="flex space-x-3 pb-5">
           <ProvinceSelectionButton
             province={province}
@@ -115,6 +136,25 @@ export default function Home({
   );
 }
 
+export async function getStaticProps() {
+  const covidDataVN = await axios.get(COVID_CASES_VIETNAM).then((c) => c.data);
+  const covidDataHCMC = await axios.get(COVID_CASES_HCMC).then((c) => c.data);
+  const covidVaccineVN = await axios
+    .get(COVID_VACCINE_VIETNAM)
+    .then((c) => c.data);
+  const covidDataProvince = await axios
+    .get(COVID_CASES_PROVINCE)
+    .then((c) => c.data);
+  return {
+    props: {
+      covidDataVN,
+      covidDataHCMC,
+      covidDataProvince,
+      covidVaccineVN,
+    },
+  };
+}
+
 const AllVaccineChart = ({ covidVaccineVN }): any => {
   {
     const vaccineFormattedDate = covidVaccineVN.first.datas.map(
@@ -124,7 +164,6 @@ const AllVaccineChart = ({ covidVaccineVN }): any => {
         z: covidVaccineVN.second.datas[index].z,
       })
     );
-
     return (
       <div className="text-xl">
         <VaccineChart type="area" vaccineData={vaccineFormattedDate} />
@@ -142,7 +181,6 @@ const DailyVaccineChart = ({ covidVaccineVN }): any => {
         z: covidVaccineVN.second.datas[index].y,
       })
     );
-
     return (
       <div className="text-xl">
         <VaccineChart type="bar" vaccineData={vaccineFormattedDate} />
@@ -159,11 +197,11 @@ const CovidCharts = ({
   return (
     <>
       <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
-        <div className="text-md pb-5  font-bold">Tổng số ca tại {province}</div>
+        <div className="text-lg pb-5  font-bold">Tổng số ca tại {province}</div>
         <CasesChart covidCases={allCovidCases} type="area" />
       </div>
       <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
-        <div className="text-md pb-5 font-bold ">
+        <div className="text-lg pb-5 font-bold ">
           Số ca theo ngày tại {province}
         </div>
 
@@ -172,23 +210,3 @@ const CovidCharts = ({
     </>
   );
 };
-
-export async function getStaticProps() {
-  const covidDataVN = await axios.get(COVID_CASES_VIETNAM).then((c) => c.data);
-  const covidDataHCMC = await axios.get(COVID_CASES_HCMC).then((c) => c.data);
-  const covidVaccineVN = await axios
-    .get(COVID_VACCINE_VIETNAM)
-    .then((c) => c.data);
-  const covidDataProvince = await axios
-    .get(COVID_CASES_PROVINCE)
-    .then((c) => c.data);
-
-  return {
-    props: {
-      covidDataVN,
-      covidDataHCMC,
-      covidDataProvince,
-      covidVaccineVN,
-    },
-  };
-}
