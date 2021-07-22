@@ -56,7 +56,7 @@ const VaccineCharts = ({
             <div className="flex mb-2 items-center justify-between">
               <div>
                 <div className="text-xs  inline-block py-1.5 px-3 font-bold rounded-full text-green-600 bg-green-100">
-                  Tỉ lệ % dân số đã tiêm 2 mũi
+                  % dân số đã tiêm 2 mũi
                 </div>
               </div>
               <div className="text-right">

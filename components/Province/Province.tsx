@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { nFormatter } from "../utils/dataFormatter";
+import { nFormatter } from "../../utils/dataFormatter";
 
 type provinceCovidCaseProps = {
   cases: [{ x: string; y: number; z: number }];

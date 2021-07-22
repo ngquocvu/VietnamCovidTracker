@@ -9,7 +9,6 @@ type CasesChartProps = {
 };
 
 function getUpdatedTime(time: number) {
-  console.log("Vaccine Tables update time:" + time);
   return timeConverter(time);
 }
 

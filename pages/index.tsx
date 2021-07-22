@@ -3,14 +3,14 @@ import Head from "next/head";
 import Image from "next/image";
 import Footer from "../components/Footer";
 import React, { useEffect, useState } from "react";
-import Province from "../components/Province";
+import Province from "../components/Province/Province";
 import CasesChart from "../components/covidCases/CasesChart";
 import { CovidCasesProps } from "../utils/interfaces";
 import SummaryTable from "../components/covidCases/SummaryTable";
 import bannerPicture from "../public/covid-banner-new.jpg";
 import VaccineChart from "../components/Vaccine/VaccineChart";
 import VaccineTables from "../components/Vaccine/VaccineTables";
-import ProvinceSelectionButton from "../components/ProvinceSelectionButton";
+import ProvinceSelectionButton from "../components/Province/ProvinceSelectionButton";
 import {
   COVID_CASES_HCMC,
   COVID_CASES_PROVINCE,
@@ -18,6 +18,7 @@ import {
   COVID_VACCINE_VIETNAM,
   TRIGGER_HOOKS,
 } from "../utils/constants";
+import Header from "../components/Header";
 
 export default function Home({
   covidDataVN,
@@ -54,12 +55,11 @@ export default function Home({
     if (selectedProvince == "TP.HCM") {
       setAllCovidCases(covidDataHCMC.data.all);
       setDailyCovidCases(covidDataHCMC.data.daily);
-      setLastUpdated(covidDataVN.data.lastUpdated);
     } else {
       setAllCovidCases(covidDataVN.data.vnSeason4);
       setDailyCovidCases(covidDataVN.data.vnSeason4Daily);
-      setLastUpdated(covidDataVN.data.lastUpdated);
     }
+    setLastUpdated(covidVaccineVN.data.first.lastUpdated);
   };
 
   useEffect(() => {
@@ -67,11 +67,11 @@ export default function Home({
   }, [province]);
 
   const isAPIUpdate = async () => {
-    let apiUpdateTime = await axios.get(COVID_CASES_VIETNAM);
-    apiUpdateTime = apiUpdateTime.data.data.lastUpdated;
+    let apiUpdateTime = await axios.get(COVID_VACCINE_VIETNAM);
+    apiUpdateTime = apiUpdateTime.data.data.first.lastUpdated;
     console.log(apiUpdateTime);
-    console.log(covidDataVN.data.lastUpdated);
-    if (covidDataVN.data.lastUpdated !== apiUpdateTime) {
+    console.log(covidVaccineVN.data.first.lastUpdated);
+    if (covidVaccineVN.data.first.lastUpdated !== apiUpdateTime) {
       const response = await axios.get(TRIGGER_HOOKS);
       console.log("Triggered a hook at" + response.data.job.createdAt);
     }
@@ -88,8 +88,8 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Image src={bannerPicture} alt="Covid-19" /> */}
+      <Header />
       <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
-        {" "}
         <SummaryTable
           covidCases={allCovidCases}
           province={province}
@@ -112,7 +112,7 @@ export default function Home({
           <VaccineTables vaccineDataVN={covidVaccineVN.data} />
         </div>
         <div className="mt-8 md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
-          <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
+          <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12">
             <div className="text-lg  pb-7 font-bold">
               Tổng số người tiêm vaccine
             </div>
