@@ -54,11 +54,11 @@ export default function Home({
     if (selectedProvince == "TP.HCM") {
       setAllCovidCases(covidDataHCMC.data.all);
       setDailyCovidCases(covidDataHCMC.data.daily);
-      setLastUpdated(covidDataHCMC.data.lastUpdated);
+      setLastUpdated(covidDataVN.data.lastUpdated);
     } else {
       setAllCovidCases(covidDataVN.data.vnSeason4);
       setDailyCovidCases(covidDataVN.data.vnSeason4Daily);
-      setLastUpdated(covidDataHCMC.data.lastUpdated);
+      setLastUpdated(covidDataVN.data.lastUpdated);
     }
   };
 
@@ -67,9 +67,11 @@ export default function Home({
   }, [province]);
 
   const isAPIUpdate = async () => {
-    let apiUpdateTime = await axios.get(COVID_CASES_HCMC);
+    let apiUpdateTime = await axios.get(COVID_CASES_VIETNAM);
     apiUpdateTime = apiUpdateTime.data.data.lastUpdated;
-    if (covidDataHCMC.data.lastUpdated !== apiUpdateTime) {
+    console.log(apiUpdateTime);
+    console.log(covidDataVN.data.lastUpdated);
+    if (covidDataVN.data.lastUpdated !== apiUpdateTime) {
       const response = await axios.get(TRIGGER_HOOKS);
       console.log("Triggered a hook at" + response.data.job.createdAt);
     }
@@ -106,10 +108,10 @@ export default function Home({
             dailyCovidCases={dailyCovidCases}
           />
         </div>
-        <div className="m-8 w-full md:w-8/12 ">
+        <div className="mt-8 w-full md:w-8/12 ">
           <VaccineTables vaccineDataVN={covidVaccineVN.data} />
         </div>
-        <div className="md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
+        <div className="mt-8 md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
           <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
             <div className="text-lg  pb-7 font-bold">
               Tổng số người tiêm vaccine
@@ -127,6 +129,7 @@ export default function Home({
             </div>
           </div>
         </div>
+        {/* Province */}
         <Province covidDataProvince={covidDataProvince.data} />
       </main>
       <footer className="flex items-center justify-center w-full h-24">
@@ -182,7 +185,7 @@ const DailyVaccineChart = ({ covidVaccineVN }): any => {
       })
     );
     return (
-      <div className="text-xl">
+      <div className="text-xl ">
         <VaccineChart type="bar" vaccineData={vaccineFormattedDate} />
       </div>
     );

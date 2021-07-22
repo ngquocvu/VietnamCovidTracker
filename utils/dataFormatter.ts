@@ -20,8 +20,8 @@ export function nFormatter(num: number, digits: number) {
 
 export function timeConverter(UNIX_timestamp: number) {
   let a = new Date(UNIX_timestamp * 1000);
-  let month = a.getMonth() + 1;
-  let date = a.getDate();
+  let month = (a.getMonth() + 1 < 10 ? "0" : "") + (a.getMonth() + 1);
+  let date = (a.getDate() < 10 ? "0" : "") + a.getDate();
   let hour = a.getHours();
   let min = a.getMinutes() + (a.getMinutes() < 10 ? "0" : "");
   return "Cập nhật lúc " + hour + ":" + min + " " + date + "/" + month;

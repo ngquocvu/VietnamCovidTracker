@@ -9,6 +9,7 @@ type CasesChartProps = {
 };
 
 function getUpdatedTime(time: number) {
+  console.log("Vaccine Tables update time:" + time);
   return timeConverter(time);
 }
 
@@ -27,7 +28,6 @@ const SummaryTable = ({
   province,
   lastUpdated = 0,
 }: CasesChartProps) => {
-  console.log(covidCases);
   return (
     <>
       <p className=" font-bold text-lg md:text-2xl mb-2">
@@ -47,9 +47,9 @@ const SummaryTable = ({
           </div>
           <div className="flex flex-col">
             <p className="pb-2 text-2xl md:text-3xl font-bold text-red-600">
-              {covidCases.toDay.toLocaleString()}
+              +{covidCases.toDay.toLocaleString()}
             </p>
-            <p className="text-sm font-normal text-center">Hôm nay</p>
+            <p className="text-sm font-normal text-center pl-2">Hôm nay</p>
           </div>
         </div>
         <div className="pb-1 text-xs text-red-600 animate-pulse font-bold">
