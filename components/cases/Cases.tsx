@@ -1,5 +1,5 @@
 import React from "react";
-import ProvinceSelectionButton from "../province/ProvinceSelectionButton";
+import ProvinceSelectionButton from "../provinces/ProvinceSelectionButton";
 import CasesChart from "./CasesChart";
 import SummaryTable from "./SummaryTable";
 

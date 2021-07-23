@@ -2,9 +2,7 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
-import Vaccine from "../components/vaccine/Vaccine";
-import Cases from "../components/case/Cases";
-import Province from "../components/province/Province";
+
 import {
   CovidCasesProps,
   ProvinceCasesProps,
@@ -17,6 +15,9 @@ import {
   COVID_VACCINE_VIETNAM,
   TRIGGER_HOOKS,
 } from "../utils/constants";
+import Cases from "../components/cases/Cases";
+import Province from "../components/provinces/Province";
+import Vaccine from "../components/vaccines/Vaccine";
 
 export type HomeProps = {
   covidDataVN: {

@@ -18,7 +18,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/vaccine/VaccineTable.stsx"
+    "components/vaccines/VaccineTable.stsx"
   ],
   "exclude": ["node_modules"]
 }
