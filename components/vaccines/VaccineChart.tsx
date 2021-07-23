@@ -61,7 +61,7 @@ const VaccineChart = ({
             backgroundColor: "#ccc",
             borderRadius: "40px",
             border: "none",
-            fontSize: "0.75em",
+            fontSize: "0.65em",
           }}
           labelFormatter={(e) => "Ngày: " + e}
           formatter={(value: number) =>
@@ -82,7 +82,7 @@ const VaccineChart = ({
           <Bar
             type="monotone"
             dataKey="y"
-            name="Đã tiêm 1 mũi"
+            name="Mũi tiêm thứ 1"
             stroke="#35eeb0"
             fill="url(#colorVaccine1)"
           />
@@ -101,7 +101,7 @@ const VaccineChart = ({
           <Area
             type="monotone"
             dataKey="z"
-            name="Đã tiêm 2 mũi"
+            name="Mũi tiêm thứ 2"
             stroke="#5f00f7"
             fill="url(#colorVaccine2)"
           />

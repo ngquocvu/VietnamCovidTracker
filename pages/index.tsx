@@ -103,8 +103,8 @@ export default function Home({
           allCovidCases={allCovidCases}
           setProvince={setProvince}
         />
-        <Vaccine covidVaccineVN={covidVaccineVN} />
         <Province covidDataProvince={covidDataProvince} />
+        <Vaccine covidVaccineVN={covidVaccineVN} />
         <News />
       </main>
       <footer className="flex items-center justify-center w-full h-24">

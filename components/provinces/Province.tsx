@@ -1,7 +1,7 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import {
   Bar,
   BarChart,
@@ -32,6 +32,7 @@ const Province = ({
     total: 0,
   },
 }: ProvinceProps) => {
+  const [numberOfProvince, setNumberOfProvince] = useState(10);
   return (
     <div className="w-full pt-5">
       <div className="mb-6 mt-0 md:pt-4 md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
@@ -63,7 +64,7 @@ const Province = ({
       </div>
 
       <div className="w-full md:max-w-xl p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <Disclosure defaultOpen={false}>
+        <Disclosure defaultOpen={true}>
           {({ open }) => (
             <>
               <Disclosure.Button className="flex justify-between w-full px-4 py-3 text-sm font-medium text-left text-red-700 bg-red-100 rounded-lg hover:bg-red-200 focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-75">
@@ -75,34 +76,51 @@ const Province = ({
                 />
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                <table className="table-auto w-full">
+                <table className="table-fixed w-full">
                   <thead>
                     <tr className="text-gray-700">
-                      <th className="text-left">Tỉnh</th>
-                      <th className="text-right">Hôm nay</th>
-                      <th className="text-right"> Tổng số ca</th>
+                      <th className="text-left w-2/12">#</th>
+                      <th className="text-left w-4/12">Tỉnh</th>
+                      <th className="text-right w-3/12">Hôm nay</th>
+                      <th className="text-right w-3/12"> Tổng</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {covidDataProvince.cases.map((pro, index) => {
-                      return (
-                        <tr key={index}>
-                          <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
-                            {pro.x}
-                          </td>
-                          <td className="text-right text-red-600">
-                            {pro.y.toLocaleString() !== "0"
-                              ? "+" + pro.y.toLocaleString()
-                              : pro.y.toLocaleString()}
-                          </td>
-                          <td className="text-right">
-                            {pro.z.toLocaleString()}
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {covidDataProvince.cases
+                      .slice(0, numberOfProvince)
+                      .map((pro, index) => {
+                        return (
+                          <tr
+                            className="hover:bg-gray-100 rounded-md"
+                            key={index}
+                          >
+                            <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
+                              {index + 1}
+                            </td>
+                            <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
+                              {pro.x}
+                            </td>
+                            <td className="text-right text-red-600">
+                              {pro.y.toLocaleString() !== "0"
+                                ? "+" + pro.y.toLocaleString()
+                                : pro.y.toLocaleString()}
+                            </td>
+                            <td className="text-right">
+                              {pro.z.toLocaleString()}
+                            </td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
+                <button
+                  onClick={() => {
+                    setNumberOfProvince(numberOfProvince + 8);
+                  }}
+                  className="p-2 m-4 w-6/12 font-bold rounded border-2 bg-white hover:bg-gray-100"
+                >
+                  Xem thêm
+                </button>
               </Disclosure.Panel>
             </>
           )}

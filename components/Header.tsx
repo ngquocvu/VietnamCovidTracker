@@ -8,17 +8,17 @@ const Header = () => {
         <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-16 flex space-between bg-white border-gray-100 border-b-2 rounded-b-2xl  flex justify-center items-center w-full ">
+      <div className="h-16 flex space-between bg-white border-gray-100 rounded-b-2xl border-2 flex justify-center items-center w-full ">
         <div className="flex space-x-7 justify-center">
           <div className="cursor-pointer hover:font-bold text-gray-500">
-            Tiện ích
+            Thế giới
           </div>
           <div className="cursor-pointer font-bold">Trang chủ</div>
           <a
             className="cursor-pointer hover:font-bold text-gray-500"
             href="https://www.quocvu.tech"
           >
-            Về tôi
+            Tin tức
           </a>
         </div>
       </div>
