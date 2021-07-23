@@ -18,6 +18,7 @@ import {
 import Cases from "../components/cases/Cases";
 import Province from "../components/provinces/Province";
 import Vaccine from "../components/vaccines/Vaccine";
+import News from "../components/news/News";
 
 export type HomeProps = {
   covidDataVN: {
@@ -104,6 +105,7 @@ export default function Home({
         />
         <Vaccine covidVaccineVN={covidVaccineVN} />
         <Province covidDataProvince={covidDataProvince} />
+        <News />
       </main>
       <footer className="flex items-center justify-center w-full h-24">
         <Footer />

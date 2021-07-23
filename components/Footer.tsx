@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="font-bold text-md">Vu Nguyen</div>
       </a>
       <div className="text-center text-xs">
-        Nguồn dữ liệu Covid-19 từ Zing News
+        Nguồn dữ liệu Covid-19 từ Zing News & VnExpress
       </div>
     </div>
   );
