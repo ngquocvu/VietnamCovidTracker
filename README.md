@@ -14,3 +14,8 @@ Công nghệ/thư viện sử dụng:
 - HeadlessUI
 - Recharts
 
+```sh
+https://covid19-vn.vercel.app/
+```
+
+<img src="https://i.ibb.co/mDd9Z0t/screencapture-covid19-vn-vercel-app-2021-07-23-16-57-05.png" alt="screencapture-covid19-vn-vercel-app-2021-07-23-16-57-05" border="0">
