@@ -11,6 +11,17 @@ export type CovidCasesProps = {
   total: number;
 };
 
+export type ProvinceCasesProps = {
+  cases: {
+    x: string;
+    y: number;
+    z: number;
+  };
+  lastUpdated: number;
+  toDay: number;
+  total: number;
+};
+
 export type VaccineDataProps = {
   firstRatio: number;
   secondRatio: number;

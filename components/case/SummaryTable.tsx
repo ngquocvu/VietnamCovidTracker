@@ -29,30 +29,33 @@ const SummaryTable = ({
 }: CasesChartProps) => {
   return (
     <>
-      <p className=" font-bold text-lg md:text-2xl mb-2">
-        Số liệu Covid-19 tại {province}
+      <p className=" font-bold text-2xl md:text-4xl mb-2">
+        Số liệu Covid-19 tại Việt Nam
       </p>
-      <p className=" text-md md:text-xl text-red-600 font-bold ">
-        {" "}
-        Lây nhiễm từ ngày 27.4{" "}
+      <p className=" text-md md:text-xl text-red-600">
+        Đợt bùng phát dịch từ ngày 27/4
+      </p>
+      <p className="pt-2 text-sm text-red-600 ">
+        {getUpdatedTime(lastUpdated)}
       </p>
       <div className="py-2 px-9  m-4 md:m-7 h-36  flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
         <div className="flex space-x-7 pb-3">
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl md:text-3xl font-bold text-red-600 duration-100 ease-in-out">
+            <p className="pb-2 text-2xl md:text-4xl font-bold text-red-500 duration-100 ease-in-out">
               {covidCases.total.toLocaleString()}
             </p>
-            <p className="font-normal text-sm text-center">Ca nhiễm</p>
+            <p className=" bg-red-100 p-1 text-red-500 rounded-sm font-semibold text-sm text-center">
+              Ca nhiễm
+            </p>
           </div>
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl md:text-3xl font-bold text-red-600">
+            <p className="pb-2 text-2xl md:text-4xl font-bold text-red-500">
               +{covidCases.toDay.toLocaleString()}
             </p>
-            <p className="text-sm font-normal text-center pl-2">Hôm nay</p>
+            <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-sm">
+              Hôm nay
+            </p>
           </div>
-        </div>
-        <div className="pb-1 text-xs text-red-600 animate-pulse font-bold">
-          {getUpdatedTime(lastUpdated)}
         </div>
       </div>
     </>

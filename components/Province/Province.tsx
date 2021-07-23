@@ -37,7 +37,7 @@ const Province = ({
       <div className="mb-6 mt-0 md:pt-4 md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
         <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
           <div className="text-md md:text-lg  font-bold">
-            Top tỉnh thành có tổng số ca nhiều nhất
+            Tỉnh thành dẫn đầu về số ca
           </div>
           <FormattedRankedChart
             covidDataProvince={covidDataProvince.cases.map((c) => ({
@@ -49,7 +49,7 @@ const Province = ({
         <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
           <div className="text-md md:text-lg font-bold">
             {" "}
-            Top tỉnh thành nhiều ca nhất trong ngày
+            Tỉnh thành nhiều ca nhất trong ngày
           </div>
           <div>
             <FormattedRankedChart
@@ -62,7 +62,7 @@ const Province = ({
         </div>{" "}
       </div>
 
-      <div className="w-full max-w-md p-2 mx-auto bg-white shadow-md rounded-2xl">
+      <div className="w-full md:max-w-xl p-2 mx-auto bg-white shadow-md rounded-2xl">
         <Disclosure defaultOpen={false}>
           {({ open }) => (
             <>
@@ -87,7 +87,7 @@ const Province = ({
                     {covidDataProvince.cases.map((pro, index) => {
                       return (
                         <tr key={index}>
-                          <td className="text-left text-gray-800 py-0.5 w-1/3">
+                          <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
                             {pro.x}
                           </td>
                           <td className="text-right text-red-600">

@@ -7,7 +7,6 @@ const Footer = () => {
         className="flex items-center justify-center text-sm hover:text-blue-500"
         href="https://quocvu.tech"
         target="_blank"
-        rel="noopener noreferrer"
       >
         Powered by&nbsp;
         <div className="font-bold text-md">Vu Nguyen</div>
