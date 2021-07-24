@@ -18,7 +18,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "components/vaccines/VaccineTable.stsx"
+    "components/vaccines/VaccineTable.stsx",
+    "components/ScrollButton.jsx"
   ],
   "exclude": ["node_modules"]
 }

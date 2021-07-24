@@ -95,6 +95,7 @@ export default function Home({
   return (
     <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800 justify-center min-h-screen">
       <Header />
+
       <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
         <Cases
           dailyCovidCases={dailyCovidCases}
