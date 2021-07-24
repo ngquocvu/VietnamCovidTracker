@@ -6,8 +6,11 @@ const Header = ({ currentPage = "home" }) => {
   return (
     <>
       <Head>
-        <title>Covid-19 in Vietnam </title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>
+          {currentPage.charAt(0).toUpperCase() + currentPage.slice(1) + " | "}
+          Covid-19 in Vietnam{" "}
+        </title>
+        <link rel="icon" href="/covid-virus.png" />
       </Head>
       <div className="h-16 flex space-between bg-white border-gray-100 rounded-b-2xl border-2 flex justify-center items-center w-full ">
         <div className="flex space-x-7 justify-center">

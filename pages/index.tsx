@@ -105,7 +105,7 @@ export default function Home({
         />
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
-        <div className="w-full md:max-w-2xl">
+        <div className="w-full md:max-w-4xl py-4">
           <News />
         </div>
       </main>

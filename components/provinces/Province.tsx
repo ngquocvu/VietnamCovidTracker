@@ -121,7 +121,7 @@ const Province = ({
                       setNumberOfProvince(numberOfProvince + 8);
                     }
                   }}
-                  className="p-2 m-4 w-6/12 text-gray-600 font-bold rounded border-2 bg-white hover:bg-gray-100"
+                  className="p-2 m-4 w-6/12 text-gray-700 font-bold rounded border-2 bg-white hover:bg-gray-100"
                 >
                   {numberOfProvince < covidDataProvince.cases.length
                     ? "Xem thêm"

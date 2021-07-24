@@ -35,49 +35,36 @@ const News = () => {
   }, []);
 
   return (
-    <div className="w-full flex-col space-y-4 pt-8  md:w-12/12">
+    <div className="w-full flex-col space-y-4  md:w-12/12">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <Disclosure defaultOpen={true}>
-          {({ open }) => (
-            <>
-              <Disclosure.Button className="flex justify-between w-full px-4 py-3 text-sm font-medium text-left text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
-                <span>Tin tức mới nhất</span>
-                <ChevronUpIcon
-                  className={`${
-                    open ? "transform rotate-180" : ""
-                  } w-5 h-5 text-gray-500`}
-                />
-              </Disclosure.Button>
-              <Disclosure.Panel className="px-1 md:px-4 pt-4 pb-2 text-sm text-gray-500">
-                <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
-                  {news.slice(0, numberOfPost).map((n) => {
-                    return (
-                      <NewsCard
-                        thumbnail={n.thumbnail_url}
-                        title={n.title}
-                        url={n.share_url}
-                        lead={n.lead}
-                        publishTime={n.publish_time}
-                      />
-                    );
-                  })}
-                </div>
-                <button
-                  onClick={() => {
-                    if (numberOfPost >= news.length) {
-                      setNumberOfPost(5);
-                    } else {
-                      setNumberOfPost(numberOfPost + 8);
-                    }
-                  }}
-                  className="p-2 m-4 w-6/12 text-gray-600 font-bold rounded border-2 bg-white hover:bg-gray-100"
-                >
-                  {numberOfPost < news.length ? "Xem thêm" : "Thu gọn"}
-                </button>
-              </Disclosure.Panel>
-            </>
-          )}
-        </Disclosure>
+        <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
+          <div className="text-xl md:text-3xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
+            Tin mới nhất
+          </div>
+          {news.slice(0, numberOfPost).map((n) => {
+            return (
+              <NewsCard
+                thumbnail={n.thumbnail_url}
+                title={n.title}
+                url={n.share_url}
+                lead={n.lead}
+                publishTime={n.publish_time}
+              />
+            );
+          })}
+        </div>
+        <button
+          onClick={() => {
+            if (numberOfPost >= news.length) {
+              setNumberOfPost(5);
+            } else {
+              setNumberOfPost(numberOfPost + 8);
+            }
+          }}
+          className="p-2 m-4 w-6/12 text-gray-700 font-bold rounded-md border-2 bg-white hover:bg-gray-100"
+        >
+          {numberOfPost < news.length ? "Xem thêm" : "Thu gọn"}
+        </button>
       </div>
     </div>
   );
