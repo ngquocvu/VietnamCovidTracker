@@ -1,23 +1,25 @@
+import Link from "next/link";
 import React from "react";
 import { timeSince } from "../../utils/dataFormatter";
 const NewsCard = ({ title, thumbnail, url, lead, publishTime }) => {
   return (
-    <div className="bg-white p-4 flex-col items-center text-left rounded-md hover:bg-gray-100 cursor-pointer">
-      <div className="font-bold text-lg text-gray-700">{title}</div>
-      <div className="font-normal pt-2">{lead}</div>
-      <div className="pt-2 flex justify-between space-x-2">
-        {" "}
-        <div className="text-gray-600 ">
-          {timeSince(publishTime) + " trước"}
+    <>
+      <Link href={url}>
+        <div className="bg-white p-1 md:p-4 space-x-4 flex text-left rounded-md hover:bg-gray-100 cursor-pointer justify-items ">
+          <img
+            className="relative bg-gray-300 h-24 w-24 md:h-32 md:w-32 object-cover object-center rounded-md"
+            src={thumbnail}
+          />
+          <div className="flex-col  items-start">
+            <div className="font-bold sm:text-lg text-gray-700">{title}</div>
+            <div className="font-normal pt-2 hidden md:flex">{lead}</div>{" "}
+            <div className="text-gray-600 pt-3 font-semibold">
+              {timeSince(publishTime) + " trước"}
+            </div>{" "}
+          </div>
         </div>
-        <a
-          className=" hover:text-gray-700 font-semibold text-gray-600"
-          href={url}
-        >
-          Xem thêm
-        </a>
-      </div>
-    </div>
+      </Link>
+    </>
   );
 };
 

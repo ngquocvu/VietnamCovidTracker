@@ -105,7 +105,9 @@ export default function Home({
         />
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
-        <News />
+        <div className="w-full md:max-w-2xl">
+          <News />
+        </div>
       </main>
       <footer className="flex items-center justify-center w-full h-24">
         <Footer />

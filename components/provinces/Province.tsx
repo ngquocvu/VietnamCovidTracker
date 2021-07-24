@@ -115,11 +115,17 @@ const Province = ({
                 </table>
                 <button
                   onClick={() => {
-                    setNumberOfProvince(numberOfProvince + 8);
+                    if (numberOfProvince >= covidDataProvince.cases.length) {
+                      setNumberOfProvince(4);
+                    } else {
+                      setNumberOfProvince(numberOfProvince + 8);
+                    }
                   }}
-                  className="p-2 m-4 w-6/12 font-bold rounded border-2 bg-white hover:bg-gray-100"
+                  className="p-2 m-4 w-6/12 text-gray-600 font-bold rounded border-2 bg-white hover:bg-gray-100"
                 >
-                  Xem thêm
+                  {numberOfProvince < covidDataProvince.cases.length
+                    ? "Xem thêm"
+                    : "Thu gọn"}
                 </button>
               </Disclosure.Panel>
             </>

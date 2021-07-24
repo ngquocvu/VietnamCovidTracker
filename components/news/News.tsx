@@ -14,7 +14,7 @@ type article = {
 };
 
 const News = () => {
-  const [numberOfPost, setNumberOfPost] = useState(3);
+  const [numberOfPost, setNumberOfPost] = useState(5);
   const [news, setNews] = useState<Array<article>>([
     {
       lead: "",
@@ -36,7 +36,7 @@ const News = () => {
 
   return (
     <div className="w-full flex-col space-y-4 pt-8  md:w-12/12">
-      <div className="w-full md:max-w-xl p-2 mx-auto bg-white shadow-md rounded-2xl">
+      <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
         <Disclosure defaultOpen={true}>
           {({ open }) => (
             <>
@@ -48,7 +48,7 @@ const News = () => {
                   } w-5 h-5 text-gray-500`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+              <Disclosure.Panel className="px-1 md:px-4 pt-4 pb-2 text-sm text-gray-500">
                 <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
                   {news.slice(0, numberOfPost).map((n) => {
                     return (
@@ -64,11 +64,15 @@ const News = () => {
                 </div>
                 <button
                   onClick={() => {
-                    setNumberOfPost(numberOfPost + 8);
+                    if (numberOfPost >= news.length) {
+                      setNumberOfPost(5);
+                    } else {
+                      setNumberOfPost(numberOfPost + 8);
+                    }
                   }}
-                  className="p-2 m-4 w-6/12 font-bold rounded border-2 bg-white hover:bg-gray-100"
+                  className="p-2 m-4 w-6/12 text-gray-600 font-bold rounded border-2 bg-white hover:bg-gray-100"
                 >
-                  Xem thêm
+                  {numberOfPost < news.length ? "Xem thêm" : "Thu gọn"}
                 </button>
               </Disclosure.Panel>
             </>
