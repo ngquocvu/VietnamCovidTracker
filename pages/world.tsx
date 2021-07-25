@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Header from "../components/Header";
 import News from "../components/news/News";
 
@@ -7,14 +8,21 @@ const WorldPage = () => {
     <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800  min-h-screen">
       <Header currentPage="world" />
 
-      <main className="flex flex-col justify-center items-center font-bold w-full md:max-w-4xl py-2 md:py-6 flex-1">
-        <img src="/world-banner.svg" className="w-6/12 pb-4 relative" />
-        <p className="font-bold text-gray-600 text-xl md:text-2xl mt-4 mb-1">
-          Trang này chưa có nội dung
-        </p>
-        <p className=" text-sm md:text-md text-gray-500 ">
-          Bạn lòng quay lại sau nhé!
-        </p>
+      <main className="flex flex-col items-center p-2 font-bold w-full md:max-w-4xl py-1 md:py-3 flex-1">
+        <div className="bg-white w-full md:w-10/12 flex-col flex items-center py-16 m-4 shadow-md rounded-md">
+          <img
+            src="/world-banner.svg"
+            className="relative h-36 md:h-72 w-6/12 pb-0 relative "
+          />
+          <p className="font-bold text-gray-600 text-lg md:text-2xl md:text-2xl  mt-2 md:mt-8 my-1">
+            Trang này chưa có nội dung
+          </p>
+          <Link href="/">
+            <p className=" text-sm md:text-md px-4 py-2 delay-100 hover:bg-indigo-600 font-semibold shadow-lg text-white rounded-md mt-2 bg-indigo-700 p-2 text-gray-500 cursor-pointer">
+              Trở về trang chủ
+            </p>
+          </Link>
+        </div>
       </main>
     </div>
   );

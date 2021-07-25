@@ -19,7 +19,12 @@
     "**/*.ts",
     "**/*.tsx",
     "components/vaccines/VaccineTable.stsx",
-    "components/ScrollButton.jsx"
+    "components/ScrollButton.jsx",
+    "pages/_offline.jsx",
+    "pages/_offline.js",
+    "utils/meta.js",
+    "pages/_offline.tss",
+    "public/sw.js"
   ],
   "exclude": ["node_modules"]
 }

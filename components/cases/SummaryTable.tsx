@@ -35,11 +35,13 @@ const SummaryTable = ({
       <p className=" text-md md:text-xl text-red-600">
         Đợt bùng phát dịch từ ngày 27/4
       </p>
-
-      <div className="py-2 px-9  m-4 md:m-7 h-36  flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
+      <p className="pt-2 text-sm font-semibold text-gray-600 ">
+        {getUpdatedTime(lastUpdated)}
+      </p>
+      <div className="py-6 px-9  m-4 md:m-7 flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
         <div className="flex space-x-7 pb-3">
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl md:text-4xl font-bold text-gray-600 duration-100 ease-in-out">
+            <p className="pb-2 relative text-3xl md:text-4xl font-bold text-gray-600 duration-100 ease-in-out">
               {covidCases.total.toLocaleString()}
             </p>
             <p className=" bg-gray-200 p-1 text-gray-600 rounded-md font-semibold text-sm text-center">
@@ -47,7 +49,7 @@ const SummaryTable = ({
             </p>
           </div>
           <div className="flex flex-col">
-            <p className="pb-2 text-2xl md:text-4xl font-bold text-red-500">
+            <p className="pb-2 text-3xl md:text-4xl font-bold text-red-500">
               +{covidCases.toDay.toLocaleString()}
             </p>
             <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-md">
@@ -55,9 +57,6 @@ const SummaryTable = ({
             </p>
           </div>
         </div>
-        <p className="pt-2 text-sm font-semibold text-gray-600 ">
-          {getUpdatedTime(lastUpdated)}
-        </p>
       </div>
     </>
   );

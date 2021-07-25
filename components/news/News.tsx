@@ -14,16 +14,32 @@ type article = {
 };
 
 const News = () => {
-  const [numberOfPost, setNumberOfPost] = useState(5);
-  const [news, setNews] = useState<Array<article>>([
+  const [numberOfPost, setNumberOfPost] = useState(10);
+  const defaultData = [
     {
       lead: "",
       share_url: "",
       title: "",
-      thumbnail_url: "",
-      publish_time: "0",
+      thumbnail_url: "/fallback.png",
+      publish_time: "",
     },
-  ]);
+    {
+      lead: "",
+      share_url: "",
+      title: "",
+      thumbnail_url: "/fallback.png",
+      publish_time: "",
+    },
+    {
+      lead: "",
+      share_url: "",
+      title: "",
+      thumbnail_url: "/fallback.png",
+      publish_time: "",
+    },
+  ];
+
+  const [news, setNews] = useState<Array<article>>(defaultData);
 
   const fetchNews = async () => {
     const data = await axios.get(VNEXPRESS_NEWS);
@@ -41,9 +57,10 @@ const News = () => {
           <div className="text-lg md:text-2xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
             Tin mới nhất
           </div>
-          {news.slice(0, numberOfPost).map((n) => {
+          {news.slice(0, numberOfPost).map((n, index) => {
             return (
               <NewsCard
+                key={index}
                 thumbnail={n.thumbnail_url}
                 title={n.title}
                 url={n.share_url}
@@ -56,7 +73,7 @@ const News = () => {
         <button
           onClick={() => {
             if (numberOfPost >= news.length) {
-              setNumberOfPost(5);
+              setNumberOfPost(10);
             } else {
               setNumberOfPost(numberOfPost + 8);
             }

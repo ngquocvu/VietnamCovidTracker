@@ -24,6 +24,7 @@ export type HomeProps = {
   covidDataVN: {
     vnSeason4: CovidCasesProps;
     vnSeason4Daily: CovidCasesProps;
+    lastUpdated: number;
   };
   covidDataHCMC: {
     all: CovidCasesProps;
@@ -72,7 +73,7 @@ export default function Home({
       setAllCovidCases(covidDataVN.vnSeason4);
       setDailyCovidCases(covidDataVN.vnSeason4Daily);
     }
-    setLastUpdated(covidVaccineVN.first.lastUpdated);
+    setLastUpdated(covidDataVN.lastUpdated);
   };
 
   useEffect(() => {
@@ -80,9 +81,10 @@ export default function Home({
   }, [province]);
 
   const isAPIUpdate = async () => {
-    let apiUpdateTime = await axios.get(COVID_VACCINE_VIETNAM);
-    apiUpdateTime = apiUpdateTime.data.data.first.lastUpdated;
-    if (covidVaccineVN.first.lastUpdated !== apiUpdateTime) {
+    let apiUpdateTime = await axios.get(COVID_CASES_VIETNAM);
+    apiUpdateTime = apiUpdateTime.data.data.lastUpdated;
+    console.log(apiUpdateTime + " " + covidDataVN.lastUpdated);
+    if (covidDataVN.lastUpdated !== apiUpdateTime) {
       const response = await axios.get(TRIGGER_HOOKS);
       console.log("Triggered a hook at" + response.data.job.createdAt);
     }
