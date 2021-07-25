@@ -3,6 +3,11 @@
   "short_name": "Covid Tracker",
   "icons": [
     {
+      "src": "/ms-icon-310x310.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
       "src": "/ms-icon-32x32.png",
       "sizes": "32x32",
       "type": "image/png"
