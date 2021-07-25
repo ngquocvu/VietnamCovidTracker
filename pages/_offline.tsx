@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 
-const FallBack = () => {
+export default () => {
   return (
     <>
       <Head>
@@ -21,5 +21,3 @@ const FallBack = () => {
     </>
   );
 };
-
-export default FallBack;
