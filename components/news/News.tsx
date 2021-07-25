@@ -38,7 +38,7 @@ const News = () => {
     <div className="w-full flex-col space-y-4  md:w-12/12">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
         <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
-          <div className="text-xl md:text-3xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
+          <div className="text-lg md:text-2xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
             Tin mới nhất
           </div>
           {news.slice(0, numberOfPost).map((n) => {

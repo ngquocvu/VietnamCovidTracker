@@ -9,15 +9,10 @@ export default class MyDocument extends Document {
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="viewport"
-            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
           />
-          <meta name="description" content="Description" />
+          <meta name="description" content="Vietnam Covid-19 Tracker" />
           <link rel="manifest" href="/manifest.json" />
-          <link
-            rel="apple-touch-icon"
-            sizes="57x57"
-            href="/apple-icon-57x57.png"
-          />
           <link
             rel="apple-touch-icon"
             sizes="60x60"
@@ -82,10 +77,13 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
-          <link rel="manifest" href="/manifest.json"></link>
+
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
           <meta name="theme-color" content="#ffffff" />
+
+          {/*launch screen */}
+
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
