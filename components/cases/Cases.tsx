@@ -17,7 +17,7 @@ const Cases = ({
         province={province}
         lastUpdated={lastUpdated}
       />
-      <div className="flex space-x-3 pb-5">
+      <div className="flex space-x-3 pb-6 pt-2">
         <ProvinceSelectionButton
           province={province}
           setProvince={setProvince}

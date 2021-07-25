@@ -35,9 +35,7 @@ const SummaryTable = ({
       <p className=" text-md md:text-xl text-red-600">
         Đợt bùng phát dịch từ ngày 27/4
       </p>
-      <p className="pt-2 text-sm font-semibold text-gray-600 ">
-        {getUpdatedTime(lastUpdated)}
-      </p>
+
       <div className="py-6 px-9  m-4 md:m-7 flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
         <div className="flex space-x-7 pb-3">
           <div className="flex flex-col">
@@ -57,6 +55,9 @@ const SummaryTable = ({
             </p>
           </div>
         </div>
+        <p className="pt-2 text-sm font-semibold text-gray-600 ">
+          {getUpdatedTime(lastUpdated)}
+        </p>
       </div>
     </>
   );
