@@ -63,7 +63,7 @@ const Province = ({
         </div>{" "}
       </div>
 
-      <div className="w-full md:max-w-xl p-2 mx-auto bg-white shadow-md rounded-2xl">
+      <div className="w-full md:max-w-3xl p-2 mx-auto bg-white shadow-md rounded-2xl">
         <Disclosure defaultOpen={true}>
           {({ open }) => (
             <>

@@ -4,7 +4,7 @@ import { formatNumber } from "../../utils/dataFormatter";
 
 const SummaryTableFrom2020 = ({ allCovidCaseByVnexpress }) => {
   return (
-    <div className="py-7 px-9 m-2 w-full md:w-1/2 md:m-1 grid grid-cols-1 flex item-center justify-center  bg-white rounded-md shadow-md">
+    <div className="py-3 px-9 w-full md:m-1 grid grid-cols-1 flex items-center justify-center  bg-white rounded-md ">
       <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
         Kể từ khi dịch bùng phát từ đầu 2020 đến nay
       </p>

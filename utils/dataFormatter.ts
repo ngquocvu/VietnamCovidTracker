@@ -24,7 +24,7 @@ export function timeConverter(UNIX_timestamp: number) {
   let date = (a.getDate() < 10 ? "0" : "") + a.getDate();
   let hour = a.getHours();
   let min = a.getMinutes() + (a.getMinutes() < 10 ? "0" : "");
-  return "Cập nhật: " + hour + ":" + min + " " + date + "/" + month;
+  return hour + ":" + min + " " + date + "/" + month;
 }
 
 export function timeSince(date: string) {

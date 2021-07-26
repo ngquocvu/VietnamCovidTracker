@@ -1,6 +1,10 @@
 import moment from "moment";
 import React from "react";
-import { formatNumber, timeConverter } from "../../utils/dataFormatter";
+import {
+  formatNumber,
+  timeConverter,
+  timeSince,
+} from "../../utils/dataFormatter";
 import { CovidCasesProps, CovidDataVnexpress } from "../../utils/interfaces";
 import Cases from "./Cases";
 import SummaryTableFrom2020 from "./SummaryTableFrom2020";
@@ -49,23 +53,29 @@ const SummaryTable = ({
   ],
 }: CasesChartProps) => {
   return (
-    <>
-      <div className="p-2 w-full md:mb-4 md:w-1/2 grid grid-cols-1 flex item-center justify-center  bg-white rounded-md shadow-sm">
-        <p className=" font-bold text-xl md:text-2xl mb-1">
-          Số liệu Covid-19 tại Việt Nam
-        </p>
-        <p className="pt-2 text-base font-semibold text-gray-600 ">
-          {getUpdatedTime(lastUpdated)}
-        </p>
+    <div className="flex w-full items-center pb-4 flex-col space-y-5">
+      <div className="p-2.5 w-full md:w-1/2 grid grid-cols-1 flex items-center justify-center  bg-white rounded-xl shadow-sm">
+        <div className="bg-gray-50 p-2 rounded-xl">
+          <p className=" font-bold text-lg md:text-xl mb-1">
+            Số liệu Covid-19 tại Việt Nam
+          </p>
+          <p className="text-sm font-semibold text-gray-500 ">
+            Cập nhật:{" "}
+            <a className="  ">{timeSince(lastUpdated.toString()) + " trước"}</a>
+          </p>
+        </div>
+        <SummaryTableFrom2020
+          allCovidCaseByVnexpress={allCovidCaseByVnexpress}
+        />
       </div>
-      <SummaryTableFrom2020 allCovidCaseByVnexpress={allCovidCaseByVnexpress} />
-      <div className="py-6 px-9 w-full md:w-1/2 m-4 md:m-7 grid grid-cols-1 flex item-center justify-center  bg-white rounded-md shadow-md">
+
+      <div className="py-6 px-9 w-full md:w-1/2 4 grid grid-cols-1 flex item-center justify-center  bg-white rounded-lg shadow-sm">
         <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
           Đợt bùng phát dịch từ ngày 27/4
         </p>
         <div className="grid grid-cols-2 gap-5">
           <div className="flex flex-col">
-            <p className="pb-2 relative text-3xl md:text-4xl font-bold text-gray-600 duration-100 ease-in-out">
+            <p className="pb-2 relative text-2xl md:text-4xl font-bold text-gray-600 duration-100 ease-in-out">
               {covidCases.total == 0 ? "-" : covidCases.total.toLocaleString()}
             </p>
             <p className=" bg-gray-200 p-1 text-gray-600 rounded-md font-semibold text-sm text-center">
@@ -73,7 +83,7 @@ const SummaryTable = ({
             </p>
           </div>
           <div className="flex flex-col">
-            <p className="pb-2 text-3xl md:text-4xl font-bold text-red-500">
+            <p className="pb-2 text-2xl md:text-4xl font-bold text-red-500">
               {covidCases.toDay == 0
                 ? "-"
                 : "+" + covidCases.toDay.toLocaleString()}
@@ -84,7 +94,7 @@ const SummaryTable = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default SummaryTable;
