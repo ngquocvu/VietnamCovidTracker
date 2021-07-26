@@ -19,7 +19,7 @@ const Cases = ({
         lastUpdated={lastUpdated}
         allCovidCaseByVnexpress={allCovidCaseByVnexpress}
       />
-      <div className="flex w-full md:w-6/12 justify-center rounded-md space-x-3 py-3 mb-2">
+      <div className="flex w-full lg:w-6/12 justify-center rounded-md space-x-3 py-3 mb-2">
         <ProvinceSelectionButton
           province={province}
           setProvince={setProvince}

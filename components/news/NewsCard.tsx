@@ -14,7 +14,10 @@ const NewsCard = ({ title, thumbnail, url, lead, publishTime }) => {
           <div className="flex-col space-y-1 items-start">
             <div className="font-bold sm:text-lg text-gray-700">{title}</div>
             <div className="font-normal hidden md:flex">{lead}</div>{" "}
-            <div className="text-gray-600 relative font-normal md:font-semibold text-sm">
+            <div className="font-normal text-xs text-gray-400">
+              Theo VnExpress
+            </div>
+            <div className="text-gray-500 relative font-semibold md:font-semibold text-sm">
               {publishTime == "" ? "" : timeSince(publishTime) + " trước"}
             </div>
           </div>

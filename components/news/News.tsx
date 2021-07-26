@@ -40,7 +40,9 @@ const News = () => {
         <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
           <div className="text-lg md:text-2xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
             Tin mới nhất
+            <div className="font-normal text-xs text-gray-400"></div>
           </div>
+
           {news.slice(0, numberOfPost).map((n, index) => {
             return (
               <NewsCard
