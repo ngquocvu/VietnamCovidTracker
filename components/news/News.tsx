@@ -15,29 +15,13 @@ type article = {
 
 const News = () => {
   const [numberOfPost, setNumberOfPost] = useState(10);
-  const defaultData = [
-    {
-      lead: "",
-      share_url: "",
-      title: "",
-      thumbnail_url: "/fallback.png",
-      publish_time: "",
-    },
-    {
-      lead: "",
-      share_url: "",
-      title: "",
-      thumbnail_url: "/fallback.png",
-      publish_time: "",
-    },
-    {
-      lead: "",
-      share_url: "",
-      title: "",
-      thumbnail_url: "/fallback.png",
-      publish_time: "",
-    },
-  ];
+  const defaultData = [1, 2, 3, 4, 5].map(() => ({
+    lead: "",
+    share_url: "",
+    title: "",
+    thumbnail_url: "/fallback.png",
+    publish_time: "",
+  }));
 
   const [news, setNews] = useState<Array<article>>(defaultData);
 

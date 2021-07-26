@@ -1,10 +1,14 @@
+import moment from "moment";
 import React from "react";
-import { timeConverter } from "../../utils/dataFormatter";
-import { CovidCasesProps } from "../../utils/interfaces";
+import { formatNumber, timeConverter } from "../../utils/dataFormatter";
+import { CovidCasesProps, CovidDataVnexpress } from "../../utils/interfaces";
+import Cases from "./Cases";
+import SummaryTableFrom2020 from "./SummaryTableFrom2020";
 
 type CasesChartProps = {
   covidCases: CovidCasesProps;
   province: string;
+  allCovidCaseByVnexpress: CovidDataVnexpress;
   lastUpdated: number;
 };
 
@@ -26,21 +30,43 @@ const SummaryTable = ({
   },
   province,
   lastUpdated = 0,
+  allCovidCaseByVnexpress = [
+    {
+      date: "10/7",
+      community: 0,
+      totalCommunity: 0,
+      deaths: 0,
+      recovered: 0,
+      cases: 0,
+      totalCase: 0,
+      totalDeath: 0,
+      totalRecovered: 0,
+      totalRecovered2020: 0,
+      totalDeath2020: 0,
+      totalCases2020: 0,
+      activeCases: 0,
+    },
+  ],
 }: CasesChartProps) => {
   return (
     <>
-      <p className=" font-bold text-2xl md:text-4xl mb-2">
-        Số liệu Covid-19 tại Việt Nam
-      </p>
-      <p className=" text-md md:text-xl text-red-600">
-        Đợt bùng phát dịch từ ngày 27/4
-      </p>
-
-      <div className="py-6 px-9  m-4 md:m-7 flex-col flex item-center justify-center  bg-white rounded-md shadow-md">
-        <div className="flex space-x-7 pb-3">
+      <div className="p-2 w-full md:mb-4 md:w-1/2 grid grid-cols-1 flex item-center justify-center  bg-white rounded-md shadow-sm">
+        <p className=" font-bold text-xl md:text-2xl mb-1">
+          Số liệu Covid-19 tại Việt Nam
+        </p>
+        <p className="pt-2 text-base font-semibold text-gray-600 ">
+          {getUpdatedTime(lastUpdated)}
+        </p>
+      </div>
+      <SummaryTableFrom2020 allCovidCaseByVnexpress={allCovidCaseByVnexpress} />
+      <div className="py-6 px-9 w-full md:w-1/2 m-4 md:m-7 grid grid-cols-1 flex item-center justify-center  bg-white rounded-md shadow-md">
+        <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
+          Đợt bùng phát dịch từ ngày 27/4
+        </p>
+        <div className="grid grid-cols-2 gap-5">
           <div className="flex flex-col">
             <p className="pb-2 relative text-3xl md:text-4xl font-bold text-gray-600 duration-100 ease-in-out">
-              {covidCases.total.toLocaleString()}
+              {covidCases.total == 0 ? "-" : covidCases.total.toLocaleString()}
             </p>
             <p className=" bg-gray-200 p-1 text-gray-600 rounded-md font-semibold text-sm text-center">
               Ca nhiễm
@@ -48,19 +74,17 @@ const SummaryTable = ({
           </div>
           <div className="flex flex-col">
             <p className="pb-2 text-3xl md:text-4xl font-bold text-red-500">
-              +{covidCases.toDay.toLocaleString()}
+              {covidCases.toDay == 0
+                ? "-"
+                : "+" + covidCases.toDay.toLocaleString()}
             </p>
             <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-md">
               Hôm nay
             </p>
           </div>
         </div>
-        <p className="pt-2 text-sm font-semibold text-gray-600 ">
-          {getUpdatedTime(lastUpdated)}
-        </p>
       </div>
     </>
   );
 };
-
 export default SummaryTable;

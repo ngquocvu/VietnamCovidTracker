@@ -52,3 +52,6 @@ export function timeSince(date: string) {
   }
   return Math.floor(seconds) + " giây";
 }
+export function formatNumber(num: number) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+}

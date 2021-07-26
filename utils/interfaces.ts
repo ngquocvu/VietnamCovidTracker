@@ -38,3 +38,19 @@ export type VaccineDataProps = {
     total: number;
   };
 };
+
+export type CovidDataVnexpress = {
+  date: string;
+  community: number;
+  totalCommunity: number;
+  deaths: number;
+  recovered: number;
+  cases: number;
+  totalCase: number;
+  totalDeath: number;
+  totalRecovered: number;
+  totalRecovered2020: number;
+  totalDeath2020: number;
+  totalCases2020: number;
+  activeCases: number;
+}[];

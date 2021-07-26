@@ -5,6 +5,7 @@ import Header from "../components/Header";
 
 import {
   CovidCasesProps,
+  CovidDataVnexpress,
   ProvinceCasesProps,
   VaccineDataProps,
 } from "../utils/interfaces";
@@ -14,6 +15,7 @@ import {
   COVID_CASES_VIETNAM,
   COVID_VACCINE_VIETNAM,
   TRIGGER_HOOKS,
+  VNEXPRESS_COVID_DATA,
 } from "../utils/constants";
 import Cases from "../components/cases/Cases";
 import Province from "../components/provinces/Province";
@@ -32,6 +34,7 @@ export type HomeProps = {
   };
   covidDataProvince: ProvinceCasesProps;
   covidVaccineVN: VaccineDataProps;
+  covidDataVnExpress: CovidDataVnexpress;
 };
 
 export default function Home({
@@ -39,9 +42,12 @@ export default function Home({
   covidDataHCMC,
   covidDataProvince,
   covidVaccineVN,
+  covidDataVnExpress,
 }) {
   const [lastUpdated, setLastUpdated] = useState<number>(0);
   const [province, setProvince] = useState<string>("Việt Nam");
+  const [allCovidCaseByVnexpress, setAllCovidCaseByVnexpress] =
+    useState(covidDataVnExpress);
   const [allCovidCases, setAllCovidCases] = useState<CovidCasesProps>({
     cases: [
       {
@@ -105,7 +111,9 @@ export default function Home({
           province={province}
           allCovidCases={allCovidCases}
           setProvince={setProvince}
+          allCovidCaseByVnexpress={allCovidCaseByVnexpress}
         />
+
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
         <div className="w-full md:max-w-4xl py-4">
@@ -132,12 +140,35 @@ export async function getStaticProps() {
   const covidDataProvince = await axios
     .get(COVID_CASES_PROVINCE)
     .then((c) => c.data.data);
+  const covidDataVnExpress = await axios
+    .get(VNEXPRESS_COVID_DATA)
+    .then((c) => vnExpressDataFormatter(c.data));
   return {
     props: {
       covidDataVN,
       covidDataHCMC,
       covidDataProvince,
       covidVaccineVN,
+      covidDataVnExpress,
     },
   };
 }
+
+const vnExpressDataFormatter = (data: string) => {
+  const lines = data.split("\n");
+  return lines.slice(2, lines.length - 1).map((l) => ({
+    date: l.split('","')[0].slice(1),
+    community: l.split('","')[1],
+    totalCommunity: l.split(",")[2],
+    deaths: l.split('","')[6],
+    recovered: l.split('","')[7],
+    cases: l.split('","')[8],
+    totalCase: l.split('","')[9],
+    totalDeath: l.split('","')[10],
+    totalRecovered: l.split('","')[11],
+    totalRecovered2020: l.split('","')[24],
+    totalDeath2020: l.split('","')[23],
+    totalCases2020: l.split('","')[22],
+    activeCases: l.split('","')[21],
+  }));
+};

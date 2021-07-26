@@ -9,6 +9,7 @@ const Cases = ({
   lastUpdated,
   dailyCovidCases,
   setProvince,
+  allCovidCaseByVnexpress,
 }) => {
   return (
     <>
@@ -16,6 +17,7 @@ const Cases = ({
         covidCases={allCovidCases}
         province={province}
         lastUpdated={lastUpdated}
+        allCovidCaseByVnexpress={allCovidCaseByVnexpress}
       />
       <div className="flex space-x-3 pb-6 pt-2">
         <ProvinceSelectionButton
