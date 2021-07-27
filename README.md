@@ -18,4 +18,4 @@ Công nghệ/thư viện sử dụng:
 https://covid19-vn.vercel.app/
 ```
 
-<img src="https://i.ibb.co/mDd9Z0t/screencapture-covid19-vn-vercel-app-2021-07-23-16-57-05.png" alt="screencapture-covid19-vn-vercel-app-2021-07-23-16-57-05" border="0">
+<img src="https://i.ibb.co/n3MncnR/218069958-4309881132383281-2598310253861803953-n.jpg" alt="218069958-4309881132383281-2598310253861803953-n" border="0">
