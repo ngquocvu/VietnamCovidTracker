@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
 
-const Header = ({ currentPage = "home" }) => {
+const Header = () => {
+  const currentPage = useSelector((state: RootState) => state.page);
   return (
     <>
       <Head>
@@ -12,7 +15,7 @@ const Header = ({ currentPage = "home" }) => {
         </title>
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div className="h-16 flex space-between bg-white border-gray-100 rounded-b-3xl border-b-2 flex justify-center items-center w-full ">
+      <div className="h-16 flex space-between bg-white shadow-sm rounded-b-3xl border-b-2 flex justify-center items-center w-full sticky top-0 z-50">
         <div className="flex space-x-7 justify-center">
           <Link href="/world">
             <a

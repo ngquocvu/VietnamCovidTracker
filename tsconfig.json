@@ -24,7 +24,9 @@
     "pages/_offline.js",
     "utils/meta.js",
     "pages/_offline.tss",
-    "public/sw.js"
+    "public/sw.js",
+    "reducers/page.js",
+    "reducers/index.ts"
   ],
   "exclude": ["node_modules"]
 }

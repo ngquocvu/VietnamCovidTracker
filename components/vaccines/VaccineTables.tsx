@@ -23,7 +23,7 @@ const VaccineCharts = ({
 }: ChartsVProps) => {
   return (
     <div className="flex flex-wrap sm:flex-no-wrap items-center justify-between w-full shadow-md rounded-xl  ">
-      <div className="w-full  sm:w-1/3 h-20 md:h-24 rounded-t-lg  sm:rounded-t-none  sm:rounded-tl-md    shadow bg-white dark:bg-gray-800 item-center justify-center flex-col flex ">
+      <div className="w-full  sm:w-1/3 h-20 md:h-24 rounded-t-lg  sm:rounded-t-none  sm:rounded-tl-md    shadow bg-white item-center justify-center flex-col flex ">
         <div className="font-bold text-green-500  text-sm md:text-sm md:text-md text-green-700 ">
           Tổng người đã tiêm
         </div>
@@ -34,7 +34,7 @@ const VaccineCharts = ({
           ).toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-1/3  h-20  md:h-24  shadow bg-white dark:bg-gray-800 item-center justify-center flex-col flex">
+      <div className="w-full sm:w-1/3  h-20  md:h-24  shadow bg-white item-center justify-center flex-col flex">
         <div className="font-bold  text-gray-700 text-sm md:text-md">
           Đã tiêm 1 mũi
         </div>
@@ -42,7 +42,7 @@ const VaccineCharts = ({
           {vaccineDataVN.first.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-1/3 h-20  md:h-24 shadow bg-white dark:bg-gray-800 item-center justify-center flex-col flex  sm:rounded-tr-md">
+      <div className="w-full sm:w-1/3 h-20  md:h-24 shadow bg-white item-center justify-center flex-col flex  sm:rounded-tr-md">
         <div className="font-bold text-sm md:text-md text-gray-700">
           Đã tiêm 2 mũi
         </div>
@@ -50,7 +50,7 @@ const VaccineCharts = ({
           {vaccineDataVN.second.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-3/3 px-8 h-36 border-t shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 rounded-b-md">
+      <div className="w-full sm:w-3/3 px-8 h-36 border-t shadow-md md:h-24 item-center justify-center flex-col flex bg-white rounded-b-md">
         <div>
           <div className="relative pt-1">
             <div className="flex mb-2 items-center justify-between">

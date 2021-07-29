@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import Header from "../components/Header";
-import News from "../components/news/News";
+import { setPage } from "../actions/page";
+import { useDispatch } from "react-redux";
 
 const WorldPage = () => {
+  const dispatch = useDispatch();
+  dispatch(setPage("world"));
   return (
-    <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800  min-h-screen">
-      <Header currentPage="world" />
-
+    <>
       <main className="flex flex-col items-center p-3  font-bold w-full md:max-w-4xl py-1 md:py-3 flex-1">
         <div className=" w-full flex-col flex items-center py-16 m-4 ">
           <Link href="/fetch">
@@ -26,7 +26,7 @@ const WorldPage = () => {
           </Link>
         </div>
       </main>
-    </div>
+    </>
   );
 };
 

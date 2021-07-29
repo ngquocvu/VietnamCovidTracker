@@ -32,7 +32,7 @@ const Province = ({
     total: 0,
   },
 }: ProvinceProps) => {
-  const [numberOfProvince, setNumberOfProvince] = useState(10);
+  const [numberOfProvince, setNumberOfProvince] = useState(4);
   return (
     <div className="w-full pt-5">
       <div className="mb-6 mt-0 md:pt-4 md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">
@@ -118,7 +118,7 @@ const Province = ({
                     if (numberOfProvince >= covidDataProvince.cases.length) {
                       setNumberOfProvince(4);
                     } else {
-                      setNumberOfProvince(numberOfProvince + 8);
+                      setNumberOfProvince(numberOfProvince + 64);
                     }
                   }}
                   className="p-2 m-4 w-6/12 text-gray-700 font-bold rounded border-2 bg-white hover:bg-gray-100"

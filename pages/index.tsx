@@ -21,6 +21,8 @@ import Cases from "../components/cases/Cases";
 import Province from "../components/provinces/Province";
 import Vaccine from "../components/vaccines/Vaccine";
 import News from "../components/news/News";
+import { useDispatch } from "react-redux";
+import { setPage } from "../actions/page";
 
 export type HomeProps = {
   covidDataVN: {
@@ -46,8 +48,9 @@ export default function Home({
 }) {
   const [lastUpdated, setLastUpdated] = useState<number>(0);
   const [province, setProvince] = useState<string>("Việt Nam");
-  const [allCovidCaseByVnexpress, setAllCovidCaseByVnexpress] =
-    useState(covidDataVnExpress);
+  const [allCovidCaseByVnexpress] = useState(covidDataVnExpress);
+  const dispatch = useDispatch();
+  dispatch(setPage("home"));
   const [allCovidCases, setAllCovidCases] = useState<CovidCasesProps>({
     cases: [
       {
@@ -101,9 +104,7 @@ export default function Home({
   }, []);
 
   return (
-    <div className="flex flex-col items-center bg-gray-50 dark:bg-gray-800 justify-center min-h-screen">
-      <Header />
-
+    <>
       <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
         <Cases
           dailyCovidCases={dailyCovidCases}
@@ -113,17 +114,11 @@ export default function Home({
           setProvince={setProvince}
           allCovidCaseByVnexpress={allCovidCaseByVnexpress}
         />
-
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
-        <div className="w-full md:max-w-4xl py-4">
-          <News />
-        </div>
+        <News />
       </main>
-      <footer className="flex items-center justify-center w-full h-24">
-        <Footer />
-      </footer>
-    </div>
+    </>
   );
 }
 
