@@ -15,7 +15,7 @@ const Header = () => {
         </title>
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div className="h-16 flex space-between bg-white shadow-sm rounded-b-3xl border-b-2 flex justify-center items-center w-full sticky top-0 z-50">
+      <header className="h-16 flex space-between bg-white  rounded-b-xl shadow-sm flex justify-center items-center w-full sticky top-0 z-50">
         <div className="flex space-x-7 justify-center">
           <Link href="/world">
             <a
@@ -51,7 +51,7 @@ const Header = () => {
             </a>
           </Link>
         </div>
-      </div>
+      </header>
     </>
   );
 };

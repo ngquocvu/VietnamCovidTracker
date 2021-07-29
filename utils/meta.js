@@ -8,8 +8,14 @@ const Meta = () => {
       <meta name="apple-mobile-web-app-capable" content="yes"></meta>
       <meta
         name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-      ></meta>
+        media="(prefers-color-scheme: light)"
+        content="light-content"
+      />
+      <meta
+        name="apple-mobile-web-app-status-bar-style"
+        media="(prefers-color-scheme: dark)"
+        content="dark-content"
+      />
       <meta name="description" content="Vietnam Covid-19 Tracker" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
@@ -72,14 +78,12 @@ const Meta = () => {
         sizes="16x16"
         href="logo/favicon-16x16.png"
       />
-
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta
         name="msapplication-TileImage"
         content="/logo/ms-icon-144x144.png"
       />
       <meta name="theme-color" content="#ffffff" />
-
       {/*launch screen */}
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <link
@@ -218,7 +222,6 @@ const Meta = () => {
         media="(device-width: 320px) and 
 (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
       />
-
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <script
         async

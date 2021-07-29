@@ -61,7 +61,7 @@ const CasesChart = ({ covidCases, type, range }: CasesChartProps) => {
   }
 
   return (
-    <ResponsiveContainer width={"100%"} aspect={1.4}>
+    <ResponsiveContainer width={"100%"} aspect={1.3}>
       <ComposedChart
         data={data}
         margin={{
