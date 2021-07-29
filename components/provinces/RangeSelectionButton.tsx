@@ -1,9 +1,10 @@
 import React from "react";
+import { RangeType } from "../../utils/interfaces";
 type ButtonProps = {
   range: string;
-  setRange: (province: string) => void;
+  setRange: (range: RangeType) => void;
   name: string;
-  value: string;
+  value: RangeType;
 };
 
 const RangeSelectionButton = ({
@@ -17,9 +18,9 @@ const RangeSelectionButton = ({
       <button
         className={
           range == value
-            ? `rounded-full bg-white w-full p-2 shadow-md px-6
+            ? `rounded-full w-full p-2 px-6
             font-bold text-sm ring-2 ring-red-500 text-red-500`
-            : `rounded-full bg-white p-2 w-full px-6 text-sm shadow-sm`
+            : `rounded-full bg-white border-2 p-2 w-full px-6 text-sm `
         }
         onClick={() => {
           setRange(value);

@@ -12,14 +12,13 @@ type CasesChartProps = {
   province: string;
   allCovidCaseByVnexpress: CovidDataVnexpress;
   lastUpdated: number;
-  range: RangeType;
 };
 
 const SummaryTable = ({
   covidCases,
   lastUpdated = 0,
+
   allCovidCaseByVnexpress = [],
-  range,
 }: CasesChartProps) => {
   return (
     <div className="flex w-full items-center flex-col space-y-4">
@@ -44,7 +43,10 @@ const SummaryTable = ({
   );
 };
 
-const Covid4thWave = ({ covidCases }) => (
+type Covid4thWaveProps = {
+  covidCases: CovidCasesProps;
+};
+const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
   <div className="py-4 px-9 w-full md:w-8/12 lg:w-6/12 shadow-sm  grid grid-cols-1 flex items-center justify-center  bg-white rounded-lg ">
     <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
       Đợt bùng phát dịch từ ngày 27/4
