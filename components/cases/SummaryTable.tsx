@@ -1,12 +1,10 @@
-import moment from "moment";
 import React from "react";
+import { timeSince } from "../../utils/dataFormatter";
 import {
-  formatNumber,
-  timeConverter,
-  timeSince,
-} from "../../utils/dataFormatter";
-import { CovidCasesProps, CovidDataVnexpress } from "../../utils/interfaces";
-import Cases from "./Cases";
+  CovidCasesProps,
+  CovidDataVnexpress,
+  RangeType,
+} from "../../utils/interfaces";
 import SummaryTableFrom2020 from "./SummaryTableFrom2020";
 
 type CasesChartProps = {
@@ -14,46 +12,17 @@ type CasesChartProps = {
   province: string;
   allCovidCaseByVnexpress: CovidDataVnexpress;
   lastUpdated: number;
+  range: RangeType;
 };
 
-function getUpdatedTime(time: number) {
-  return timeConverter(time);
-}
-
 const SummaryTable = ({
-  covidCases = {
-    cases: [
-      {
-        x: "2021-04-29",
-        y: 0,
-      },
-    ],
-    toDay: 0,
-    total: 0,
-    lastUpdated: 0,
-  },
-  province,
+  covidCases,
   lastUpdated = 0,
-  allCovidCaseByVnexpress = [
-    {
-      date: "10/7",
-      community: 0,
-      totalCommunity: 0,
-      deaths: 0,
-      recovered: 0,
-      cases: 0,
-      totalCase: 0,
-      totalDeath: 0,
-      totalRecovered: 0,
-      totalRecovered2020: 0,
-      totalDeath2020: 0,
-      totalCases2020: 0,
-      activeCases: 0,
-    },
-  ],
+  allCovidCaseByVnexpress = [],
+  range,
 }: CasesChartProps) => {
   return (
-    <div className="flex w-full items-center pb-4 flex-col space-y-4">
+    <div className="flex w-full items-center flex-col space-y-4">
       <div className="p-2.5 w-full md:w-8/12 lg:w-1/2 grid grid-cols-1 flex items-center justify-center  bg-white rounded-xl shadow-sm">
         <div className="bg-gray-100 p-2 rounded-xl">
           <p className=" font-bold text-lg md:text-xl ">
@@ -63,8 +32,7 @@ const SummaryTable = ({
             Nguồn dữ liệu từ Zing News & VnExpress
           </p>
           <p className="text-xs sm:text-xs font-semibold text-gray-500 ">
-            Cập nhật:{" "}
-            <a className="  ">{timeSince(lastUpdated.toString()) + " trước"}</a>
+            Cập nhật: <a>{timeSince(lastUpdated.toString()) + " trước"}</a>
           </p>
         </div>
         <SummaryTableFrom2020

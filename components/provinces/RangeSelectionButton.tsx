@@ -1,26 +1,28 @@
 import React from "react";
 type ButtonProps = {
-  province: string;
-  setProvince: (province: string) => void;
+  range: string;
+  setRange: (province: string) => void;
   name: string;
+  value: string;
 };
 
-const ProvinceSelectionButton = ({
-  province,
-  setProvince,
+const RangeSelectionButton = ({
+  range,
+  setRange,
   name,
+  value,
 }: ButtonProps) => {
   return (
     <>
       <button
         className={
-          province == name
+          range == value
             ? `rounded-full bg-white w-full p-2 shadow-md px-6
             font-bold text-sm ring-2 ring-red-500 text-red-500`
             : `rounded-full bg-white p-2 w-full px-6 text-sm shadow-sm`
         }
         onClick={() => {
-          setProvince(name);
+          setRange(value);
         }}
       >
         {name}
@@ -29,4 +31,4 @@ const ProvinceSelectionButton = ({
   );
 };
 
-export default ProvinceSelectionButton;
+export default RangeSelectionButton;

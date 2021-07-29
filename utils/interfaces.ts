@@ -1,4 +1,6 @@
-export type chartType = "bar" | "area";
+export type ChartType = "bar" | "area";
+export type RangeType = "all" | "week" | "month";
+
 export type CovidCasesProps = {
   cases: [
     {
@@ -11,12 +13,19 @@ export type CovidCasesProps = {
   total: number;
 };
 
+// export type ProvinceCasesProps = {
+//   cases: {
+//     x: string;
+//     y: number;
+//     z: number;
+//   };
+//   lastUpdated: number;
+//   toDay: number;
+//   total: number;
+// };
+
 export type ProvinceCasesProps = {
-  cases: {
-    x: string;
-    y: number;
-    z: number;
-  };
+  cases: [{ x: string; y: number; z: number }];
   lastUpdated: number;
   toDay: number;
   total: number;

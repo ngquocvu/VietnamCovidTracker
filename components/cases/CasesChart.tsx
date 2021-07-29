@@ -4,25 +4,41 @@ import {
   Bar,
   CartesianGrid,
   ComposedChart,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import { CovidCasesProps, chartType } from "../../utils/interfaces";
+import { CovidCasesProps, ChartType, RangeType } from "../../utils/interfaces";
 
 export type CasesChartProps = {
   covidCases: CovidCasesProps;
-  type: chartType;
+  type: ChartType;
+  range: RangeType;
 };
 
-const CasesChart = ({ covidCases, type }: CasesChartProps) => {
-  const data = covidCases.cases.map((cases, index) => ({
-    date:
-      cases.x.toString().slice(8, 10) + "/" + cases.x.toString().slice(5, 7),
-    Ca: cases.y,
-  }));
+const formatRange = (range: RangeType, maxRange: number) => {
+  switch (range) {
+    case "all":
+      return maxRange;
+    case "month":
+      return 31;
+    case "week":
+      return 7;
+    default:
+      maxRange;
+  }
+};
+
+const CasesChart = ({ covidCases, type, range }: CasesChartProps) => {
+  const numberOfDate = covidCases.cases.length;
+  const data = covidCases.cases
+    .slice(numberOfDate - formatRange(range, numberOfDate), numberOfDate)
+    .map((cases) => ({
+      date:
+        cases.x.toString().slice(8, 10) + "/" + cases.x.toString().slice(5, 7),
+      Ca: cases.y,
+    }));
 
   function nFormatter(num: number, digits: number) {
     var si = [

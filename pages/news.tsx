@@ -8,10 +8,7 @@ import { useDispatch } from "react-redux";
 
 const NewsPage = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    const action = setPage("news");
-    dispatch(action);
-  }, []);
+  dispatch(setPage("news"));
   return (
     <>
       <main className="flex flex-col items-center pb-6 px-2 w-full md:max-w-5xl px flex-1 text-center">

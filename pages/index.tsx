@@ -1,8 +1,5 @@
 import axios from "axios";
-import Footer from "../components/Footer";
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-
 import {
   CovidCasesProps,
   CovidDataVnexpress,
@@ -23,6 +20,7 @@ import Vaccine from "../components/vaccines/Vaccine";
 import News from "../components/news/News";
 import { useDispatch } from "react-redux";
 import { setPage } from "../actions/page";
+import { vnExpressDataFormatter } from "../utils/dataFormatter";
 
 export type HomeProps = {
   covidDataVN: {
@@ -92,7 +90,6 @@ export default function Home({
   const isAPIUpdate = async () => {
     let apiUpdateTime = await axios.get(COVID_CASES_VIETNAM);
     apiUpdateTime = apiUpdateTime.data.data.lastUpdated;
-    console.log(apiUpdateTime + " " + covidDataVN.lastUpdated);
     if (covidDataVN.lastUpdated !== apiUpdateTime) {
       const response = await axios.get(TRIGGER_HOOKS);
       console.log("Triggered a hook at" + response.data.job.createdAt);
@@ -148,22 +145,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-const vnExpressDataFormatter = (data: string) => {
-  const lines = data.split("\n");
-  return lines.slice(2, lines.length - 1).map((l) => ({
-    date: l.split('","')[0].slice(1),
-    community: l.split('","')[1],
-    totalCommunity: l.split(",")[2],
-    deaths: l.split('","')[6],
-    recovered: l.split('","')[7],
-    cases: l.split('","')[8],
-    totalCase: l.split('","')[9],
-    totalDeath: l.split('","')[10],
-    totalRecovered: l.split('","')[11],
-    totalRecovered2020: l.split('","')[24],
-    totalDeath2020: l.split('","')[23],
-    totalCases2020: l.split('","')[22],
-    activeCases: l.split('","')[21],
-  }));
-};
