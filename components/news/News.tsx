@@ -14,7 +14,7 @@ type article = {
 };
 
 const News = () => {
-  const [numberOfPost, setNumberOfPost] = useState(10);
+  const [numberOfPost, setNumberOfPost] = useState(20);
   const defaultData = [1, 2, 3, 4, 5].map(() => ({
     lead: "",
     share_url: "",
@@ -42,7 +42,7 @@ const News = () => {
             Tin mới nhất
           </div>
 
-          {news.slice(0, numberOfPost).map((n, index) => {
+          {news.slice(1, numberOfPost).map((n, index) => {
             return (
               <NewsCard
                 key={index}

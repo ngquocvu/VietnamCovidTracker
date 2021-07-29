@@ -102,7 +102,7 @@ export default function Home({
 
   return (
     <>
-      <main className="flex flex-col items-center justify-center w-full  flex-1 p-4 text-center">
+      <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
         <Cases
           dailyCovidCases={dailyCovidCases}
           lastUpdated={lastUpdated}
@@ -113,7 +113,9 @@ export default function Home({
         />
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
-        <News />
+        <div className="w-full pt-4 items-center flex justify-center">
+          <News />
+        </div>
       </main>
     </>
   );
