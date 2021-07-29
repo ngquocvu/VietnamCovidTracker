@@ -10,11 +10,11 @@ import {
   Bar,
 } from "recharts";
 import { nFormatter } from "../../utils/dataFormatter";
-import { chartType } from "../../utils/interfaces";
+import { ChartType } from "../../utils/interfaces";
 
 type VaccineChartProps = {
   vaccineData: { date: string; y: number; z: number }[];
-  type: chartType;
+  type: ChartType;
 };
 
 const VaccineChart = ({
