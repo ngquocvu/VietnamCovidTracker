@@ -25,7 +25,7 @@ const NewsCard = ({ title, thumbnail, url, lead, publishTime }) => {
       </Link>
     </>
   ) : (
-    <div className="flex flex-auto space-x-4">
+    <div className="flex w-full flex-auto space-x-4">
       <div className="bg-gray-200 h-24 w-36 md:h-32 md:w-32  rounded-lg animate-pulse"></div>
       <div className="items-start animate-pulse bg-gray-100 rounded-md w-full md:h-32 h-24 space-y-2"></div>
     </div>

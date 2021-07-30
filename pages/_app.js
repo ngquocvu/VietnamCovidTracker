@@ -29,11 +29,12 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
       </Head>
-      <Header />
+
       <div className="flex flex-col items-center bg-gray-50 justify-center min-h-screen">
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </div>
-      <Footer />
     </Provider>
   );
 }

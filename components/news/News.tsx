@@ -2,7 +2,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { VNEXPRESS_NEWS } from "../../utils/constants";
+import { VNEXPRESS_NEWS, VNEXPRESS_NEWS_2 } from "../../utils/constants";
 import NewsCard from "./NewsCard";
 
 type article = {
@@ -26,8 +26,9 @@ const News = () => {
   const [news, setNews] = useState<Array<article>>(defaultData);
 
   const fetchNews = async () => {
-    const data = await axios.get(VNEXPRESS_NEWS);
-    setNews(data.data.data["1004765"].data);
+    const data = await axios.get(VNEXPRESS_NEWS_2);
+    const keyId = Object.keys(data.data.data)[0];
+    setNews(data.data.data[keyId].data);
   };
 
   useEffect(() => {
@@ -37,12 +38,12 @@ const News = () => {
   return (
     <div className="w-full md:max-w-4xl flex-col space-y-4  md:w-12/12">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
-          <div className="text-lg md:text-2xl font-bold bg-gray-100 p-2 md:p-4 rounded-md">
+        <div className="w-full flex-col  items-center px-0.5 space-y-4 justify-center ">
+          <div className="text-lg md:text-2xl font-bold bg-gray-100 text-center p-2 md:p-4 rounded-md">
             Tin mới nhất
           </div>
 
-          {news.slice(1, numberOfPost).map((n, index) => {
+          {news.slice(4, numberOfPost).map((n, index) => {
             return (
               <NewsCard
                 key={index}
@@ -63,7 +64,7 @@ const News = () => {
               setNumberOfPost(numberOfPost + 8);
             }
           }}
-          className="p-2 m-4 w-6/12 text-gray-700 font-bold rounded-md border-2 bg-white hover:bg-gray-100"
+          className="py-2  mt-5 w-full text-gray-700  font-bold rounded-lg bg-gray-100 bg-white hover:bg-gray-200"
         >
           {numberOfPost < news.length ? "Xem thêm" : "Thu gọn"}
         </button>
