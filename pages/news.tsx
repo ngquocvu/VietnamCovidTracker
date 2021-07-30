@@ -11,8 +11,8 @@ const NewsPage = () => {
   dispatch(setPage("news"));
   return (
     <>
-      <main className="flex w-full px-2 flex-col items-center pt-4 pb-6 items-center justify-center  lg:w-11/12 md:max-w-5xl ">
-        <div className="flex">
+      <main className="flex w-full px-1 flex-col items-center pt-4 pb-6 items-center justify-center  md:max-w-5xl ">
+        <div className="flex md:w-2/3 w-full pb-4">
           <Carousel />
         </div>
         <News />

@@ -38,9 +38,9 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="w-full  mx-2 flex-col pb-4">
+    <div className="w-full  flex-col ">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <div className="w-full flex-col h-full items-center px-0.5 space-y-4 justify-center ">
+        <div className="w-full flex-col h-82 items-center px-0.5 space-y-4 justify-center ">
           {news[0].lead !== "" ? (
             <div>
               <div className="w-full h-full">
@@ -63,18 +63,18 @@ const Carousel = () => {
                 </Link>
                 <Link href={news[newsNumber].share_url}>
                   <div className="flex-col space-y-1 pt-2 mx-4 pb-2 cursor-pointer text-left items-start">
-                    <div className="text-gray-400 relative md:text-sm  md:font-semibold text-xs pb-2 ">
+                    <div className="text-gray-400 relative md:text-sm  md:font-semibold text-xs ">
                       Tin {newsNumber + 1} trên 4
                     </div>
 
-                    <div className="font-normal text-xs text-gray-400">
-                      Theo VnExpress
-                    </div>
                     <div className="font-bold text-lg md:text-xl text-gray-700">
                       {news[newsNumber].title}
                     </div>
                     <div className="font-normal md:text-base text-sm md:flex">
                       {news[newsNumber].lead}
+                    </div>
+                    <div className="font-normal text-xs text-gray-400">
+                      Theo VnExpress
                     </div>
                     <div className="text-gray-500 relative md:text-sm font-semibold md:font-semibold text-xs pb-2 ">
                       {timeSince(news[0].publish_time) + " trước"}
@@ -91,7 +91,7 @@ const Carousel = () => {
             </div>
           ) : (
             <div className="w-full h-82">
-              <div className="w-full bg-gray-100 h-56 md:w-full my-1 animate-pulse object-cover object-center rounded-lg"></div>
+              <div className="w-full bg-gray-100 h-56 my-1 animate-pulse object-cover object-center rounded-lg"></div>
               <div className="flex-col  space-y-2 pt-2  pb-2 text-left items-start">
                 <div className="font-bold text-lg md:text-xl text-gray-700">
                   <div className="w-full bg-gray-100 h-10  animate-pulse object-cover object-center rounded-lg"></div>

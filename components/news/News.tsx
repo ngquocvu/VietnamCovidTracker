@@ -36,7 +36,7 @@ const News = () => {
   }, []);
 
   return (
-    <div className="w-full md:max-w-4xl flex-col space-y-4  md:w-12/12">
+    <div className="w-full flex-col space-y-4 ">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
         <div className="w-full flex-col  items-center px-0.5 space-y-4 justify-center ">
           <div className="text-lg md:text-2xl font-bold bg-gray-100 text-center p-2 md:p-4 rounded-md">
