@@ -13,7 +13,7 @@ const Meta = () => {
       />
       <meta
         name="apple-mobile-web-app-status-bar-style"
-        media="(prefers-color-scheme: dark)"
+        media="(prefers-color-scheme: light)"
         content="dark-content"
       />
       <meta name="description" content="Vietnam Covid-19 Tracker" />
