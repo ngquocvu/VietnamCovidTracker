@@ -17,7 +17,7 @@ const defaultData = [0, 2, 3, 4, 5].map(() => ({
   lead: "",
   share_url: "",
   title: "",
-  thumbnail_url: "",
+  thumbnail_url: "fallback.jpg",
   publish_time: "",
 }));
 
@@ -55,8 +55,12 @@ const Carousel = () => {
                 <a className="w-full" href={news[newsNumber].share_url}>
                   <img
                     className="w-full bg-gray-100 cursor-pointer h-56 md:w-full md:h-80 my-2 object-cover object-center rounded-lg"
-                    src={news[newsNumber].thumbnail_url}
-                  />{" "}
+                    src={
+                      news[newsNumber].thumbnail_url
+                        ? news[newsNumber].thumbnail_url
+                        : "/fallback.jpg"
+                    }
+                  />
                 </a>
               </Transition>
 

@@ -17,7 +17,7 @@ const News = () => {
     lead: "",
     share_url: "",
     title: "",
-    thumbnail_url: "/fallback.png",
+    thumbnail_url: "/fallback.jpg",
     publish_time: "",
   }));
 

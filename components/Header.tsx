@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +19,7 @@ const Header = () => {
             <a
               className={
                 currentPage === "world"
-                  ? "cursor-pointer hover:text-gray-700 text-gray-800 font-bold"
+                  ? "cursor-pointer hover:text-gray-900 text-gray-800 font-bold"
                   : "cursor-pointer hover:text-gray-700 text-gray-500"
               }
             >
@@ -29,7 +30,7 @@ const Header = () => {
             <a
               className={
                 currentPage === "home"
-                  ? "cursor-pointer hover:text-gray-700 text-gray-800 font-bold"
+                  ? "cursor-pointer hover:text-gray-900 text-gray-800 font-bold"
                   : "cursor-pointer hover:text-gray-700 text-gray-500"
               }
             >

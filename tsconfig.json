@@ -22,7 +22,7 @@
     "components/ScrollButton.jsx",
     "pages/_offline.jsx",
     "pages/_offline.js",
-    "utils/meta.js",
+    "utils/meta.ts",
     "pages/_offline.tss",
     "public/sw.js",
     "reducers/page.js",

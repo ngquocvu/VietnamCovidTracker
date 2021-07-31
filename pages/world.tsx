@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { setPage } from "../actions/page";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { variants } from "../utils/interfaces";
 
 const WorldPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setPage("world"));
@@ -19,13 +20,17 @@ const WorldPage = () => {
       transition={{ type: "linear" }}
       className="w-full items-start justify-center md:max-w-7xl"
     >
-      {" "}
       <main className="flex w-full px-2 pt-4 pb-6 items-start justify-center md:max-w-7xl">
         <div className="w-full flex-col flex items-center py-2 m-4 ">
           <Link href="/fetch">
             <img
               src="/world-banner.svg"
-              className="relative h-36 md:h-72 w-6/12 pb-0 relative cursor-pointer"
+              className={
+                isLoading
+                  ? "relative h-36 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg bg-gray-100"
+                  : "relative h-36 md:h-72 w-6/12 pb-0 relative cursor-pointer"
+              }
+              onLoad={() => setIsLoading(false)}
             />
           </Link>
           <p className="font-bold text-gray-600 text-lg md:text-2xl md:text-2xl  mt-2 md:mt-8 my-1">

@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <AnimatePresence exitBeforeEnter>
+  
         <Head>
           <meta
             name="viewport"
@@ -33,11 +33,13 @@ function MyApp({ Component, pageProps }) {
         </Head>
 
         <div className="flex flex-col items-center bg-gray-50 justify-start min-h-screen">
-          <Header />
-          <Component {...pageProps} />
+          <Header />    
+          <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.route}  />
+          </AnimatePresence>
           <Footer />
         </div>
-      </AnimatePresence>
+      
     </Provider>
   );
 }

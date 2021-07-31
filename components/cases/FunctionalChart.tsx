@@ -16,7 +16,7 @@ const FunctionalChart = ({ covidCases, name, type }): JSX.Element => {
             <div className="bg-gray-200 h-60 md:h-72 animate-pulse rounded-md"></div>
           </div>
         )}
-        <div className="flex space-x-4 rounded-lg bg-gray-50 items-center justify-center p-4">
+        <div className="flex space-x-4 rounded-lg  items-center justify-center p-3">
           <RangeSelectionButton
             range={range}
             setRange={setRange}
