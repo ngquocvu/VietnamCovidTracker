@@ -1,5 +1,3 @@
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { VNEXPRESS_NEWS, VNEXPRESS_NEWS_2 } from "../../utils/constants";
@@ -42,7 +40,6 @@ const News = () => {
           <div className="text-lg md:text-2xl font-bold bg-gray-100 text-center p-2 md:p-4 rounded-md">
             Tin mới nhất
           </div>
-
           {news.slice(4, numberOfPost).map((n, index) => {
             return (
               <NewsCard

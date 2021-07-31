@@ -30,7 +30,7 @@ const formatRange = (range: RangeType, maxRange: number) => {
   }
 };
 
-const CasesChart = ({ covidCases, type, range }: CasesChartProps) => {
+const Graph = ({ covidCases, type, range }: CasesChartProps) => {
   const numberOfDate = covidCases.cases.length;
   const data = covidCases.cases
     .slice(numberOfDate - formatRange(range, numberOfDate), numberOfDate)
@@ -125,4 +125,4 @@ const CasesChart = ({ covidCases, type, range }: CasesChartProps) => {
   );
 };
 
-export default CasesChart;
+export default Graph;

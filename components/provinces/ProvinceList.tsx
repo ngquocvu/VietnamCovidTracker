@@ -6,7 +6,7 @@ type ProvinceTableProps = {
   covidDataProvince: ProvinceCasesProps;
 };
 
-const ProvinceTable = ({ covidDataProvince }: ProvinceTableProps) => {
+const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
   const [numberOfProvince, setNumberOfProvince] = useState(4);
   return (
     <Disclosure defaultOpen={true}>
@@ -61,7 +61,7 @@ const ProvinceTable = ({ covidDataProvince }: ProvinceTableProps) => {
                   setNumberOfProvince(numberOfProvince + 64);
                 }
               }}
-              className="p-2 m-4 w-6/12 text-gray-700 font-bold rounded border-2 bg-white hover:bg-gray-100"
+              className="py-2  mt-5 w-full text-gray-700  font-bold rounded-lg bg-gray-100 bg-white hover:bg-gray-200"
             >
               {numberOfProvince < covidDataProvince.cases.length
                 ? "Xem thêm"
@@ -74,4 +74,4 @@ const ProvinceTable = ({ covidDataProvince }: ProvinceTableProps) => {
   );
 };
 
-export default ProvinceTable;
+export default ProvinceList;

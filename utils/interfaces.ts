@@ -13,6 +13,12 @@ export type CovidCasesProps = {
   total: number;
 };
 
+export const variants = {
+  hidden: { opacity: 0, x: -300, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+  exit: { opacity: 0, x: 0, y: -400 },
+};
+
 // export type ProvinceCasesProps = {
 //   cases: {
 //     x: string;

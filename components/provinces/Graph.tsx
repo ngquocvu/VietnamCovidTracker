@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import { nFormatter } from "../../utils/dataFormatter";
 
-const RankedChart = ({ covidDataProvince }) => {
+const Graph = ({ covidDataProvince }) => {
   return (
     <div className="py-4">
       <ResponsiveContainer width="100%" aspect={1.6}>
@@ -58,4 +58,4 @@ const RankedChart = ({ covidDataProvince }) => {
     </div>
   );
 };
-export default RankedChart;
+export default Graph;

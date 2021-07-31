@@ -1,9 +1,7 @@
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
-import RankedChart from "./RankedChart";
+import Graph from "./Graph";
 import React, { useState } from "react";
-import ProvinceTable from "./ProvinceTable";
 import { ProvinceCasesProps } from "../../utils/interfaces";
+import ProvinceList from "./ProvinceList";
 
 type ProvinceProps = {
   covidDataProvince: ProvinceCasesProps;
@@ -24,7 +22,7 @@ const Province = ({
           <div className="text-md md:text-lg  font-bold">
             Tỉnh thành dẫn đầu về số ca
           </div>
-          <RankedChart
+          <Graph
             covidDataProvince={covidDataProvince.cases.map((c) => ({
               x: c.x,
               y: c.z,
@@ -37,7 +35,7 @@ const Province = ({
             Tỉnh thành nhiều ca nhất trong ngày
           </div>
           <div>
-            <RankedChart
+            <Graph
               covidDataProvince={covidDataProvince.cases.map((c) => ({
                 x: c.x,
                 y: c.y,
@@ -48,7 +46,7 @@ const Province = ({
       </div>
 
       <div className="w-full md:max-w-3xl p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <ProvinceTable covidDataProvince={covidDataProvince} />
+        <ProvinceList covidDataProvince={covidDataProvince} />
       </div>
     </div>
   );

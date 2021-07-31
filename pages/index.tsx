@@ -5,6 +5,7 @@ import {
   CovidDataVnexpress,
   ProvinceCasesProps,
   VaccineDataProps,
+  variants,
 } from "../utils/interfaces";
 import {
   COVID_CASES_HCMC,
@@ -14,13 +15,14 @@ import {
   TRIGGER_HOOKS,
   VNEXPRESS_COVID_DATA,
 } from "../utils/constants";
-import Cases from "../components/cases/Cases";
-import Province from "../components/provinces/Province";
-import Vaccine from "../components/vaccines/Vaccine";
-import News from "../components/news/News";
+import Cases from "../components/cases";
+import Province from "../components/provinces";
+import Vaccine from "../components/vaccines";
+import News from "../components/news";
 import { useDispatch } from "react-redux";
 import { setPage } from "../actions/page";
 import { vnExpressDataFormatter } from "../utils/dataFormatter";
+import { motion } from "framer-motion";
 
 export type HomeProps = {
   covidDataVN: {
@@ -47,8 +49,8 @@ export default function Home({
   const [lastUpdated, setLastUpdated] = useState<number>(0);
   const [province, setProvince] = useState<string>("Việt Nam");
   const [allCovidCaseByVnexpress] = useState(covidDataVnExpress);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
-  dispatch(setPage("home"));
   const [allCovidCases, setAllCovidCases] = useState<CovidCasesProps>({
     cases: [
       {
@@ -98,10 +100,22 @@ export default function Home({
 
   useEffect(() => {
     isAPIUpdate();
+    dispatch(setPage("home"));
   }, []);
 
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 100);
+
   return (
-    <>
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="enter"
+      exit="exit"
+      transition={{ type: "linear" }}
+      className="w-full items-start justify-center md:max-w-7xl"
+    >
       <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
         <Cases
           dailyCovidCases={dailyCovidCases}
@@ -113,13 +127,24 @@ export default function Home({
         />
         <Province covidDataProvince={covidDataProvince} />
         <Vaccine covidVaccineVN={covidVaccineVN} />
-        <div className="w-full pt-4 items-center flex justify-center">
+        <div className="w-8/12 pt-4 items-center flex justify-center">
           <News />
         </div>
       </main>
-    </>
+    </motion.div>
   );
 }
+
+const Skeleton = () => {
+  return (
+    <div className="flex items-center justify-center p-4 flex-col w-full space-y-4">
+      <div className="w-full md:w-6/12 bg-gray-300 rounded-xl animate-pulse h-72" />{" "}
+      <div className="w-full md:w-6/12 bg-gray-200 rounded-xl animate-pulse h-32" />
+      <div className="w-full md:w-6/12 bg-gray-200 rounded-full animate-pulse h-12" />
+      <div className="w-full md:w-6/12 bg-gray-300 rounded-xl animate-pulse h-56" />
+    </div>
+  );
+};
 
 export async function getStaticProps() {
   const covidDataVN = await axios

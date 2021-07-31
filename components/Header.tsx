@@ -9,20 +9,17 @@ const Header = () => {
   return (
     <>
       <Head>
-        <title>
-          {/* {currentPage.charAt(0).toUpperCase() + currentPage.slice(1) + " | "} */}
-          Covid-19 in Vietnam{" "}
-        </title>
-        <link rel="icon" href="/favicon-32x32.png" />
+        <title>Covid-19 in Vietnam </title>
+        <link rel="icon" href="logo/favicon-32x32.png" />
       </Head>
-      <header className="h-16 flex space-between bg-white  rounded-b-xl shadow-sm flex justify-center items-center w-full sticky top-0 z-50">
+      <header className="h-16 flex space-between bg-white opacity-95  rounded-b-xl shadow-sm flex justify-center items-center w-full sticky top-0 z-50">
         <div className="flex space-x-7 justify-center">
           <Link href="/world">
             <a
               className={
-                currentPage == "world"
-                  ? `cursor-pointer hover:text-gray-700 text-gray-800 font-bold`
-                  : `cursor-pointer hover:text-gray-700 text-gray-500`
+                currentPage === "world"
+                  ? "cursor-pointer hover:text-gray-700 text-gray-800 font-bold"
+                  : "cursor-pointer hover:text-gray-700 text-gray-500"
               }
             >
               Thế giới
@@ -31,9 +28,9 @@ const Header = () => {
           <Link href="/">
             <a
               className={
-                currentPage == "home"
-                  ? `cursor-pointer hover:text-gray-700 text-gray-800 font-bold`
-                  : `cursor-pointer hover:text-gray-700 text-gray-500`
+                currentPage === "home"
+                  ? "cursor-pointer hover:text-gray-700 text-gray-800 font-bold"
+                  : "cursor-pointer hover:text-gray-700 text-gray-500"
               }
             >
               Trang chủ
@@ -42,9 +39,9 @@ const Header = () => {
           <Link href="/news">
             <a
               className={
-                currentPage == "news"
-                  ? `cursor-pointer hover:text-gray-700 text-gray-800 font-bold`
-                  : `cursor-pointer hover:text-gray-700 text-gray-500`
+                currentPage === "news"
+                  ? "cursor-pointer hover:text-gray-700 text-gray-800 font-bold"
+                  : "cursor-pointer hover:text-gray-700 text-gray-500"
               }
             >
               Tin tức

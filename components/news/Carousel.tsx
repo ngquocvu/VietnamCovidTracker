@@ -4,7 +4,6 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { VNEXPRESS_NEWS, VNEXPRESS_NEWS_2 } from "../../utils/constants";
 import { timeSince } from "../../utils/dataFormatter";
-import News from "./News";
 
 type article = {
   lead: string;
@@ -40,54 +39,53 @@ const Carousel = () => {
   return (
     <div className="w-full  flex-col ">
       <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <div className="w-full flex-col h-82 items-center px-0.5 space-y-4 justify-center ">
+        <div className="w-full flex-col items-center  px-0.5 space-y-4 justify-center ">
           {news[0].lead !== "" ? (
-            <div>
-              <div className="w-full h-full">
-                <Link href={news[newsNumber].share_url}>
-                  <Transition
-                    appear={true}
-                    show={isShowing}
-                    enter="transition-opacity duration-75"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="transition-opacity duration-150"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-10"
-                  >
-                    <img
-                      className="w-full bg-gray-100 cursor-pointer h-56 md:w-full md:h-80 my-2 object-cover object-center rounded-lg"
-                      src={news[newsNumber].thumbnail_url}
-                    />{" "}
-                  </Transition>
-                </Link>
-                <Link href={news[newsNumber].share_url}>
-                  <div className="flex-col space-y-1 pt-2 mx-4 pb-2 cursor-pointer text-left items-start">
-                    <div className="text-gray-400 relative md:text-sm  md:font-semibold text-xs ">
-                      Tin {newsNumber + 1} trên 4
-                    </div>
+            <div className="w-full h-full">
+              <Transition
+                appear={true}
+                show={isShowing}
+                enter="transition-opacity duration-75"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-150"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-10"
+              >
+                <a className="w-full" href={news[newsNumber].share_url}>
+                  <img
+                    className="w-full bg-gray-100 cursor-pointer h-56 md:w-full md:h-80 my-2 object-cover object-center rounded-lg"
+                    src={news[newsNumber].thumbnail_url}
+                  />{" "}
+                </a>
+              </Transition>
 
-                    <div className="font-bold text-lg md:text-xl text-gray-700">
-                      {news[newsNumber].title}
-                    </div>
-                    <div className="font-normal md:text-base text-sm md:flex">
-                      {news[newsNumber].lead}
-                    </div>
-                    <div className="font-normal text-xs text-gray-400">
-                      Theo VnExpress
-                    </div>
-                    <div className="text-gray-500 relative md:text-sm font-semibold md:font-semibold text-xs pb-2 ">
-                      {timeSince(news[0].publish_time) + " trước"}
-                    </div>
+              <Link href={news[newsNumber].share_url}>
+                <div className="flex-col h-56 sm:h-56 md:h-48 space-y-1 pt-2 mx-4 pb-2 cursor-pointer text-left items-start">
+                  <div className="text-gray-400 relative md:text-sm  md:font-semibold text-xs ">
+                    Tin {newsNumber + 1} trên 4
                   </div>
-                </Link>
-                <ChangeButton
-                  setNewsNumber={setNewsNumber}
-                  newsNumber={newsNumber}
-                  isShowing={isShowing}
-                  setIsShowing={setIsShowing}
-                />
-              </div>
+
+                  <div className="font-bold  text-lg md:text-xl text-gray-700">
+                    {news[newsNumber].title}
+                  </div>
+                  <div className="font-normal  md:text-base text-sm md:flex">
+                    {news[newsNumber].lead}
+                  </div>
+                  <div className="font-normal text-xs text-gray-400">
+                    Theo VnExpress
+                  </div>
+                  <div className="text-gray-500 relative md:text-sm font-semibold md:font-semibold text-xs pb-2 ">
+                    {timeSince(news[newsNumber].publish_time) + " trước"}
+                  </div>
+                </div>
+              </Link>
+              <ChangeButton
+                setNewsNumber={setNewsNumber}
+                newsNumber={newsNumber}
+                isShowing={isShowing}
+                setIsShowing={setIsShowing}
+              />
             </div>
           ) : (
             <div className="w-full h-82">
