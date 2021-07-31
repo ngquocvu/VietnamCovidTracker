@@ -14,9 +14,9 @@ export type CovidCasesProps = {
 };
 
 export const variants = {
-  hidden: { opacity: 0, x: -300, y: 0 },
+  hidden: { opacity: 0, x: -400, y: 0 },
   enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: -400 },
+  exit: { opacity: 0, x: 0, y: -300 },
 };
 
 // export type ProvinceCasesProps = {
