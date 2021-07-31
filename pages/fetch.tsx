@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Header from "../components/Header";
-import News from "../components/news/News";
+import News from "../components/news";
 import axios from "axios";
 import { TRIGGER_HOOKS } from "../utils/constants";
 
