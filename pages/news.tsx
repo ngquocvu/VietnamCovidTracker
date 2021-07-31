@@ -26,7 +26,7 @@ const NewsPage = () => {
         <div className="md:w-9/12 w-full space-y-4 pb-4">
           <Carousel /> <News />
         </div>
-        <div className="hidden md:flex flex-col md:w-3/12 bg-white transition cursor-pointer hover:shadow-sm transition-shadow duration-100 ease-in-out rounded-xl p-4 mx-4 shadow-md">
+        <div className="hidden lg:flex flex-col md:w-3/12 bg-white transition cursor-pointer hover:shadow-sm transition-shadow duration-100 ease-in-out rounded-xl p-4 mx-4 shadow-md">
           <div className="border-b-2 py-2 text-gray-600 font-semibold w-full">
             Thời tiết hôm nay
           </div>

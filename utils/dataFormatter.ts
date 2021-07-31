@@ -59,7 +59,7 @@ export function formatNumber(num: number) {
 export const vnExpressDataFormatter = (data: string) => {
   const lines = data.split("\n");
   return lines.slice(2, lines.length - 1).map((l) => ({
-    date: l.split('","')[0].slice(1),
+    date: dateFormater(l.split('","')[0].slice(1)),
     community: l.split('","')[1],
     totalCommunity: l.split(",")[2],
     deaths: l.split('","')[6],
@@ -73,4 +73,10 @@ export const vnExpressDataFormatter = (data: string) => {
     totalCases2020: l.split('","')[22],
     activeCases: l.split('","')[21],
   }));
+};
+
+export const dateFormater = (data: string) => {
+  const splitData = data.split("/");
+  const newDate = (Number(splitData[0]) < 10 ? "0" : "") + splitData[0];
+  return newDate + "/" + splitData[1];
 };

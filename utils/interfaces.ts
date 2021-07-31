@@ -19,12 +19,12 @@ export const variants = {
     opacity: 1,
     x: 0,
     y: 0,
+    transition: { duration: 0.1, ease: [0.48, 0.15, 0.25, 0.86] },
   },
   exit: {
-    scale: 0.1,
     y: 0,
-    opacity: 0,
-    transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.86] },
+    opacity: 0.4,
+    transition: { duration: 0.1, ease: [0.98, 0.95, 0.15, 0.86] },
   },
 };
 

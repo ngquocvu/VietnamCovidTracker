@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import { setPage } from "../actions/page";
 import { vnExpressDataFormatter } from "../utils/dataFormatter";
 import { motion } from "framer-motion";
+import moment from "moment";
 
 export type HomeProps = {
   covidDataVN: {
@@ -105,7 +106,7 @@ export default function Home({
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 100);
+  }, 200);
 
   return (
     <motion.div
@@ -116,21 +117,25 @@ export default function Home({
       transition={{ type: "linear" }}
       className="w-full items-start justify-center md:max-w-7xl"
     >
-      <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
-        <Cases
-          dailyCovidCases={dailyCovidCases}
-          lastUpdated={lastUpdated}
-          province={province}
-          allCovidCases={allCovidCases}
-          setProvince={setProvince}
-          allCovidCaseByVnexpress={allCovidCaseByVnexpress}
-        />
-        <Province covidDataProvince={covidDataProvince} />
-        <Vaccine covidVaccineVN={covidVaccineVN} />
-        <div className="md:w-8/12 w-full pt-4 items-center flex justify-center">
-          <News />
-        </div>
-      </main>
+      {isLoading ? (
+        <Skeleton />
+      ) : (
+        <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
+          <Cases
+            dailyCovidCases={dailyCovidCases}
+            lastUpdated={lastUpdated}
+            province={province}
+            allCovidCases={allCovidCases}
+            setProvince={setProvince}
+            allCovidCaseByVnexpress={allCovidCaseByVnexpress}
+          />
+          <Province covidDataProvince={covidDataProvince} />
+          <Vaccine covidVaccineVN={covidVaccineVN} />
+          <div className="md:w-8/12 w-full pt-4 items-center flex justify-center">
+            <News />
+          </div>
+        </main>
+      )}
     </motion.div>
   );
 }
@@ -138,10 +143,10 @@ export default function Home({
 const Skeleton = () => {
   return (
     <div className="flex items-center justify-center p-4 flex-col w-full space-y-4">
-      <div className="w-full md:w-6/12 bg-gray-300 rounded-xl animate-pulse h-72" />{" "}
-      <div className="w-full md:w-6/12 bg-gray-200 rounded-xl animate-pulse h-32" />
-      <div className="w-full md:w-6/12 bg-gray-200 rounded-full animate-pulse h-12" />
-      <div className="w-full md:w-6/12 bg-gray-300 rounded-xl animate-pulse h-56" />
+      <div className="w-full md:w-6/12 bg-gray-100 rounded-xl animate-pulse h-72" />{" "}
+      <div className="w-full md:w-6/12 bg-gray-100 rounded-xl animate-pulse h-16" />
+      <div className="w-full md:w-6/12 bg-gray-100 rounded-full animate-pulse h-12" />
+      <div className="w-full md:w-6/12 bg-gray-100 rounded-xl animate-pulse h-56" />
     </div>
   );
 };
