@@ -21,14 +21,11 @@ const ProvinceSelectionButton = ({
           font-bold text-sm ring-2 ring-red-500 text-red-500`
           : `rounded-full bg-white p-2 w-full px-6 text-sm shadow-sm`
       }
+      onClick={() => {
+        setProvince(name);
+      }}
     >
-      <button
-        onClick={() => {
-          setProvince(name);
-        }}
-      >
-        {name}
-      </button>
+      {name}
     </motion.button>
   );
 };

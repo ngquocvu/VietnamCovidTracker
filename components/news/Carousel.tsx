@@ -122,7 +122,7 @@ export const ChangeButton = ({
   return (
     <div className="grid  grid-cols-2">
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.0 }}
         whileTap={{ scale: 0.9 }}
         className="w-full"
       >
@@ -140,7 +140,7 @@ export const ChangeButton = ({
         </button>
       </motion.button>{" "}
       <motion.button
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.0 }}
         whileTap={{ scale: 0.99 }}
         className="w-full"
       >

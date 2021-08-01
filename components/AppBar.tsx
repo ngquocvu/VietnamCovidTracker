@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
+import { variants } from "../utils/interfaces";
 
 const AppBar = () => {
   const currentPage = useSelector((state: RootState) => state.page);
