@@ -23,34 +23,34 @@ const VaccineCharts = ({
 }: ChartsVProps) => {
   return (
     <div className="flex flex-wrap sm:flex-no-wrap items-center justify-between w-full shadow-md rounded-xl  ">
-      <div className="w-full  sm:w-1/3 h-20 md:h-24 rounded-t-lg  sm:rounded-t-none  sm:rounded-tl-md    shadow bg-white item-center justify-center flex-col flex ">
+      <div className="w-full  sm:w-1/3 h-20 md:h-24 rounded-t-lg  sm:rounded-t-none  sm:rounded-tl-md    shadow bg-white dark:bg-gray-800 dark:bg-gray-800 item-center justify-center flex-col flex ">
         <div className="font-bold text-green-500  text-sm md:text-sm md:text-md text-green-700 ">
           Tổng người đã tiêm
         </div>
-        <div className=" text-2xl md:text-2xl md:text-3xl font-bold text-green-500 ">
+        <div className=" text-2xl md:text-2xl md:text-3xl font-bold text-green-500 dark:text-green-300">
           {(
             Number(vaccineDataVN.first.total) +
             Number(vaccineDataVN.second.total)
           ).toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-1/3  h-20  md:h-24  shadow bg-white item-center justify-center flex-col flex">
-        <div className="font-bold  text-gray-700 text-sm md:text-md">
+      <div className="w-full sm:w-1/3  h-20  md:h-24  shadow bg-white dark:bg-gray-800 dark:bg-gray-800 item-center justify-center flex-col flex">
+        <div className="font-bold  text-gray-700 dark:text-gray-400 text-sm md:text-md">
           Đã tiêm 1 mũi
         </div>
-        <div className=" text-2xl md:text-3xl font-bold">
+        <div className=" text-2xl md:text-3xl dark:text-gray-200 font-bold">
           {vaccineDataVN.first.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-1/3 h-20  md:h-24 shadow bg-white item-center justify-center flex-col flex  sm:rounded-tr-md">
-        <div className="font-bold text-sm md:text-md text-gray-700">
+      <div className="w-full sm:w-1/3 h-20 dark:text-gray-200 md:h-24 shadow bg-white dark:bg-gray-800 dark:bg-gray-800 item-center justify-center flex-col flex  sm:rounded-tr-md">
+        <div className="font-bold text-sm md:text-md dark:text-gray-400">
           Đã tiêm 2 mũi
         </div>
         <div className=" text-2xl md:text-3xl font-bold">
           {vaccineDataVN.second.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-3/3 px-8 h-36 border-t shadow-md md:h-24 item-center justify-center flex-col flex bg-white rounded-b-md">
+      <div className="w-full sm:w-3/3 px-8 h-36 border-t shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-b-md">
         <div>
           <div className="relative pt-1">
             <div className="flex mb-2 items-center justify-between">
@@ -60,18 +60,18 @@ const VaccineCharts = ({
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-xs font-semibold inline-block text-green-600">
+                <span className="text-xs font-semibold inline-block text-green-600 dark:text-green-300">
                   {vaccineDataVN.secondRatio.toFixed(2)}%
                 </span>
               </div>
             </div>
-            <div className="overflow-hidden h-2 text-xs flex rounded bg-green-100">
+            <div className="overflow-hidden h-2 text-xs flex rounded bg-green-100 ">
               <div
                 style={{ width: vaccineDataVN.secondRatio.toFixed(2) + "%" }}
                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
               ></div>
             </div>
-            <div className="py-2 md:pb-2 text-xs text-left max-w-prose">
+            <div className="py-2 md:pb-2 text-xs text-left max-w-prose dark:text-gray-400">
               Mục tiêu: 70% dân số (tương đương 150 triệu liều vaccine)
             </div>
           </div>

@@ -10,6 +10,7 @@ import AppBar from "../components/AppBar";
 import { Provider } from "react-redux";
 import { store } from "../store";
 import { AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -24,23 +25,29 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <Provider store={store}>
-      <Head>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-        />
-      </Head>
+    <>
+      <ThemeProvider attribute="class">
+        <Provider store={store}>
+          <Head>
+            <meta
+              name="viewport"
+              content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+            />
+          </Head>
 
-      <div className="flex flex-col items-center bg-gray-50 justify-start min-h-screen">
-        <Header />
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
-        <Footer />
-        <AppBar />
-      </div>
-    </Provider>
+          <div className="flex flex-col items-center dark:bg-gray-900 bg-gray-50 justify-start min-h-screen">
+            <Header />
+            <AnimatePresence exitBeforeEnter>
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+            <Footer />
+            <div className="pt-10">
+              <AppBar />
+            </div>
+          </div>
+        </Provider>
+      </ThemeProvider>
+    </>
   );
 }
 

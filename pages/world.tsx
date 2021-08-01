@@ -27,13 +27,13 @@ const WorldPage = () => {
               src="/world-banner.svg"
               className={
                 isLoading
-                  ? "relative h-36 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg bg-gray-100"
+                  ? "relative h-36 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg dark:bg-gray-800 bg-gray-100"
                   : "relative h-36 md:h-72 w-6/12 pb-0 relative cursor-pointer"
               }
               onLoad={() => setIsLoading(false)}
             />
           </Link>
-          <p className="font-bold text-gray-600 text-lg md:text-2xl md:text-2xl  mt-2 md:mt-8 my-1">
+          <p className="font-bold dark:text-gray-200 text-gray-600 text-lg md:text-2xl md:text-2xl  mt-2 md:mt-8 my-1">
             Trang đang được phát triển
           </p>
           <Link href="/">

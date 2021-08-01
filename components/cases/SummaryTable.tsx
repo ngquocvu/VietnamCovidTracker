@@ -22,15 +22,15 @@ const SummaryTable = ({
 }: CasesChartProps) => {
   return (
     <div className="flex w-full items-center flex-col space-y-4">
-      <div className="p-2.5 w-full md:w-8/12 lg:w-1/2 grid grid-cols-1 flex items-center justify-center  bg-white rounded-xl shadow-sm">
-        <div className="bg-gray-100 p-2 rounded-xl">
-          <p className=" font-bold text-lg md:text-xl ">
+      <div className="p-2.5 w-full md:w-8/12 lg:w-1/2 grid grid-cols-1 flex items-center justify-center dark:bg-gray-800 bg-white rounded-xl shadow-sm">
+        <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-xl">
+          <p className=" font-bold dark:text-gray-200 text-lg md:text-xl ">
             Số liệu Covid-19 tại Việt Nam
           </p>
-          <p className="text-xs sm:text-xs font-semibold text-gray-500 mb-1">
+          <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 mb-1">
             Nguồn dữ liệu từ Zing News & VnExpress
           </p>
-          <p className="text-xs sm:text-xs font-semibold text-gray-500 ">
+          <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 ">
             Cập nhật: <a>{timeSince(lastUpdated.toString()) + " trước"}</a>
           </p>
         </div>
@@ -47,7 +47,7 @@ type Covid4thWaveProps = {
   covidCases: CovidCasesProps;
 };
 const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
-  <div className="py-4 px-9 w-full md:w-8/12 lg:w-6/12 shadow-sm  grid grid-cols-1 flex items-center justify-center  bg-white rounded-lg ">
+  <div className="py-4 px-9 w-full md:w-8/12 lg:w-6/12 shadow-sm  grid grid-cols-1 flex items-center justify-center  bg-white  dark:bg-gray-800 rounded-lg ">
     <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
       Đợt bùng phát dịch từ ngày 27/4
     </p>

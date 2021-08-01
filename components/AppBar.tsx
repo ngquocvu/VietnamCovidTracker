@@ -11,29 +11,38 @@ const AppBar = () => {
   const currentPage = useSelector((state: RootState) => state.page);
   const router = useRouter();
   return (
-    <footer className="bg-white flex justify-between  px-12 md:hidden text-gray-500 text-xl text-white text-center rounded-md border-t fixed inset-x-0 bottom-0 navbar navbar pt-3 items-center ">
-      <motion.button whileHover={{ scale: 1.6 }} whileTap={{ scale: 0.3 }}>
+    <footer className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-500  flex justify-between  px-12 md:hidden dark:text-gray-300 text-xl text-center rounded-md border-t dark:border-gray-600 fixed inset-x-0 bottom-0 navbar navbar pt-3 items-center ">
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.3 }}
+        onClick={() => router.push("world")}
+      >
         <GlobeAltIcon
-          className={`h-8 w-8 ${
-            currentPage == "world" ? "text-black" : ""
+          className={`h-7 w-7 ${
+            currentPage == "world" ? "text-black dark:text-gray-100" : ""
           } mb-3`}
-          onClick={() => router.push("world")}
         />
       </motion.button>
-      <motion.button whileHover={{ scale: 1.6 }} whileTap={{ scale: 0.3 }}>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.3 }}
+        onClick={() => router.push("/")}
+      >
         <HomeIcon
-          className={`h-8 w-8 ${
-            currentPage == "home" ? "text-black" : ""
+          className={`h-7 w-7 ${
+            currentPage == "home" ? "text-black dark:text-gray-100" : ""
           } mb-3`}
-          onClick={() => router.push("/")}
         />
       </motion.button>{" "}
-      <motion.button whileHover={{ scale: 1.6 }} whileTap={{ scale: 0.3 }}>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.3 }}
+        onClick={() => router.push("news")}
+      >
         <NewspaperIcon
-          className={`h-8 w-8 ${
-            currentPage == "news" ? "text-black" : ""
+          className={`h-7 w-7 ${
+            currentPage == "news" ? "text-black dark:text-gray-100" : ""
           } mb-3`}
-          onClick={() => router.push("news")}
         />{" "}
       </motion.button>
     </footer>

@@ -37,9 +37,9 @@ const News = () => {
 
   return (
     <div className="w-full flex-col space-y-4 ">
-      <div className="w-full p-2 mx-auto bg-white shadow-md rounded-2xl">
-        <div className="w-full flex-col  items-center px-0.5 space-y-4 justify-center ">
-          <div className="text-lg md:text-2xl font-bold bg-gray-100 text-center p-2 md:p-4 rounded-md">
+      <div className="w-full p-2 mx-auto dark:bg-gray-800 bg-white shadow-md rounded-2xl">
+        <div className="w-full flex-col items-center px-0.5 space-y-4 justify-center ">
+          <div className="text-lg md:text-2xl font-bold dark:text-gray-200 dark:bg-gray-700  bg-gray-100 text-center p-2 md:p-4 rounded-md">
             Tin mới nhất
           </div>
           {news.slice(4, numberOfPost).map((n, index) => {
@@ -72,7 +72,7 @@ const News = () => {
               setNumberOfPost(numberOfPost + 8);
             }
           }}
-          className="py-2  mt-5 w-full text-gray-700  font-bold rounded-lg bg-gray-100 bg-white hover:bg-gray-200"
+          className="py-2  mt-5 w-full dark:text-gray-200 dark:bg-gray-700 text-gray-700 font-bold rounded-lg bg-gray-100  bg-white dark:hover:bg-gray-600 hover:bg-gray-200"
         >
           {numberOfPost < news.length ? "Xem thêm" : "Thu gọn"}
         </button>

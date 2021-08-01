@@ -14,16 +14,16 @@ const Vaccine = ({ covidVaccineVN }: VaccineProps) => {
         <VaccineTables vaccineDataVN={covidVaccineVN} />
       </div>
       <div className="mt-8 md:flex w-full md:space-x-4 space-y-4 md:space-y-0 items-center justify-center">
-        <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12">
-          <div className="text-lg  pb-7 font-bold">
+        <div className="bg-white dark:bg-gray-800 items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12">
+          <div className="text-lg dark:text-gray-300 pb-7 font-bold">
             Tổng số người tiêm vaccine
           </div>
           <div>
             <AllVaccineChart covidVaccineVN={covidVaccineVN} />
           </div>
         </div>
-        <div className="bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
-          <div className="text-lg  pb-7 font-bold">
+        <div className="bg-white dark:bg-gray-800 items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
+          <div className="text-lg dark:text-gray-300 pb-7 font-bold">
             Số lượng tiêm vaccine theo ngày
           </div>
           <div>

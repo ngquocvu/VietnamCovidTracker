@@ -20,9 +20,9 @@ const RangeSelectionButton = ({
       whileTap={{ scale: 0.9 }}
       className={
         range == value
-          ? `rounded-full w-full p-1 px-3
-          font-bold text-sm ring-2 ring-red-500 text-red-500`
-          : `rounded-full bg-white border-2 p-1 w-full px-3 text-sm `
+          ? `rounded-full w-full dark:bg-gray-800 p-1 px-3
+          font-bold text-sm ring-2 dark:text-red-400 ring-red-500 text-red-500`
+          : `rounded-full bg-white dark:text-gray-200 dark:bg-gray-700 border-2 dark:border-gray-700 p-1 w-full px-3 text-sm `
       }
       onClick={() => {
         setRange(value);

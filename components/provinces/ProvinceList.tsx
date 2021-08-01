@@ -1,7 +1,8 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
+import { motion } from "framer-motion";
 import React, { useState } from "react";
-import { ProvinceCasesProps } from "../../utils/interfaces";
+import { ProvinceCasesProps, variants } from "../../utils/interfaces";
 type ProvinceTableProps = {
   covidDataProvince: ProvinceCasesProps;
 };
@@ -12,7 +13,7 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
     <Disclosure defaultOpen={true}>
       {({ open }) => (
         <>
-          <Disclosure.Button className="flex justify-between w-full px-4 py-3 text-sm font-medium text-left text-red-700 bg-red-100 rounded-lg hover:bg-red-200 focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-75">
+          <Disclosure.Button className="flex justify-between w-full px-4 py-3 text-sm font-medium text-left text-red-700 bg-red-100 rounded-lg hover:bg-red-200 dark:bg-red-300 focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-75">
             <span>Tình hình COVID-19 tại các tỉnh thành</span>
             <ChevronUpIcon
               className={`${
@@ -35,11 +36,11 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
                   .slice(0, numberOfProvince)
                   .map((pro, index) => {
                     return (
-                      <tr className="hover:bg-gray-100 rounded-md" key={index}>
-                        <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
+                      <tr className="hover:bg-gray-600 rounded-md" key={index}>
+                        <td className="text-left font-semibold dark:text-gray-300 text-gray-800 py-1 w-1/3">
                           {index + 1}
                         </td>
-                        <td className="text-left font-semibold text-gray-800 py-1 w-1/3">
+                        <td className="text-left font-semibold dark:text-gray-300 text-gray-800 py-1 w-1/3">
                           {pro.x}
                         </td>
                         <td className="text-right text-red-600">
@@ -47,7 +48,9 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
                             ? "+" + pro.y.toLocaleString()
                             : pro.y.toLocaleString()}
                         </td>
-                        <td className="text-right">{pro.z.toLocaleString()}</td>
+                        <td className="text-right dark:text-gray-300">
+                          {pro.z.toLocaleString()}
+                        </td>
                       </tr>
                     );
                   })}
@@ -61,7 +64,7 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
                   setNumberOfProvince(numberOfProvince + 64);
                 }
               }}
-              className="py-2  mt-5 w-full text-gray-700  font-bold rounded-lg bg-gray-100 bg-white hover:bg-gray-200"
+              className="py-2  mt-5 w-full text-gray-700 dark:text-gray-800 font-bold rounded-lg bg-gray-100 bg-white dark:bg-gray-400 hover:bg-gray-200"
             >
               {numberOfProvince < covidDataProvince.cases.length
                 ? "Xem thêm"
