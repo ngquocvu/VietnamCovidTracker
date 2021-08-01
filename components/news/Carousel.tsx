@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
 import axios from "axios";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { VNEXPRESS_NEWS, VNEXPRESS_NEWS_2 } from "../../utils/constants";
@@ -120,30 +121,42 @@ export const ChangeButton = ({
 }) => {
   return (
     <div className="grid  grid-cols-2">
-      <button
-        className="w-full rounded-l-lg border-r-2 border-gray-200 bg-gray-100 text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
-        onClick={() => {
-          setTimeout(() => {
-            setIsShowing(true);
-            setNewsNumber(newsNumber <= 0 ? newsNumber : newsNumber - 1);
-          }, 100);
-          setIsShowing(false);
-        }}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
+        className="w-full"
       >
-        Trước
-      </button>
-      <button
-        className="w-full bg-gray-100 rounded-r-lg text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
-        onClick={() => {
-          setTimeout(() => {
-            setIsShowing(true);
-            setNewsNumber(newsNumber >= 3 ? newsNumber : newsNumber + 1);
-          }, 100);
-          setIsShowing(false);
-        }}
+        <button
+          className="w-full rounded-l-lg border-r-2 border-gray-200 bg-gray-100 text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
+          onClick={() => {
+            setTimeout(() => {
+              setIsShowing(true);
+              setNewsNumber(newsNumber <= 0 ? newsNumber : newsNumber - 1);
+            }, 100);
+            setIsShowing(false);
+          }}
+        >
+          Trước
+        </button>
+      </motion.button>{" "}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.99 }}
+        className="w-full"
       >
-        Sau
-      </button>
+        <button
+          className="w-full bg-gray-100 rounded-r-lg text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
+          onClick={() => {
+            setTimeout(() => {
+              setIsShowing(true);
+              setNewsNumber(newsNumber >= 3 ? newsNumber : newsNumber + 1);
+            }, 100);
+            setIsShowing(false);
+          }}
+        >
+          Sau
+        </button>
+      </motion.button>
     </div>
   );
 };

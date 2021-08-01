@@ -20,7 +20,7 @@ const WorldPage = () => {
       transition={{ type: "linear" }}
       className="w-full items-start justify-center md:max-w-7xl"
     >
-      <main className="flex w-full px-2 pt-4 pb-6 items-start justify-center md:max-w-7xl">
+      <main className="flex w-full px-2 pt-12 pb-6 items-start justify-center md:max-w-7xl">
         <div className="w-full flex-col flex items-center py-2 m-4 ">
           <Link href="/fetch">
             <img

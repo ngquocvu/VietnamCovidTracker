@@ -1,6 +1,8 @@
 import axios from "axios";
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { VNEXPRESS_NEWS, VNEXPRESS_NEWS_2 } from "../../utils/constants";
+import { variants } from "../../utils/interfaces";
 import NewsCard from "./NewsCard";
 
 type article = {
@@ -42,14 +44,23 @@ const News = () => {
           </div>
           {news.slice(4, numberOfPost).map((n, index) => {
             return (
-              <NewsCard
-                key={index}
-                thumbnail={n.thumbnail_url}
-                title={n.title}
-                url={n.share_url}
-                lead={n.lead}
-                publishTime={n.publish_time}
-              />
+              <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                transition={{ type: "linear" }}
+                className="w-full items-start justify-center md:max-w-7xl"
+              >
+                <NewsCard
+                  key={index}
+                  thumbnail={n.thumbnail_url}
+                  title={n.title}
+                  url={n.share_url}
+                  lead={n.lead}
+                  publishTime={n.publish_time}
+                />
+              </motion.div>
             );
           })}
         </div>

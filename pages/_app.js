@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import AppBar from "../components/AppBar";
 import { Provider } from "react-redux";
 import { store } from "../store";
 import { AnimatePresence } from "framer-motion";
@@ -24,22 +25,21 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-  
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
-          />
-        </Head>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
+        />
+      </Head>
 
-        <div className="flex flex-col items-center bg-gray-50 justify-start min-h-screen">
-          <Header />    
-          <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.route}  />
-          </AnimatePresence>
-          <Footer />
-        </div>
-      
+      <div className="flex flex-col items-center bg-gray-50 justify-start min-h-screen">
+        <Header />
+        <AnimatePresence exitBeforeEnter>
+          <Component {...pageProps} key={router.route} />
+        </AnimatePresence>
+        <Footer />
+        <AppBar />
+      </div>
     </Provider>
   );
 }
