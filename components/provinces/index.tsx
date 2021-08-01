@@ -30,7 +30,7 @@ const Province = ({
           />
         </div>
 
-        <div className="dark:bg-gray-800 items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
+        <div className="dark:bg-gray-800 bg-white items-center justify- pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
           <div className="text-lg md:text-lg dark:text-gray-200 font-bold">
             Tỉnh thành nhiều ca nhất trong ngày
           </div>

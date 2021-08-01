@@ -27,8 +27,8 @@ const WorldPage = () => {
               src="/world-banner.svg"
               className={
                 isLoading
-                  ? "relative h-36 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg dark:bg-gray-800 bg-gray-100"
-                  : "relative h-36 md:h-72 w-6/12 pb-0 relative cursor-pointer"
+                  ? "relative h-48 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg dark:bg-gray-800 p-4 bg-gray-100"
+                  : "relative h-48 md:h-72 w-6/12 pb-0 relative  cursor-pointer"
               }
               onLoad={() => setIsLoading(false)}
             />

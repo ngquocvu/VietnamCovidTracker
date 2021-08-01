@@ -36,7 +36,10 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
                   .slice(0, numberOfProvince)
                   .map((pro, index) => {
                     return (
-                      <tr className="hover:bg-gray-600 rounded-md" key={index}>
+                      <tr
+                        className="dark:hover:bg-gray-600 hover:bg-gray-200  rounded-md"
+                        key={index}
+                      >
                         <td className="text-left font-semibold dark:text-gray-300 text-gray-800 py-1 w-1/3">
                           {index + 1}
                         </td>

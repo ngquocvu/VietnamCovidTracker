@@ -14,7 +14,14 @@ const AppBar = () => {
     <footer className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-500  flex justify-between  px-12 md:hidden dark:text-gray-300 text-xl text-center rounded-md border-t dark:border-gray-600 fixed inset-x-0 bottom-0 navbar navbar pt-3 items-center ">
       <motion.button
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.3 }}
+        whileTap={{ scale: 0.3, rotate: 360 }}
+        initial={{ scale: 0 }}
+        animate={{ rotate: 360, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
         onClick={() => router.push("world")}
       >
         <GlobeAltIcon
@@ -26,6 +33,13 @@ const AppBar = () => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.3 }}
+        initial={{ scale: 0 }}
+        animate={{ rotate: 360, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
         onClick={() => router.push("/")}
       >
         <HomeIcon
@@ -37,6 +51,13 @@ const AppBar = () => {
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.3 }}
+        initial={{ scale: 0 }}
+        animate={{ rotate: 360, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
         onClick={() => router.push("news")}
       >
         <NewspaperIcon

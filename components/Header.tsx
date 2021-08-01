@@ -18,6 +18,7 @@ const Header = () => {
   const [replay, setReplay] = useState(true);
   const { theme, setTheme } = useTheme();
   useEffect(() => {
+    setTheme("dark");
     setReplay(!replay);
     setTimeout(() => {
       setReplay(true);
@@ -34,33 +35,50 @@ const Header = () => {
           initial="hidden"
           animate={replay ? "visible" : "hidden"}
           variants={container}
-          className="font-bold flex w-full dark:text-gray-100 items-center md:w-1/2 space-x-4 text-xl w-full pl-6"
+          className="font-bold flex w-full dark:text-gray-100 items-center md:w-1/2 text-xl w-full pl-6"
         >
-          {currentPage === "home"
-            ? "Covid Tracker"
-            : currentPage === "world"
-            ? "Thế giới"
-            : "Tin tức"}
+          <div className="pr-2 flex flex-col ">
+            {theme === "light" ? (
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 200,
+                }}
+                onClick={() => setTheme("dark")}
+                className="rounded-full"
+              >
+                <SunIcon className="h-7 w-7 mr-2 mt-1 text-yellow-500 cursor-pointer" />
+              </motion.button>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+                onClick={() => setTheme("light")}
+              >
+                <MoonIcon className="h-7 w-7 mr-2 text-blue-500 cursor-pointer" />{" "}
+              </motion.button>
+            )}
+          </div>
+          <div className="text-center font-normal align-center ">
+            {currentPage === "home"
+              ? "Covid Tracker"
+              : currentPage === "world"
+              ? "Thế giới"
+              : "Tin tức"}
+          </div>
         </motion.div>
-        <div className="pr-4 flex flex-col">
-          {theme === "light" ? (
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.3 }}
-              onClick={() => setTheme("dark")}
-            >
-              <SunIcon className="h-7 w-7 mr-2 cursor-pointer" />
-            </motion.button>
-          ) : (
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.3 }}
-              onClick={() => setTheme("light")}
-            >
-              <MoonIcon className="h-7 w-7 mr-2 cursor-pointer" />{" "}
-            </motion.button>
-          )}
-        </div>
 
         <div className="flex space-x-7  justify-between  hidden md:flex pr-6">
           <Link href="/world">
@@ -103,6 +121,3 @@ const Header = () => {
 };
 
 export default Header;
-function setTheme(arg0: string): void {
-  throw new Error("Function not implemented.");
-}
