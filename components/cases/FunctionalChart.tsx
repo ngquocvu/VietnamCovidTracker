@@ -8,7 +8,9 @@ const FunctionalChart = ({ covidCases, name, type }): JSX.Element => {
   return (
     <>
       <div className="bg-white dark:bg-gray-800 items-center pt-4 rounded-lg shadow-md w-full md:w-1/2 lg:w-4/12  ">
-        <div className="text-lg pb-2 dark:text-gray-200 font-bold">{name}</div>
+        <div className="text-lg pb-2 dark:text-gray-200 dark:bg-gray-800 font-bold">
+          {name}
+        </div>
         {covidCases.lastUpdated !== 0 ? (
           <Graph covidCases={covidCases} type={type} range={range} />
         ) : (

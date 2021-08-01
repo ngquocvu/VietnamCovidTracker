@@ -1,9 +1,17 @@
 @media screen and (display-mode: standalone) {
   header {
-    height: 60px !important;
+    height: calc(env(safe-area-inset-bottom) + 70px) !important;
+    padding-top: 35px;
   }
 }
 
 .navbar {
   padding-bottom: env(safe-area-inset-bottom, 0);
+}
+body {
+  padding: 0 env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }

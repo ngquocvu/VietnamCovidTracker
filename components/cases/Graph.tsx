@@ -74,7 +74,7 @@ const Graph = ({ covidCases, type, range }: CasesChartProps) => {
         <CartesianGrid vertical={false} />
         <defs>
           <linearGradient id="colorUv" x1="1" y1="0" x2="0" y2="0">
-            <stop offset="1%" stopColor="#ff8a8a" stopOpacity={0.8} />
+            <stop offset="5%" stopColor="#ff8a8a" stopOpacity={0.9} />
             <stop offset="100%" stopColor="#f3f3f3" stopOpacity={0} />
           </linearGradient>
         </defs>

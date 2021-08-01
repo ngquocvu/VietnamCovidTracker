@@ -9,12 +9,12 @@ const Meta = () => {
       <meta
         name="apple-mobile-web-app-status-bar-style"
         media="(prefers-color-scheme: light)"
-        content="light-content"
+        content="black-translucent"
       />
       <meta
         name="apple-mobile-web-app-status-bar-style"
-        media="(prefers-color-scheme: light)"
-        content="dark-content"
+        media="(prefers-color-scheme: dark)"
+        content="black-translucent"
       />
       <meta name="description" content="Vietnam Covid-19 Tracker" />
       <link rel="manifest" href="/manifest.json" />

@@ -17,70 +17,25 @@ const Header = () => {
   const currentPage = useSelector((state: RootState) => state.page);
   const [replay, setReplay] = useState(true);
   const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    setTheme("dark");
-    setReplay(!replay);
-    setTimeout(() => {
-      setReplay(true);
-    }, 1000);
-  }, [currentPage]);
+
   return (
     <>
       <Head>
         <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="logo/favicon-32x32.png" />
       </Head>
-      <header className="h-16 space-between dark:bg-gray-800 dark:opacity-100 bg-white opacity-95  rounded-b-sm shadow-sm flex justify-between items-center w-full sticky top-0 z-50 ">
-        <motion.div
-          initial="hidden"
-          animate={replay ? "visible" : "hidden"}
-          variants={container}
-          className="font-bold flex w-full dark:text-gray-100 items-center md:w-1/2 text-xl w-full pl-6"
-        >
-          <div className="pr-2 flex flex-col ">
-            {theme === "light" ? (
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                whileTap={{ scale: 0.9, rotate: 360 }}
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 200,
-                }}
-                onClick={() => setTheme("dark")}
-                className="rounded-full"
-              >
-                <SunIcon className="h-7 w-7 mr-2 mt-1 text-yellow-500 cursor-pointer" />
-              </motion.button>
-            ) : (
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                whileTap={{ scale: 0.9, rotate: 360 }}
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}
-                onClick={() => setTheme("light")}
-              >
-                <MoonIcon className="h-7 w-7 mr-2 text-blue-500 cursor-pointer" />{" "}
-              </motion.button>
-            )}
-          </div>
-          <div className="text-center font-normal align-center ">
-            {currentPage === "home"
-              ? "Covid Tracker"
-              : currentPage === "world"
-              ? "Thế giới"
-              : "Tin tức"}
-          </div>
-        </motion.div>
-
-        <div className="flex space-x-7  justify-between  hidden md:flex pr-6">
+      <header className="h-16 dark:bg-gray-800 4 dark:opacity-95 dark:border-b dark:border-gray-700 bg-white opacity-95  rounded-b-sm shadow-sm flex justify-between items-center w-full sticky top-0 z-50 ">
+        <div className="align-center md:hidden text-2xl font-bold items-start pl-6 w-full">
+          {currentPage === "home"
+            ? "Covid Tracker"
+            : currentPage === "world"
+            ? "Thế giới"
+            : "Tin tức"}
+        </div>
+        <div className="align-center hidden md:flex text-lg font-bold items-start pl-4 w-full">
+          Covid Tracker
+        </div>
+        <div className="flex space-x-7 items-center  justify-center  w-full  hidden md:flex pr-6">
           <Link href="/world">
             <a
               className={
@@ -115,6 +70,47 @@ const Header = () => {
             </a>
           </Link>
         </div>
+        <motion.div
+          initial="hidden"
+          animate={replay ? "visible" : "hidden"}
+          variants={container}
+          className="font-bold flex w-full dark:text-gray-100 items-center  text-xl w-full pl-6"
+        >
+          <div className="pr-2 flex flex-col w-full items-end">
+            {theme === "light" ? (
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 200,
+                }}
+                onClick={() => setTheme("dark")}
+                className="rounded-full"
+              >
+                <SunIcon className="h-7 w-7 mr-2 mt-1 text-yellow-500 cursor-pointer" />
+              </motion.button>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                initial={{ scale: 0 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+                onClick={() => setTheme("light")}
+              >
+                <MoonIcon className="h-7 w-7 mr-2 text-blue-500 cursor-pointer" />
+              </motion.button>
+            )}
+          </div>
+        </motion.div>
       </header>
     </>
   );

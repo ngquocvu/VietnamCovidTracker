@@ -11,7 +11,7 @@ const AppBar = () => {
   const currentPage = useSelector((state: RootState) => state.page);
   const router = useRouter();
   return (
-    <footer className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-500  flex justify-between  px-12 md:hidden dark:text-gray-300 text-xl text-center rounded-md border-t dark:border-gray-600 fixed inset-x-0 bottom-0 navbar navbar pt-3 items-center ">
+    <footer className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-500  flex justify-between  px-12 md:hidden dark:text-gray-400 text-xl text-center rounded-md border-t dark:border-gray-600 fixed inset-x-0 bottom-0 navbar navbar pt-3 items-center ">
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.3, rotate: 360 }}
@@ -47,7 +47,7 @@ const AppBar = () => {
             currentPage == "home" ? "text-black dark:text-gray-100" : ""
           } mb-3`}
         />
-      </motion.button>{" "}
+      </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.3 }}

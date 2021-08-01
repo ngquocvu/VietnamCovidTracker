@@ -35,7 +35,10 @@ function MyApp({ Component, pageProps }) {
             />
           </Head>
 
-          <div className="flex flex-col items-center dark:bg-gray-900 bg-gray-50 justify-start min-h-screen">
+          <div
+            ontouchstart=""
+            className="flex flex-col items-center dark:bg-gray-900 bg-gray-50 justify-start min-h-screen"
+          >
             <Header />
             <AnimatePresence exitBeforeEnter>
               <Component {...pageProps} key={router.route} />
