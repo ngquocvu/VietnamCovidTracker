@@ -1,0 +1,1 @@
+GENERATE DARKMODE IOS SPLASH SCREEN:  npx pwa-asset-generator public/covid-tracker-png.png ./public/splash --dark-mode --background "#111827" --splash-only --type jpeg --quality 80 --padding "100px"
