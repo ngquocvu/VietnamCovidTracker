@@ -17,25 +17,28 @@ const Header = () => {
   const currentPage = useSelector((state: RootState) => state.page);
   const [replay, setReplay] = useState(true);
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
+  if (!mounted) return null;
   return (
     <>
       <Head>
         <title>Covid-19 in Vietnam </title>
         <link rel="icon" href="logo/favicon-32x32.png" />
       </Head>
-      <header className="h-16 dark:bg-gray-800 4 dark:opacity-95 dark:border-b dark:border-gray-700 bg-white opacity-95  rounded-b-sm shadow-sm flex justify-between items-center w-full sticky top-0 z-50 ">
-        <div className="align-center md:hidden text-2xl font-bold items-start pl-6 w-full">
+      <header className="h-16 dark:bg-gray-800 bg-white dark:border-b dark:border-gray-700  rounded-b-sm shadow-md flex items-center w-full sticky top-0 z-50 ">
+        <div className="align-center md:hidden w-2/3 text-xl font-bold items-start pl-6 w-full ">
           {currentPage === "home"
-            ? "Covid Tracker"
+            ? "Covid-19 Tracker"
             : currentPage === "world"
             ? "Thế giới"
             : "Tin tức"}
         </div>
-        <div className="align-center hidden md:flex text-lg font-bold items-start pl-4 w-full">
-          Covid Tracker
-        </div>
-        <div className="flex space-x-7 items-center  justify-center  w-full  hidden md:flex pr-6">
+        <div className="align-center md:w-4/12 hidden md:flex text-lg font-bold items-start pl-4 w-full">
+          <Link href="/"> Covid-19 Tracker</Link>
+        </div>{" "}
+        <div className="flex space-x-7 items-center md:w-8/12 justify-center  w-full  hidden md:flex pr-6">
           <Link href="/world">
             <a
               className={
@@ -74,10 +77,27 @@ const Header = () => {
           initial="hidden"
           animate={replay ? "visible" : "hidden"}
           variants={container}
-          className="font-bold flex w-full dark:text-gray-100 items-center  text-xl w-full pl-6"
+          className="font-bold flex w-1/3 dark:text-gray-100 items-center  text-xl w-full pl-6"
         >
-          <div className="pr-2 flex flex-col w-full items-end">
-            {theme === "light" ? (
+          <div className="pr-2 flex flex-col w-full  items-end">
+            {theme == "dark" ? (
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 360 }}
+                whileTap={{ scale: 0.9, rotate: 360 }}
+                initial={{ scale: 0, rotate: 360 }}
+                animate={{ rotate: 360, scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                }}
+                onClick={() => setTheme("light")}
+                className="flex-col items-center flex mr-2"
+              >
+                <MoonIcon className="h-7  w-7 text-blue-500 cursor-pointer" />
+                {/* <div className="text-xs bg-indigo-500 px-2 rounded-md">Tối</div> */}
+              </motion.button>
+            ) : (
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 whileTap={{ scale: 0.9, rotate: 360 }}
@@ -89,24 +109,12 @@ const Header = () => {
                   damping: 200,
                 }}
                 onClick={() => setTheme("dark")}
-                className="rounded-full"
+                className="flex-col items-center flex mr-2"
               >
-                <SunIcon className="h-7 w-7 mr-2 mt-1 text-yellow-500 cursor-pointer" />
-              </motion.button>
-            ) : (
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 360 }}
-                whileTap={{ scale: 0.9, rotate: 360 }}
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 20,
-                }}
-                onClick={() => setTheme("light")}
-              >
-                <MoonIcon className="h-7 w-7 mr-2 text-blue-500 cursor-pointer" />
+                <SunIcon className="h-7 w-7 mt-1 text-yellow-500 cursor-pointer" />
+                {/* <div className="text-xs bg-yellow-300 text-white px-2 rounded-md">
+                  Sáng
+                </div> */}
               </motion.button>
             )}
           </div>

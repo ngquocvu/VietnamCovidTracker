@@ -26,7 +26,7 @@ const Carousel = () => {
   const [news, setNews] = useState<Array<article>>(defaultData);
   const [newsNumber, setNewsNumber] = useState(0);
   const [isShowing, setIsShowing] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(true);
   const fetchNews = async () => {
     const data = await axios.get(VNEXPRESS_NEWS_2);
     const keyId = Object.keys(data.data.data)[0];
@@ -35,13 +35,16 @@ const Carousel = () => {
 
   useEffect(() => {
     fetchNews();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 400);
   }, []);
 
   return (
     <div className="w-full  flex-col ">
       <div className="w-full p-2 mx-auto bg-white dark:bg-gray-800 shadow-md rounded-2xl">
         <div className="w-full flex-col items-center  px-0.5 space-y-4 justify-center ">
-          {news[0].lead !== "" ? (
+          {news[newsNumber].lead !== "" && !isLoading ? (
             <div className="w-full h-full">
               <Transition
                 appear={true}
@@ -94,13 +97,13 @@ const Carousel = () => {
             </div>
           ) : (
             <div className="w-full h-82">
-              <div className="w-full bg-gray-100 dark:bg-gray-700 h-56 my-1 animate-pulse object-cover object-center rounded-lg"></div>
-              <div className="flex-col  space-y-2 pt-2  pb-2 text-left items-start">
+              <div className="w-full bg-gray-100 dark:bg-gray-700 h-64 my-1 animate-pulse object-cover object-center rounded-lg"></div>
+              <div className="flex-col  space-y-2 pt-1  pb-2 text-left items-start">
                 <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-10  animate-pulse object-cover object-center rounded-lg"></div>
+                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-20  animate-pulse object-cover object-center rounded-lg"></div>
                 </div>
                 <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-24  animate-pulse object-cover object-center rounded-lg"></div>
+                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-12  animate-pulse object-cover object-center rounded-lg"></div>{" "}
                 </div>
               </div>
             </div>

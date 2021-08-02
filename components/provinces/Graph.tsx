@@ -45,6 +45,7 @@ const Graph = ({ covidDataProvince }) => {
               borderRadius: "40px",
               border: "none",
               fontSize: "0.75em",
+              color: "black",
             }}
             labelFormatter={(e) => "" + e}
             formatter={(value: number) =>
@@ -52,7 +53,7 @@ const Graph = ({ covidDataProvince }) => {
             }
           />
 
-          <Bar dataKey="y" fill="#f78686" name="Ca nhiễm" />
+          <Bar dataKey="y" fill="#ff7474e6" name="Ca nhiễm" />
         </BarChart>
       </ResponsiveContainer>
     </div>

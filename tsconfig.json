@@ -26,7 +26,8 @@
     "pages/_offline.tss",
     "public/sw.js",
     "reducers/page.js",
-    "reducers/index.ts"
+    "reducers/index.ts",
+    "utils/useDarkMode.js'"
   ],
   "exclude": ["node_modules"]
 }

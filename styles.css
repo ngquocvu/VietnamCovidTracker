@@ -2,6 +2,7 @@
   header {
     height: calc(env(safe-area-inset-bottom) + 70px) !important;
     padding-top: 35px;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -14,4 +15,7 @@ body {
   -webkit-user-select: none;
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  overflow: auto;
+  position: relative;
 }

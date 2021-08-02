@@ -24,6 +24,7 @@ import { setPage } from "../actions/page";
 import { vnExpressDataFormatter } from "../utils/dataFormatter";
 import { motion } from "framer-motion";
 import moment from "moment";
+import PopupMessage from "../components/PopupMessage";
 
 export type HomeProps = {
   covidDataVN: {
@@ -52,6 +53,15 @@ export default function Home({
   const [allCovidCaseByVnexpress] = useState(covidDataVnExpress);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+
+  const isIos = () => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    return /iphone|ipad|ipod/.test(userAgent);
+  };
+
+  const isInStandaloneMode = () =>
+    "standalone" in window.navigator && (window.navigator as any).standalone;
+
   const [allCovidCases, setAllCovidCases] = useState<CovidCasesProps>({
     cases: [
       {
@@ -129,11 +139,13 @@ export default function Home({
             setProvince={setProvince}
             allCovidCaseByVnexpress={allCovidCaseByVnexpress}
           />
+
           <Province covidDataProvince={covidDataProvince} />
           <Vaccine covidVaccineVN={covidVaccineVN} />
           <div className="md:w-8/12 w-full pt-4 items-center flex justify-center">
             <News />
           </div>
+          {isIos() && !isInStandaloneMode() ? <PopupMessage /> : <></>}
         </main>
       )}
     </motion.div>

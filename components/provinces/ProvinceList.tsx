@@ -67,7 +67,7 @@ const ProvinceList = ({ covidDataProvince }: ProvinceTableProps) => {
                   setNumberOfProvince(numberOfProvince + 64);
                 }
               }}
-              className="py-2  mt-5 w-full text-gray-700 dark:text-gray-800 font-bold rounded-lg bg-gray-100 bg-white dark:bg-gray-400 hover:bg-gray-200"
+              className="py-2  mt-5 w-full text-gray-700 font-bold rounded-lg bg-gray-100 dark:text-gray-200 bg-white dark:bg-gray-600 hover:bg-gray-200"
             >
               {numberOfProvince < covidDataProvince.cases.length
                 ? "Xem thêm"

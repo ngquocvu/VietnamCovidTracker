@@ -74,7 +74,7 @@ const Graph = ({ covidCases, type, range }: CasesChartProps) => {
         <CartesianGrid vertical={false} />
         <defs>
           <linearGradient id="colorUv" x1="1" y1="0" x2="0" y2="0">
-            <stop offset="5%" stopColor="#ff8a8a" stopOpacity={0.9} />
+            <stop offset="5%" stopColor="#ff2b2b" stopOpacity={0.9} />
             <stop offset="100%" stopColor="#f3f3f3" stopOpacity={0} />
           </linearGradient>
         </defs>
@@ -90,9 +90,10 @@ const Graph = ({ covidCases, type, range }: CasesChartProps) => {
         <Tooltip
           wrapperStyle={{
             backgroundColor: "#ccc",
-            borderRadius: "40px",
+            borderRadius: "60px",
             border: "none",
             fontSize: "0.75em",
+            color: "black",
           }}
           labelFormatter={(e) => "Ngày: " + e}
           formatter={(value: number) =>
@@ -115,8 +116,8 @@ const Graph = ({ covidCases, type, range }: CasesChartProps) => {
             dataKey="Ca"
             stackId="2"
             barSize={20}
-            stroke="#fc4e4e"
-            fill="url(#colorUv)"
+            stroke="#df3737"
+            fill="#ff7474e6"
             name="Ca nhiễm"
           />
         )}

@@ -62,6 +62,7 @@ const VaccineChart = ({
             borderRadius: "40px",
             border: "none",
             fontSize: "0.65em",
+            color: "black",
           }}
           labelFormatter={(e) => "Ngày: " + e}
           formatter={(value: number) =>
