@@ -1,10 +1,10 @@
-const pageReducer = (state = "", action) => {
+const pageReducer = (page = "none", action) => {
   switch (action.type) {
     case "SET": {
       return action.payload;
     }
     default:
-      return state;
+      return page;
   }
 };
 

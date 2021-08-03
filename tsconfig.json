@@ -25,9 +25,13 @@
     "utils/meta.ts",
     "pages/_offline.tss",
     "public/sw.js",
-    "reducers/page.js",
+    "reducers/page.tsx",
     "reducers/index.ts",
-    "utils/useDarkMode.js'"
+    "utils/useDarkMode.js'",
+    "reducers/dialog.js",
+    "reducers/dialog.js",
+    "actions/dialog.js",
+    "actions/page.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -4,13 +4,43 @@ import { setPage } from "../actions/page";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { variants } from "../utils/interfaces";
+import axios from "axios";
+import { timeSince } from "../utils/dataFormatter";
+
+type WorldPageProps = {
+  Global: {
+    NewConfirmed: string;
+    TotalConfirmed: string;
+    NewDeaths: string;
+    TotalDeaths: string;
+    NewRecovered: string;
+    TotalRecovered: string;
+    Date: string;
+  };
+};
 
 const WorldPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [cases, setCases] = useState<WorldPageProps>({
+    Global: {
+      NewConfirmed: "-",
+      TotalConfirmed: "-",
+      NewDeaths: "-",
+      TotalDeaths: "-",
+      NewRecovered: "-",
+      TotalRecovered: "-",
+      Date: " ",
+    },
+  });
   const dispatch = useDispatch();
+  const getData = async () => {
+    const data = await axios.get("https://api.covid19api.com/summary");
+    setCases(data.data);
+  };
   useEffect(() => {
     dispatch(setPage("world"));
+    getData();
   }, []);
+
   return (
     <motion.div
       variants={variants}
@@ -20,30 +50,64 @@ const WorldPage = () => {
       transition={{ type: "linear" }}
       className="w-full items-start justify-center md:max-w-7xl"
     >
-      <main className="flex w-full px-2 pt-12 pb-6 items-start justify-center md:max-w-7xl">
-        <div className="w-full flex-col flex items-center py-2 m-4 ">
-          <Link href="/fetch">
-            <img
-              src="/world-banner.svg"
-              className={
-                isLoading
-                  ? "relative h-48 md:h-72 w-6/12 pb-0 animate-pulse rounded-lg dark:bg-gray-800 p-4 bg-gray-100"
-                  : "relative h-48 md:h-72 w-6/12 pb-0 relative  cursor-pointer"
-              }
-              onLoad={() => setIsLoading(false)}
+      <main className="flex w-full pt-4 pb-6 items-start justify-center md:max-w-7xl">
+        <div className="flex w-full mx-4 items-center flex-col space-y-4">
+          <div className="p-2.5 w-full md:w-8/12 lg:w-1/2 grid grid-cols-1 flex items-center justify-center dark:bg-gray-800 bg-white rounded-xl shadow-sm">
+            <div className="bg-gray-100 flex flex-col items-center dark:bg-gray-700 p-2 rounded-xl">
+              <p className="font-bold dark:text-gray-200 text-lg md:text-xl ">
+                Số liệu Covid-19 trên thế giới
+              </p>
+              <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 mb-1">
+                Nguồn dữ liệu từ Postman API
+              </p>
+              <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 ">
+                {"Cập nhật: "}
+                <a>
+                  {timeSince(
+                    (new Date(cases.Global.Date).getTime() / 1000).toString()
+                  ) + " trước"}
+                </a>
+              </p>
+            </div>
+            <CardContent
+              value="Ca nhiễm"
+              number={cases.Global.TotalConfirmed.toLocaleString()}
+              todayCase={cases.Global.NewConfirmed.toLocaleString()}
             />
-          </Link>
-          <p className="font-bold dark:text-gray-200 text-gray-600 text-lg md:text-2xl md:text-2xl  mt-2 md:mt-8 my-1">
-            Trang đang được phát triển
-          </p>
-          <Link href="/">
-            <p className="text-white text-sm md:text-md px-4 py-2  delay-100 hover:bg-indigo-500 font-semibold shadow-lg text-white rounded-md mt-2 bg-indigo-600 p-2  cursor-pointer">
-              Về trang chính
-            </p>
-          </Link>
+            <CardContent
+              value="Tử vong"
+              number={cases.Global.TotalDeaths.toLocaleString()}
+              todayCase={cases.Global.NewDeaths.toLocaleString()}
+            />
+            <CardContent
+              value="Hồi phục"
+              number={cases.Global.TotalRecovered.toLocaleString()}
+              todayCase={cases.Global.NewRecovered.toLocaleString()}
+            />
+          </div>
         </div>
       </main>
     </motion.div>
+  );
+};
+
+const CardContent = ({ value, number, todayCase }) => {
+  return (
+    <div className="flex flex-col items-center m-4">
+      <p className={`text-xs md:text-sm  text-gray-500 dark:text-gray-400`}>
+        Hôm nay: +{todayCase}
+      </p>
+      <p
+        className={`pb-2 text-3xl md:text-4xl sm:text-xl flex font-bold dark:text-gray-300 text-gray-600`}
+      >
+        {number}{" "}
+      </p>
+      <p
+        className={`text-sm bg-gray-500 dark:bg-gray-700 text-gray-200 font-semibold text-center p-1 w-full rounded-md`}
+      >
+        {value}
+      </p>
+    </div>
   );
 };
 

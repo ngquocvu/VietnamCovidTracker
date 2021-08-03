@@ -14,7 +14,7 @@ const AppBar = () => {
     <footer className="bg-white dark:bg-gray-800 dark:text-gray-100 text-gray-500  flex justify-between  px-10 md:hidden dark:text-gray-400 text-xl text-center rounded-md border-t dark:border-gray-600 fixed inset-x-0 bottom-0 navbar pt-3 items-center ">
       <motion.button
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.3 }}
+        whileTap={{ scale: 0.7 }}
         initial={{ scale: 1 }}
         transition={{
           type: "spring",
@@ -33,7 +33,7 @@ const AppBar = () => {
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.3 }}
+        whileTap={{ scale: 0.7 }}
         initial={{ scale: 1 }}
         onClick={() => router.push("/")}
         className="flex flex-col items-center justify-center mb-2"
@@ -47,7 +47,7 @@ const AppBar = () => {
       </motion.button>
       <motion.button
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.3 }}
+        whileTap={{ scale: 0.7 }}
         initial={{ scale: 1 }}
         onClick={() => router.push("news")}
         className="flex flex-col items-center justify-center mb-2"
@@ -57,7 +57,7 @@ const AppBar = () => {
             currentPage == "news" ? "text-gray-800 dark:text-gray-100" : ""
           } mb-1`}
         />
-        <div className="text-xs">Tin chính</div>
+        <div className="text-xs">Tin tức</div>
       </motion.button>
     </footer>
   );

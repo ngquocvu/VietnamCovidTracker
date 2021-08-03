@@ -45,6 +45,7 @@ const News = () => {
           {news.slice(4, numberOfPost).map((n, index) => {
             return (
               <motion.div
+                key={index}
                 variants={variants}
                 initial="hidden"
                 animate="enter"

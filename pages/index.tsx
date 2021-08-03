@@ -19,12 +19,13 @@ import Cases from "../components/cases";
 import Province from "../components/provinces";
 import Vaccine from "../components/vaccines";
 import News from "../components/news";
-import { useDispatch } from "react-redux";
-import { setPage } from "../actions/page";
+import { useDispatch, useSelector } from "react-redux";
+import { setDialog } from "../actions/dialog";
 import { vnExpressDataFormatter } from "../utils/dataFormatter";
 import { motion } from "framer-motion";
-import moment from "moment";
 import PopupMessage from "../components/PopupMessage";
+import { RootState } from "../reducers";
+import { setPage } from "../actions/page";
 
 export type HomeProps = {
   covidDataVN: {
@@ -53,6 +54,7 @@ export default function Home({
   const [allCovidCaseByVnexpress] = useState(covidDataVnExpress);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+  const dialog = useSelector((state: RootState) => state.dialog);
 
   const isIos = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
@@ -112,6 +114,10 @@ export default function Home({
   useEffect(() => {
     isAPIUpdate();
     dispatch(setPage("home"));
+
+    return function cleanup() {
+      dispatch(setDialog(true));
+    };
   }, []);
 
   setTimeout(() => {
@@ -145,7 +151,11 @@ export default function Home({
           <div className="md:w-8/12 w-full pt-4 items-center flex justify-center">
             <News />
           </div>
-          {isIos() && !isInStandaloneMode() ? <PopupMessage /> : <></>}
+          {isIos() && !isInStandaloneMode() && !dialog ? (
+            <PopupMessage />
+          ) : (
+            <></>
+          )}
         </main>
       )}
     </motion.div>

@@ -1,4 +1,5 @@
 import { Transition } from "@headlessui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -56,20 +57,47 @@ const Carousel = () => {
                 leaveFrom="opacity-100"
                 leaveTo="opacity-10"
               >
-                <a className="w-full" href={news[newsNumber].share_url}>
-                  <img
-                    className="w-full dark:bg-gray-700 bg-gray-100 dark:bg-gray-700 cursor-pointer h-56 md:w-full md:h-80 my-2 object-cover object-center rounded-lg"
-                    src={
-                      news[newsNumber].thumbnail_url
-                        ? news[newsNumber].thumbnail_url
-                        : "/fallback.jpg"
-                    }
-                  />
-                </a>
+                <div className="w-full flex items-center">
+                  <a className="w-full relative flex items-center ">
+                    <ChevronLeftIcon
+                      className="h-10 left-2 bg-white bg-opacity-30 rounded-full absolute text-white cursor-pointer"
+                      onClick={() => {
+                        setTimeout(() => {
+                          setIsShowing(true);
+                          setNewsNumber(
+                            newsNumber <= 0 ? newsNumber : newsNumber - 1
+                          );
+                        }, 100);
+                        setIsShowing(false);
+                      }}
+                    />
+                    {/* href={news[newsNumber].share_url} */}
+                    <img
+                      className="w-full dark:bg-gray-700 bg-gray-100 dark:bg-gray-700  h-60 md:w-full md:h-80 my-2 object-cover object-center rounded-lg"
+                      src={
+                        news[newsNumber].thumbnail_url
+                          ? news[newsNumber].thumbnail_url
+                          : "/fallback.jpg"
+                      }
+                    />
+                    <ChevronRightIcon
+                      className="h-10 right-2 bg-white bg-opacity-30 rounded-full absolute text-white cursor-pointer"
+                      onClick={() => {
+                        setTimeout(() => {
+                          setIsShowing(true);
+                          setNewsNumber(
+                            newsNumber >= 3 ? newsNumber : newsNumber + 1
+                          );
+                        }, 100);
+                        setIsShowing(false);
+                      }}
+                    />
+                  </a>
+                </div>
               </Transition>
 
               <Link href={news[newsNumber].share_url}>
-                <div className="flex-col h-56 sm:h-56 md:h-48 space-y-1 pt-2 mx-4 pb-2 cursor-pointer text-left items-start">
+                <div className="flex-col h-72 sm:h-56 md:h-56 space-y-1 pt-2 mx-4 pb-2 cursor-pointer text-left items-start">
                   <div className="text-gray-400 relative md:text-sm  md:font-semibold text-xs ">
                     Tin {newsNumber + 1} trên 4
                   </div>
@@ -88,22 +116,22 @@ const Carousel = () => {
                   </div>
                 </div>
               </Link>
-              <ChangeButton
+              {/* <ChangeButton
                 setNewsNumber={setNewsNumber}
                 newsNumber={newsNumber}
                 isShowing={isShowing}
                 setIsShowing={setIsShowing}
-              />
+              /> */}
             </div>
           ) : (
             <div className="w-full h-82">
               <div className="w-full bg-gray-100 dark:bg-gray-700 h-64 my-1 animate-pulse object-cover object-center rounded-lg"></div>
               <div className="flex-col  space-y-2 pt-1  pb-2 text-left items-start">
                 <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-20  animate-pulse object-cover object-center rounded-lg"></div>
+                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-24  animate-pulse object-cover object-center rounded-lg"></div>
                 </div>
                 <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-12  animate-pulse object-cover object-center rounded-lg"></div>{" "}
+                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-16  animate-pulse object-cover object-center rounded-lg"></div>{" "}
                 </div>
               </div>
             </div>
@@ -116,50 +144,42 @@ const Carousel = () => {
 
 export default Carousel;
 
-export const ChangeButton = ({
-  setNewsNumber,
-  newsNumber,
-  isShowing,
-  setIsShowing,
-}) => {
-  return (
-    <div className="grid  grid-cols-2">
-      <motion.button
-        whileHover={{ scale: 1.0 }}
-        whileTap={{ scale: 0.9 }}
-        className="w-full"
-      >
-        <button
-          className="w-full rounded-l-lg border-r-2 dark:border-gray-600 border-gray-200 dark:bg-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 text-sm md:text-base dark:hover:bg-gray-600 hover:bg-gray-200 font-semibold p-2"
-          onClick={() => {
-            setTimeout(() => {
-              setIsShowing(true);
-              setNewsNumber(newsNumber <= 0 ? newsNumber : newsNumber - 1);
-            }, 100);
-            setIsShowing(false);
-          }}
-        >
-          Trước
-        </button>
-      </motion.button>{" "}
-      <motion.button
-        whileHover={{ scale: 1.0 }}
-        whileTap={{ scale: 0.99 }}
-        className="w-full"
-      >
-        <button
-          className="w-full bg-gray-100 dark:bg-gray-700 rounded-r-lg dark:bg-gray-700 dark:hover:bg-gray-600  dark:text-gray-300 text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
-          onClick={() => {
-            setTimeout(() => {
-              setIsShowing(true);
-              setNewsNumber(newsNumber >= 3 ? newsNumber : newsNumber + 1);
-            }, 100);
-            setIsShowing(false);
-          }}
-        >
-          Sau
-        </button>
-      </motion.button>
-    </div>
-  );
-};
+// export const ChangeButton = ({
+//   setNewsNumber,
+//   newsNumber,
+//   isShowing,
+//   setIsShowing,
+// }) => {
+//   return (
+//     <div className="grid  grid-cols-2">
+//       <motion.button
+//         whileHover={{ scale: 1.0 }}
+//         whileTap={{ scale: 0.9 }}
+//         className="w-full rounded-l-lg border-r-2 dark:border-gray-600 border-gray-200 dark:bg-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 text-sm md:text-base dark:hover:bg-gray-600 hover:bg-gray-200 font-semibold p-2"
+//         onClick={() => {
+//           setTimeout(() => {
+//             setIsShowing(true);
+//             setNewsNumber(newsNumber <= 0 ? newsNumber : newsNumber - 1);
+//           }, 100);
+//           setIsShowing(false);
+//         }}
+//       >
+//         Trước
+//       </motion.button>
+//       <motion.button
+//         whileHover={{ scale: 1.0 }}
+//         whileTap={{ scale: 0.99 }}
+//         className="w-full bg-gray-100 dark:bg-gray-700 rounded-r-lg dark:bg-gray-700 dark:hover:bg-gray-600  dark:text-gray-300 text-sm md:text-base hover:bg-gray-200 font-semibold p-2"
+//         onClick={() => {
+//           setTimeout(() => {
+//             setIsShowing(true);
+//             setNewsNumber(newsNumber >= 3 ? newsNumber : newsNumber + 1);
+//           }, 100);
+//           setIsShowing(false);
+//         }}
+//       >
+//         Sau
+//       </motion.button>
+//     </div>
+//   );
+// };
