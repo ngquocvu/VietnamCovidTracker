@@ -38,7 +38,7 @@ const Carousel = () => {
     fetchNews();
     setTimeout(() => {
       setIsLoading(false);
-    }, 400);
+    }, 10);
   }, []);
 
   return (
@@ -124,14 +124,13 @@ const Carousel = () => {
               /> */}
             </div>
           ) : (
-            <div className="w-full h-82">
+            <div className="w-full h-auto">
               <div className="w-full bg-gray-100 dark:bg-gray-700 h-64 my-1 animate-pulse object-cover object-center rounded-lg"></div>
-              <div className="flex-col  space-y-2 pt-1  pb-2 text-left items-start">
-                <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-24  animate-pulse object-cover object-center rounded-lg"></div>
-                </div>
-                <div className="font-bold text-lg md:text-xl text-gray-700">
-                  <div className="w-full bg-gray-100 dark:bg-gray-700 h-16  animate-pulse object-cover object-center rounded-lg"></div>{" "}
+              <div className="flex-col  space-y-2 pt-1  pb-28 text-left items-start">
+                <div className="font-bold text-lg md:text-xl space-y-2 text-gray-700">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 h-6  animate-pulse object-cover object-center rounded-lg" />
+                  <div className="w-6/12 bg-gray-200 dark:bg-gray-700 h-6  animate-pulse object-cover object-center rounded-lg" />
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 h-24  animate-pulse object-cover object-center rounded-lg" />
                 </div>
               </div>
             </div>

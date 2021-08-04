@@ -122,7 +122,7 @@ export default function Home({
 
   setTimeout(() => {
     setIsLoading(false);
-  }, 300);
+  }, 10);
 
   return (
     <motion.div

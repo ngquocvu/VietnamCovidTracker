@@ -1,7 +1,7 @@
 @media screen and (display-mode: standalone) {
   header {
-    height: calc(env(safe-area-inset-bottom) + 70px) !important;
-    padding-top: 35px;
+    height: calc(env(safe-area-inset-top) + 60px) !important;
+    padding-top: env(safe-area-inset-top);
     -webkit-overflow-scrolling: touch;
   }
 }

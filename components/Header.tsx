@@ -24,11 +24,11 @@ const Header = () => {
   return (
     <>
       <Head>
-        <title>Covid-19 in Vietnam </title>
+        s<title>Covid-19 in Vietnam </title>
         <link rel="icon" href="logo/favicon-32x32.png" />
       </Head>
       <header className="h-16 dark:bg-gray-800 bg-white dark:border-b dark:border-gray-700  rounded-b-sm shadow-md flex items-center w-full sticky top-0 z-50 ">
-        <div className="align-center md:hidden w-2/3 text-xl font-bold items-start pl-6 w-full ">
+        <div className="align-center items-center md:hidden w-2/3 text-xl font-bold items-start pl-6 w-full ">
           {currentPage === "home"
             ? "Covid-19 Tracker"
             : currentPage === "world"
@@ -79,7 +79,7 @@ const Header = () => {
           variants={container}
           className="font-bold flex w-1/3 dark:text-gray-100 items-center  text-xl w-full pl-6"
         >
-          <div className="pr-2 flex flex-col w-full  items-end">
+          <div className="pr-2 pb-1 flex flex-col w-full  items-end">
             {theme == "dark" ? (
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 360 }}

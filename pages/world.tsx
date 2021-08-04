@@ -28,7 +28,7 @@ const WorldPage = () => {
       TotalDeaths: "-",
       NewRecovered: "-",
       TotalRecovered: "-",
-      Date: " ",
+      Date: "-",
     },
   });
   const dispatch = useDispatch();
@@ -63,9 +63,13 @@ const WorldPage = () => {
               <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 ">
                 {"Cập nhật: "}
                 <a>
-                  {timeSince(
-                    (new Date(cases.Global.Date).getTime() / 1000).toString()
-                  ) + " trước"}
+                  {cases.Global.Date !== "-"
+                    ? timeSince(
+                        (
+                          new Date(cases.Global.Date).getTime() / 1000
+                        ).toString()
+                      ) + " trước"
+                    : ""}
                 </a>
               </p>
             </div>
@@ -73,16 +77,19 @@ const WorldPage = () => {
               value="Ca nhiễm"
               number={cases.Global.TotalConfirmed.toLocaleString()}
               todayCase={cases.Global.NewConfirmed.toLocaleString()}
+              color="yellow"
             />
             <CardContent
               value="Tử vong"
               number={cases.Global.TotalDeaths.toLocaleString()}
               todayCase={cases.Global.NewDeaths.toLocaleString()}
+              color="red"
             />
             <CardContent
               value="Hồi phục"
               number={cases.Global.TotalRecovered.toLocaleString()}
               todayCase={cases.Global.NewRecovered.toLocaleString()}
+              color="green"
             />
           </div>
         </div>
@@ -91,19 +98,30 @@ const WorldPage = () => {
   );
 };
 
-const CardContent = ({ value, number, todayCase }) => {
-  return (
-    <div className="flex flex-col items-center m-4">
-      <p className={`text-xs md:text-sm  text-gray-500 dark:text-gray-400`}>
+const CardContent = ({ value, number, todayCase, color }) => {
+  return todayCase !== "-" ? (
+    <div className="flex flex-col items-center m-3">
+      <p className={`text-xs md:text-sm  text-gray-700 dark:text-gray-300`}>
         Hôm nay: +{todayCase}
       </p>
       <p
-        className={`pb-2 text-3xl md:text-4xl sm:text-xl flex font-bold dark:text-gray-300 text-gray-600`}
+        className={`pb-2 text-3xl md:text-4xl sm:text-xl text-${color}-500 flex font-bold `}
       >
-        {number}{" "}
+        {number}
       </p>
       <p
-        className={`text-sm bg-gray-500 dark:bg-gray-700 text-gray-200 font-semibold text-center p-1 w-full rounded-md`}
+        className={`text-sm bg-gray-200 dark:bg-gray-700 dark:text-gray-200 text-gray-600 font-semibold text-center p-1 w-full rounded-md`}
+      >
+        {value}
+      </p>
+    </div>
+  ) : (
+    <div className="flex flex-col items-center m-3">
+      <p
+        className={`pb-2 text-3xl md:text-4xl sm:text-xl flex font-bold h-12 w-2/3 rounded-md animate-pulse bg-gray-200 dark:bg-gray-700 dark:text-gray-300 text-gray-600`}
+      ></p>
+      <p
+        className={`text-sm bg-gray-500 dark:bg-gray-700 text-gray-200 font-semibold mt-2 text-center p-1 w-full rounded-md`}
       >
         {value}
       </p>
