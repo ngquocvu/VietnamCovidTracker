@@ -8,7 +8,9 @@ import {
   variants,
 } from "../utils/interfaces";
 import {
+  COVID_CASES_HANOI_VERSION_2,
   COVID_CASES_HCMC,
+  COVID_CASES_HCMC_VERSION_2,
   COVID_CASES_PROVINCE,
   COVID_CASES_VIETNAM,
   COVID_VACCINE_VIETNAM,
@@ -37,6 +39,10 @@ export type HomeProps = {
     all: CovidCasesProps;
     daily: CovidCasesProps;
   };
+  covidDataHCMCv2: {
+    all: CovidCasesProps;
+    daily: CovidCasesProps;
+  };
   covidDataProvince: ProvinceCasesProps;
   covidVaccineVN: VaccineDataProps;
   covidDataVnExpress: CovidDataVnexpress;
@@ -44,9 +50,10 @@ export type HomeProps = {
 
 export default function Home({
   covidDataVN,
-  covidDataHCMC,
+  covidDataHNv2,
   covidDataProvince,
   covidVaccineVN,
+  covidDataHCMCv2,
   covidDataVnExpress,
 }) {
   const [lastUpdated, setLastUpdated] = useState<number>(0);
@@ -89,8 +96,11 @@ export default function Home({
 
   const getCases = async (selectedProvince: string) => {
     if (selectedProvince == "TP.HCM") {
-      setAllCovidCases(covidDataHCMC.all);
-      setDailyCovidCases(covidDataHCMC.daily);
+      setAllCovidCases(covidDataHCMCv2.all);
+      setDailyCovidCases(covidDataHCMCv2.daily);
+    } else if (selectedProvince == "Hà Nội") {
+      setAllCovidCases(covidDataHNv2.all);
+      setDailyCovidCases(covidDataHNv2.daily);
     } else {
       setAllCovidCases(covidDataVN.vnSeason4);
       setDailyCovidCases(covidDataVN.vnSeason4Daily);
@@ -114,7 +124,6 @@ export default function Home({
   useEffect(() => {
     isAPIUpdate();
     dispatch(setPage("home"));
-
     return function cleanup() {
       dispatch(setDialog(true));
     };
@@ -180,6 +189,12 @@ export async function getStaticProps() {
   const covidDataHCMC = await axios
     .get(COVID_CASES_HCMC)
     .then((c) => c.data.data);
+  const covidDataHCMCv2 = await axios
+    .get(COVID_CASES_HCMC_VERSION_2)
+    .then((c) => formatDataV2(c.data.data));
+  const covidDataHNv2 = await axios
+    .get(COVID_CASES_HANOI_VERSION_2)
+    .then((c) => formatDataV2(c.data.data));
   const covidVaccineVN = await axios
     .get(COVID_VACCINE_VIETNAM)
     .then((c) => c.data.data);
@@ -193,9 +208,39 @@ export async function getStaticProps() {
     props: {
       covidDataVN,
       covidDataHCMC,
+      covidDataHCMCv2,
+      covidDataHNv2,
       covidDataProvince,
       covidVaccineVN,
       covidDataVnExpress,
     },
   };
 }
+const formatDataV2 = (covidDataHCMCv2: any) => ({
+  all: {
+    cases: covidDataHCMCv2.data.map((e: any) => ({
+      x: e.date,
+      y: parseFloat(e.total.replace(/\./g, "")),
+    })),
+    lastUpdated: covidDataHCMCv2.lastUpdated,
+    toDay: parseFloat(
+      covidDataHCMCv2.data.slice(-1)[0].daily.replace(/\./g, "")
+    ),
+    total: parseFloat(
+      covidDataHCMCv2.data.slice(-1)[0].total.replace(/\./g, "")
+    ),
+  },
+  daily: {
+    cases: covidDataHCMCv2.data.map((e: any) => ({
+      x: e.date,
+      y: parseFloat(e.daily.replace(/\./g, "")),
+    })),
+    lastUpdated: covidDataHCMCv2.lastUpdated,
+    toDay: parseFloat(
+      covidDataHCMCv2.data.slice(-1)[0].daily.replace(/\./g, "")
+    ),
+    total: parseFloat(
+      covidDataHCMCv2.data.slice(-1)[0].total.replace(/\./g, "")
+    ),
+  },
+});

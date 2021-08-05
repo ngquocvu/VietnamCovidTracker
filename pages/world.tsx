@@ -121,7 +121,7 @@ const CardContent = ({ value, number, todayCase, color }) => {
         className={`pb-2 text-3xl md:text-4xl sm:text-xl flex font-bold h-12 w-2/3 rounded-md animate-pulse bg-gray-200 dark:bg-gray-700 dark:text-gray-300 text-gray-600`}
       ></p>
       <p
-        className={`text-sm bg-gray-500 dark:bg-gray-700 text-gray-200 font-semibold mt-2 text-center p-1 w-full rounded-md`}
+        className={`text-sm  bg-gray-200 dark:bg-gray-700 text-gray-200 font-semibold mt-2 text-center p-1 w-full rounded-md`}
       >
         {value}
       </p>

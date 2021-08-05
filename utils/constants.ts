@@ -1,5 +1,9 @@
 export const COVID_CASES_HCMC =
   "https://api.zingnews.vn/public/v2/corona/getChart?loc=hcm";
+export const COVID_CASES_HCMC_VERSION_2 =
+  "https://api.zingnews.vn/public/v2/corona/getChart?loc=hochiminh";
+export const COVID_CASES_HANOI_VERSION_2 =
+  "https://api.zingnews.vn/public/v2/corona/getChart?loc=hanoi";
 export const COVID_CASES_VIETNAM =
   "https://api.zingnews.vn/public/v2/corona/getChart";
 export const COVID_CASES_PROVINCE =

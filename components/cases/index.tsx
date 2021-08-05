@@ -30,6 +30,11 @@ const Cases = ({
             setProvince={setProvince}
             name="TP.HCM"
           />
+          <ProvinceSelectionButton
+            province={province}
+            setProvince={setProvince}
+            name="Hà Nội"
+          />
         </div>
       </div>
       <div className="md:flex w-full md:space-x-4 space-y-4 md:space-y-0  items-center justify-center">

@@ -63,7 +63,7 @@ const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
       <div className="flex flex-col">
         <p className="pb-2 text-2xl md:text-4xl font-bold text-red-500">
           {covidCases.toDay == 0
-            ? "-"
+            ? "0"
             : "+" + covidCases.toDay.toLocaleString()}
         </p>
         <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-md">
