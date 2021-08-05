@@ -25,7 +25,14 @@ const Header = () => {
   return (
     <>
       <Head>
-        s<title>Covid-19 in Vietnam </title>
+        <title>
+          {currentPage === "home"
+            ? "Covid-19 Tracker"
+            : currentPage === "world"
+            ? "Thế giới"
+            : "Tin tức"}
+          |Covid-19 in Vietnam{" "}
+        </title>
         <link rel="icon" href="logo/favicon-32x32.png" />
       </Head>
       <header className="h-16 dark:bg-gray-800 bg-white dark:border-b dark:border-gray-700  rounded-b-sm shadow-md flex items-center w-full sticky top-0 z-50 ">
