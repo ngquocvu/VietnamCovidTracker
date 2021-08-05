@@ -28,7 +28,7 @@ import { motion } from "framer-motion";
 import PopupMessage from "../components/PopupMessage";
 import { RootState } from "../reducers";
 import { setPage } from "../actions/page";
-
+import * as ga from "../lib/ga";
 export type HomeProps = {
   covidDataVN: {
     vnSeason4: CovidCasesProps;
@@ -121,9 +121,23 @@ export default function Home({
     }
   };
 
+  const onUsePWA = () => {
+    ga.event({
+      category: "PWA",
+      action: "use_pwa",
+      label: "User use Progressive Web App",
+      value: 1,
+    });
+  };
+
+  const checkPWA = () => {
+    isInStandaloneMode() && !dialog ? onUsePWA() : console.log("Not in PWA");
+  };
+
   useEffect(() => {
     isAPIUpdate();
     dispatch(setPage("home"));
+    checkPWA();
     return function cleanup() {
       dispatch(setDialog(true));
     };

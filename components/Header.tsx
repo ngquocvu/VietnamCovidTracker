@@ -1,6 +1,7 @@
 import { HeartIcon, MoonIcon, SunIcon } from "@heroicons/react/solid";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
+import * as ga from "../lib/ga";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -91,7 +92,15 @@ const Header = () => {
                   stiffness: 260,
                   damping: 20,
                 }}
-                onClick={() => setTheme("light")}
+                onClick={() => {
+                  setTheme("light");
+                  ga.event({
+                    category: "viewMode",
+                    action: "use_light_mode",
+                    label: "User choose Light Mode",
+                    value: 1,
+                  });
+                }}
                 className="flex-col items-center flex mr-2"
               >
                 <MoonIcon className="h-7  w-7 text-blue-500 cursor-pointer" />
@@ -108,7 +117,15 @@ const Header = () => {
                   stiffness: 260,
                   damping: 200,
                 }}
-                onClick={() => setTheme("dark")}
+                onClick={() => {
+                  setTheme("dark");
+                  ga.event({
+                    category: "viewMode",
+                    action: "use_dark_mode",
+                    label: "User choose Dark Mode",
+                    value: 1,
+                  });
+                }}
                 className="flex-col items-center flex mr-2"
               >
                 <SunIcon className="h-7 w-7 mt-1 text-yellow-500 cursor-pointer" />

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import * as ga from "../../lib/ga";
 import React from "react";
 type ButtonProps = {
   province: string;
@@ -23,6 +24,12 @@ const ProvinceSelectionButton = ({
       }
       onClick={() => {
         setProvince(name);
+        ga.event({
+          category: "Button Click",
+          action: "province_button_click",
+          label: "User click the " + { name } + " button",
+          value: 1,
+        });
       }}
     >
       {name}
