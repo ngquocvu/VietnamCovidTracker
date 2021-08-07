@@ -31,7 +31,10 @@
     "reducers/dialog.js",
     "reducers/dialog.js",
     "actions/dialog.js",
-    "actions/page.js"
+    "actions/page.js",
+    "pages/_app.js",
+    "lib/ga/index.js",
+    "lib/ga/index.js"
   ],
   "exclude": ["node_modules"]
 }
