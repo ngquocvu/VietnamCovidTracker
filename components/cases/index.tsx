@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ProvinceSelectionButton from "./ProvinceSelectionButton";
 import SummaryTable from "./SummaryTable";
 import FunctionalChart from "./FunctionalChart";

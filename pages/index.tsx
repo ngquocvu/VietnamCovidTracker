@@ -159,7 +159,7 @@ export default function Home({
       {isLoading ? (
         <Skeleton />
       ) : (
-        <main className="flex flex-col items-center justify-center w-full flex-1 p-4 text-center">
+        <main className="flex flex-col items-center justify-center w-full flex-1 py-4 md:px-4 px-2 text-center">
           <Cases
             dailyCovidCases={dailyCovidCases}
             lastUpdated={lastUpdated}
@@ -171,7 +171,7 @@ export default function Home({
 
           <Province covidDataProvince={covidDataProvince} />
           <Vaccine covidVaccineVN={covidVaccineVN} />
-          <div className="md:w-8/12 w-full pt-4 items-center flex justify-center">
+          <div className="lg:w-8/12 w-full pt-4 items-center flex justify-center">
             <News />
           </div>
           {isIos() && !isInStandaloneMode() && !dialog ? (

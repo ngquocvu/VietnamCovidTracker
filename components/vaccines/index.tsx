@@ -10,7 +10,7 @@ type VaccineProps = {
 const Vaccine = ({ covidVaccineVN }: VaccineProps) => {
   return (
     <>
-      <div className="mt-8 w-full md:w-8/12 ">
+      <div className="mt-8 w-full lg:w-8/12 ">
         <VaccineTables vaccineDataVN={covidVaccineVN} />
       </div>
       <div className="mt-8 md:flex w-full md:space-x-4 space-y-4 md:space-y-0 items-center justify-center">

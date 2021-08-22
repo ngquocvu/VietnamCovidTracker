@@ -42,7 +42,7 @@ const VaccineCharts = ({
           {vaccineDataVN.first.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-1/3 h-20 dark:text-gray-200 md:h-24 shadow bg-white dark:bg-gray-800 dark:bg-gray-800 item-center justify-center flex-col flex  sm:rounded-tr-md">
+      <div className="w-full  sm:w-1/3 h-20 dark:text-gray-200 md:h-24 shadow bg-white dark:bg-gray-800 dark:bg-gray-800 item-center justify-center flex-col flex  sm:rounded-tr-md">
         <div className="font-bold text-sm md:text-md dark:text-gray-400">
           Đã tiêm 2 mũi
         </div>
@@ -50,12 +50,12 @@ const VaccineCharts = ({
           {vaccineDataVN.second.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-3/3 px-8 h-36 border-t shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-b-md">
+      <div className="w-full sm:w-3/3 px-8 h-36 border-t border-gray-600 dark:md:border-gray-600 md:border-gray-200 shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-b-md">
         <div>
           <div className="relative pt-1">
             <div className="flex mb-2 items-center justify-between">
               <div>
-                <div className="text-xs  inline-block py-1.5 px-3 font-bold rounded-full text-green-600 bg-green-100">
+                <div className="text-xs  inline-block py-1 px-3 font-bold rounded-full text-green-600 bg-green-100">
                   % dân số đã tiêm 2 mũi
                 </div>
               </div>
@@ -65,10 +65,10 @@ const VaccineCharts = ({
                 </span>
               </div>
             </div>
-            <div className="overflow-hidden h-2 text-xs flex rounded bg-green-100 ">
+            <div className="overflow-hidden h-3 rounded-full text-xs flex bg-green-100 ">
               <div
                 style={{ width: vaccineDataVN.secondRatio.toFixed(2) + "%" }}
-                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+                className="shadow-none  flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
               ></div>
             </div>
             <div className="py-2 md:pb-2 text-xs text-left max-w-prose dark:text-gray-400">

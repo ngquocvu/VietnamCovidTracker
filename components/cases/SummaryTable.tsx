@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { timeSince } from "../../utils/dataFormatter";
 import {
@@ -22,7 +23,7 @@ const SummaryTable = ({
 }: CasesChartProps) => {
   return (
     <div className="flex w-full items-center flex-col space-y-4">
-      <div className="p-2.5 w-full md:w-8/12 lg:w-1/2 grid grid-cols-1 flex items-center justify-center dark:bg-gray-800 bg-white rounded-xl shadow-sm">
+      <div className="p-2.5 w-full  lg:w-1/2 grid grid-cols-1 flex items-center justify-center dark:bg-gray-800 bg-white rounded-xl shadow-md">
         <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-xl">
           <p className=" font-bold dark:text-gray-200 text-lg md:text-xl ">
             Số liệu Covid-19 tại Việt Nam
@@ -47,7 +48,7 @@ type Covid4thWaveProps = {
   covidCases: CovidCasesProps;
 };
 const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
-  <div className="py-4 px-9 w-full md:w-8/12 lg:w-6/12 shadow-sm  grid grid-cols-1 flex items-center justify-center  bg-white  dark:bg-gray-800 rounded-lg ">
+  <div className="py-4 px-9 w-full lg:w-6/12 shadow-md grid grid-cols-1 flex items-center justify-center bg-white shadow-md dark:bg-gray-800 rounded-lg ">
     <p className=" text-md md:text-lg pb-4 font-bold text-red-600">
       Đợt bùng phát dịch từ ngày 27/4
     </p>
@@ -67,7 +68,9 @@ const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
             : "+" + covidCases.toDay.toLocaleString()}
         </p>
         <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-md">
-          Hôm nay
+          {covidCases.cases.slice(-1)[0].x === moment().format("YYYY-MM-DD")
+            ? "Hôm nay"
+            : "Hôm qua"}
         </p>
       </div>
     </div>
