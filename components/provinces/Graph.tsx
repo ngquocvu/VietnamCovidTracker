@@ -22,7 +22,7 @@ const Graph = ({ covidDataProvince }) => {
               if (Number(A.y) > Number(B.y)) return -1;
               return 0;
             })
-            .slice(0, 4)}
+            .slice(0, 6)}
           margin={{
             top: 5,
             right: 10,

@@ -50,7 +50,7 @@ const VaccineCharts = ({
           {vaccineDataVN.second.total.toLocaleString()}
         </div>
       </div>
-      <div className="w-full sm:w-3/3 px-8 h-36 border-t border-gray-600 dark:md:border-gray-600 md:border-gray-200 shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-b-md">
+      <div className="w-full sm:w-3/3 px-8 h-36 border-t border-gray-100 dark:md:border-gray-600 md:border-gray-200 shadow-md md:h-24 item-center justify-center flex-col flex bg-white dark:bg-gray-800 dark:bg-gray-800 rounded-b-md">
         <div>
           <div className="relative pt-1">
             <div className="flex mb-2 items-center justify-between">

@@ -33,6 +33,7 @@ export type HomeProps = {
   covidDataVN: {
     vnSeason4: CovidCasesProps;
     vnSeason4Daily: CovidCasesProps;
+    vnSeason4CommunityDaily: any;
     lastUpdated: number;
   };
   covidDataHCMC: {

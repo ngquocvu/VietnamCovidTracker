@@ -111,9 +111,9 @@ export const dailyData = (
   const data = allCovidCaseByVnexpress.find(
     (e: any) => e.date === moment().format("DD/M")
   )[today];
-  if (data) {
+  if (data && data != 0) {
     return "Hôm nay: " + formatNumber(data);
-  } else return "Đang cập nhật";
+  } else return <>&nbsp;</>;
 };
 
 export default SummaryTableFrom2020;

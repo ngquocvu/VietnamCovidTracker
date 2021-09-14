@@ -28,9 +28,7 @@ const SummaryTable = ({
           <p className=" font-bold dark:text-gray-200 text-lg md:text-xl ">
             Số liệu Covid-19 tại Việt Nam
           </p>
-          <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 mb-1">
-            Nguồn dữ liệu từ Zing News & VnExpress
-          </p>
+          <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 mb-1"></p>
           <p className="text-xs sm:text-xs font-semibold dark:text-gray-400 text-gray-500 ">
             Cập nhật: <a>{timeSince(lastUpdated.toString()) + " trước"}</a>
           </p>
@@ -70,7 +68,11 @@ const Covid4thWave = ({ covidCases }: Covid4thWaveProps) => (
         <p className="text-sm bg-red-100  text-red-500 font-semibold text-center p-1 rounded-md">
           {covidCases.cases.slice(-1)[0].x === moment().format("YYYY-MM-DD")
             ? "Hôm nay"
-            : "Hôm qua"}
+            : timeSince(
+                String(
+                  new Date(covidCases.cases.slice(-1)[0].x).getTime() / 1000
+                )
+              ) + " trước"}
         </p>
       </div>
     </div>
